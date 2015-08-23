@@ -1,0 +1,18 @@
+Number of Nodes: 1
+Number of Vehicle Nodes: 1
+Number of ped Nodes: 0
+Number of Navi/CCarPathLink Nodes: 0
+Number of Links: 2
+
+Section 1: 
+nodeID 	connectednodesStart 	x 	y 	z 	cost 	width 	type 	m_nNumLinks 	m_nTrafficLevel 	m_bRoadBlocks 	m_bWaterNode 	m_bEmergencyVehiclesOnly 	unk1 	m_bDontWander 	unk2 	m_bNotHighway 	m_bHighway 	unk3 	unk4 	m_nSpawnProbability 	m_nBehaviourType 	
+0	0	1500.63	-558.125	5.375	32766	120	2	2	0	0	1	0	0	0	1	1	0	0	0	7	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						29	16	29	18		29	16	1495.13	-513.375	-12	99	120	1	1	0	0	0	0	0	
+						29	17	29	19		29	17	1471.75	-600.75	-56	-82	120	1	1	0	0	0	0	0	
+
+
+
+Section 2: 
+NaviID 	TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	m_nPathNodeWidth 	m_nNumLeftLanes 	m_nNumRightLanes 	m_bTrafficLightDirection 	unk1 	m_nTrafficLightState 	m_bTrainCrossing 	m_bUnk 	
+

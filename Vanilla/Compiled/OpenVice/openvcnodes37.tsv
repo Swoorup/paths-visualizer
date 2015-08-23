@@ -1,0 +1,231 @@
+Number of Nodes: 57
+Number of Vehicle Nodes: 27
+Number of ped Nodes: 30
+Number of Navi/CCarPathLink Nodes: 27
+Number of Links: 124
+
+Section 1: 
+nodeID 	connectednodesStart 	x 	y 	z 	cost 	width 	type 	m_nNumLinks 	m_nTrafficLevel 	m_bRoadBlocks 	m_bWaterNode 	m_bEmergencyVehiclesOnly 	unk1 	m_bDontWander 	unk2 	m_bNotHighway 	m_bHighway 	unk3 	unk4 	m_nSpawnProbability 	m_nBehaviourType 	
+0	0	759.625	726	12.5	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						37	1	37	0		37	0	756.25	723.5	81	58	0	1	0	0	0	0	0	0	
+						37	2	37	1		37	0	762.75	728.375	-78	-61	0	0	1	0	0	0	0	0	
+
+
+1	2	752.875	721.125	10.875	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						36	426	36	381		36	426	743.875	716.75	-94	-31	0	1	0	0	0	0	0	0	
+						37	0	37	0		37	0	756.25	723.5	81	58	0	1	0	0	0	0	0	0	
+
+
+2	4	765.875	730.875	13.375	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						37	0	37	1		37	0	762.75	728.375	-78	-61	0	0	1	0	0	0	0	0	
+						37	3	37	2		37	2	770.5	735.5	-70	-70	0	0	1	0	0	0	0	0	
+
+
+3	6	775.25	740.25	14.5	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						37	2	37	2		37	2	770.5	735.5	-70	-70	0	0	1	0	0	0	0	0	
+						45	0	37	3		37	3	778	745.5	-47	-88	0	0	1	0	0	0	0	0	
+
+
+4	8	805.875	748.75	14.125	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						45	2	45	2		37	4	802	754.125	76	-63	0	0	1	0	0	0	0	0	
+						37	5	37	4		37	4	808.75	744.625	-58	81	0	0	1	0	0	0	0	0	
+
+
+5	10	811.75	740.5	12.875	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						37	4	37	4		37	4	808.75	744.625	-58	81	0	0	1	0	0	0	0	0	
+						37	6	37	5		37	5	814.875	735.625	-54	83	0	0	1	0	0	0	0	0	
+
+
+6	12	818	730.875	13	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						37	5	37	5		37	5	814.875	735.625	-54	83	0	0	1	0	0	0	0	0	
+						37	7	37	6		37	6	817.5	726.5	11	99	0	0	1	0	0	0	0	0	
+
+
+7	14	817	722.125	13	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						37	6	37	6		37	6	817.5	726.5	11	99	0	0	1	0	0	0	0	0	
+						37	8	37	7		37	7	815	718.125	44	89	0	0	1	0	0	0	0	0	
+
+
+8	16	813	714.125	13	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						37	7	37	7		37	7	815	718.125	44	89	0	0	1	0	0	0	0	0	
+						37	9	37	8		37	8	810.25	710.5	60	79	0	0	1	0	0	0	0	0	
+
+
+9	18	807.625	707	13.5	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						37	11	37	9		37	9	801.375	701.875	71	70	0	0	1	0	0	0	0	0	
+						37	8	37	8		37	8	810.25	710.5	60	79	0	0	1	0	0	0	0	0	
+
+
+10	20	832.5	671.125	10.625	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						37	18	37	10		37	10	844.5	672.75	-95	-30	0	0	1	0	0	0	0	0	
+						37	16	37	11		37	10	826.5	671.25	99	-3	0	1	0	0	0	0	0	0	
+
+
+11	22	794.875	694.5	13	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						37	9	37	9		37	9	801.375	701.875	71	70	0	0	1	0	0	0	0	0	
+						37	12	37	12		37	11	793.375	691.25	41	90	0	0	1	0	0	0	0	0	
+
+
+12	24	791.875	688	12.625	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						37	11	37	12		37	11	793.375	691.25	41	90	0	0	1	0	0	0	0	0	
+						37	13	37	13		37	12	793	684.875	-36	93	0	0	1	0	0	0	0	0	
+
+
+13	26	794.25	681.875	12.25	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						37	12	37	13		37	12	793	684.875	-36	93	0	0	1	0	0	0	0	0	
+						37	14	37	14		37	13	798.625	679.125	-85	52	0	0	1	0	0	0	0	0	
+
+
+14	28	803	676.5	12	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						37	13	37	14		37	13	798.625	679.125	-85	52	0	0	1	0	0	0	0	0	
+						37	15	37	15		37	14	807.625	674.75	-93	35	0	0	1	0	0	0	0	0	
+
+
+15	30	812.25	673	11.375	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						37	14	37	15		37	14	807.625	674.75	-93	35	0	0	1	0	0	0	0	0	
+						37	16	37	16		37	15	816.375	672.25	-98	17	0	0	1	0	0	0	0	0	
+
+
+16	32	820.625	671.5	11.25	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						37	10	37	11		37	10	826.5	671.25	99	-3	0	1	0	0	0	0	0	0	
+						37	15	37	16		37	15	816.375	672.25	-98	17	0	0	1	0	0	0	0	0	
+
+
+17	34	865.875	738.5	16.125	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						45	10	37	17		37	17	860	748.25	38	-92	0	0	1	0	0	0	0	0	
+						37	22	37	18		37	17	868.375	734	-49	86	0	1	0	0	0	0	0	0	
+
+
+18	36	859.125	679.75	10.875	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						37	10	37	10		37	10	844.5	672.75	-95	-30	0	0	1	0	0	0	0	0	
+						37	19	37	19		37	18	865.875	683	-89	-43	0	0	1	0	0	0	0	0	
+
+
+19	38	872.75	686.375	10.875	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						37	18	37	19		37	18	865.875	683	-89	-43	0	0	1	0	0	0	0	0	
+						37	20	37	20		37	19	877	692.75	-55	-83	0	0	1	0	0	0	0	0	
+
+
+20	40	881.375	699.25	10.625	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						37	19	37	20		37	19	877	692.75	-55	-83	0	0	1	0	0	0	0	0	
+						37	21	37	21		37	20	879.875	706.875	18	-98	0	0	1	0	0	0	0	0	
+
+
+21	42	878.5	714.625	11.75	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						37	20	37	21		37	20	879.875	706.875	18	-98	0	0	1	0	0	0	0	0	
+						37	22	37	22		37	21	874.75	722	45	-89	0	0	1	0	0	0	0	0	
+
+
+22	44	871	729.5	16.875	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						37	17	37	18		37	17	868.375	734	-49	86	0	1	0	0	0	0	0	0	
+						37	21	37	22		37	21	874.75	722	45	-89	0	0	1	0	0	0	0	0	
+
+
+23	46	1032.75	493.25	6	32766	120	2	2	1	0	1	0	0	0	1	1	0	0	0	7	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						37	24	37	23		37	23	1027.88	436	8	99	120	2	2	0	0	0	0	0	
+						37	25	37	24		37	23	1030.25	560.25	3	-99	120	2	2	0	0	0	0	0	
+
+
+24	48	1023	378.875	6	32766	120	2	2	1	0	1	0	0	0	1	1	0	0	0	7	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						37	26	37	26		37	24	1013.38	276.25	-19	98	120	2	2	0	0	0	0	0	
+						37	23	37	23		37	23	1027.88	436	8	99	120	2	2	0	0	0	0	0	
+
+
+25	50	1027.75	627.25	6	32766	120	2	2	1	0	1	0	0	0	1	1	0	0	0	7	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						37	23	37	24		37	23	1030.25	560.25	3	-99	120	2	2	0	0	0	0	0	
+						45	51	37	25		37	25	1027	702.625	0	-99	120	2	2	0	0	0	0	0	
+
+
+26	52	1083.38	76.75	6	32766	120	2	2	1	0	1	0	0	0	1	1	0	0	0	7	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						37	24	37	26		37	24	1013.38	276.25	-19	98	120	2	2	0	0	0	0	0	
+						29	10	29	0		29	10	1097.63	-100	9	-99	120	1	1	0	0	0	0	0	
+
+
+27	54	780.75	26.875	14.25	32766	248	1	3	0	0	0	0	0	0	0	0	0	0	0	15	0	
+28	57	825.375	26.875	13.5	32766	248	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+29	59	774.875	94.375	17.375	32766	248	1	1	0	0	0	0	0	0	0	0	0	0	0	15	0	
+30	60	755.875	142.5	14.375	32766	248	1	4	0	0	0	0	0	0	0	0	0	0	0	15	0	
+31	64	754.25	183.75	14.75	32766	248	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+32	66	797.125	317.75	18.75	32766	248	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+33	68	821.25	101.25	14.375	32766	248	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+34	70	814.375	151.125	14	32766	248	1	4	0	0	0	0	0	0	0	0	0	0	0	15	0	
+35	74	802.375	188.875	14.125	32766	248	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+36	76	795.5	228.375	16.5	32766	248	1	4	0	0	0	0	0	0	0	0	0	0	0	15	0	
+37	80	795.5	269.625	18.625	32766	248	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+38	82	872.75	319.5	20.875	32766	248	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+39	84	865.875	101.25	13.5	32766	248	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+40	86	869.375	149.375	12.875	32766	248	1	3	0	0	0	0	0	0	0	0	0	0	0	15	0	
+41	89	869.375	190.625	14.125	32766	248	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+42	91	845.25	238.75	16.625	32766	248	1	3	0	0	0	0	0	0	0	0	0	0	0	15	0	
+43	94	852.125	278.25	16.75	32766	248	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+44	96	755.875	551.5	11.5	32766	248	1	1	0	0	0	0	0	0	0	0	0	0	0	15	0	
+45	97	757.625	403.625	14.25	32766	248	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+46	99	754.25	451.75	13.875	32766	248	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+47	101	754.25	501.625	13	32766	248	1	3	0	0	0	0	0	0	0	0	0	0	0	15	0	
+48	104	816.125	548	13.5	32766	248	1	3	0	0	0	0	0	0	0	0	0	0	0	15	0	
+49	107	814.375	407.125	17.25	32766	248	1	3	0	0	0	0	0	0	0	0	0	0	0	15	0	
+50	110	809.25	453.5	14.375	32766	248	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+51	112	812.625	501.625	14.75	32766	248	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+52	114	855.625	542.875	14.75	32766	248	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+53	116	871	408.875	18.625	32766	248	1	3	0	0	0	0	0	0	0	0	0	0	0	15	0	
+54	119	865.875	451.75	14.625	32766	248	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+55	121	859	496.5	15	32766	248	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+56	123	754.25	611.875	13.125	32766	248	1	1	0	0	0	0	0	0	0	0	0	0	0	15	0	
+
+Section 2: 
+NaviID 	TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	m_nPathNodeWidth 	m_nNumLeftLanes 	m_nNumRightLanes 	m_bTrafficLightDirection 	unk1 	m_nTrafficLightState 	m_bTrainCrossing 	m_bUnk 	
+0	37	0	756.25	723.5	81	58	0	1	0	0	0	0	0	0	
+1	37	0	762.75	728.375	-78	-61	0	0	1	0	0	0	0	0	
+2	37	2	770.5	735.5	-70	-70	0	0	1	0	0	0	0	0	
+3	37	3	778	745.5	-47	-88	0	0	1	0	0	0	0	0	
+4	37	4	808.75	744.625	-58	81	0	0	1	0	0	0	0	0	
+5	37	5	814.875	735.625	-54	83	0	0	1	0	0	0	0	0	
+6	37	6	817.5	726.5	11	99	0	0	1	0	0	0	0	0	
+7	37	7	815	718.125	44	89	0	0	1	0	0	0	0	0	
+8	37	8	810.25	710.5	60	79	0	0	1	0	0	0	0	0	
+9	37	9	801.375	701.875	71	70	0	0	1	0	0	0	0	0	
+10	37	10	844.5	672.75	-95	-30	0	0	1	0	0	0	0	0	
+11	37	10	826.5	671.25	99	-3	0	1	0	0	0	0	0	0	
+12	37	11	793.375	691.25	41	90	0	0	1	0	0	0	0	0	
+13	37	12	793	684.875	-36	93	0	0	1	0	0	0	0	0	
+14	37	13	798.625	679.125	-85	52	0	0	1	0	0	0	0	0	
+15	37	14	807.625	674.75	-93	35	0	0	1	0	0	0	0	0	
+16	37	15	816.375	672.25	-98	17	0	0	1	0	0	0	0	0	
+17	37	17	860	748.25	38	-92	0	0	1	0	0	0	0	0	
+18	37	17	868.375	734	-49	86	0	1	0	0	0	0	0	0	
+19	37	18	865.875	683	-89	-43	0	0	1	0	0	0	0	0	
+20	37	19	877	692.75	-55	-83	0	0	1	0	0	0	0	0	
+21	37	20	879.875	706.875	18	-98	0	0	1	0	0	0	0	0	
+22	37	21	874.75	722	45	-89	0	0	1	0	0	0	0	0	
+23	37	23	1027.88	436	8	99	120	2	2	0	0	0	0	0	
+24	37	23	1030.25	560.25	3	-99	120	2	2	0	0	0	0	0	
+25	37	25	1027	702.625	0	-99	120	2	2	0	0	0	0	0	
+26	37	24	1013.38	276.25	-19	98	120	2	2	0	0	0	0	0	
+

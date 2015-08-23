@@ -1,0 +1,74 @@
+Number of Nodes: 9
+Number of Vehicle Nodes: 9
+Number of ped Nodes: 0
+Number of Navi/CCarPathLink Nodes: 8
+Number of Links: 18
+
+Section 1: 
+nodeID 	connectednodesStart 	x 	y 	z 	cost 	width 	type 	m_nNumLinks 	m_nTrafficLevel 	m_bRoadBlocks 	m_bWaterNode 	m_bEmergencyVehiclesOnly 	unk1 	m_bDontWander 	unk2 	m_bNotHighway 	m_bHighway 	unk3 	unk4 	m_nSpawnProbability 	m_nBehaviourType 	
+0	0	-1632	-1813.13	6	32766	0	2	2	1	0	1	0	0	0	1	1	0	0	0	7	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						9	3	9	0		9	0	-1696.75	-1821.88	99	11	0	1	1	0	0	0	0	0	
+						9	2	9	1		9	0	-1601.38	-1808.13	-98	-15	0	1	1	0	0	0	0	0	
+
+
+1	2	-1502.75	-1782.75	6	32766	0	2	2	1	0	1	0	0	0	1	1	0	0	0	7	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						10	14	10	17		9	1	-1444.25	-1776.75	-99	-10	0	1	1	0	0	0	0	0	
+						9	2	9	2		9	1	-1536.75	-1793	95	28	0	1	1	0	0	0	0	0	
+
+
+2	4	-1570.75	-1803.25	6	32766	0	2	2	1	0	1	0	0	0	1	1	0	0	0	7	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						9	0	9	1		9	0	-1601.38	-1808.13	-98	-15	0	1	1	0	0	0	0	0	
+						9	1	9	2		9	1	-1536.75	-1793	95	28	0	1	1	0	0	0	0	0	
+
+
+3	6	-1741.13	-1826.13	6	32766	0	2	2	1	0	1	0	0	0	1	1	0	0	0	7	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						9	0	9	0		9	0	-1696.75	-1821.88	99	11	0	1	1	0	0	0	0	0	
+						9	4	9	3		9	3	-1762.63	-1826.75	99	2	0	1	1	0	0	0	0	0	
+
+
+4	8	-1784.25	-1827.38	6	32766	0	2	2	1	0	1	0	0	0	1	1	0	0	0	7	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						9	3	9	3		9	3	-1762.63	-1826.75	99	2	0	1	1	0	0	0	0	0	
+						9	5	9	4		9	4	-1829.25	-1816.5	97	-23	0	1	1	0	0	0	0	0	
+
+
+5	10	-1874.25	-1805.63	6	32766	0	2	2	1	0	1	0	0	0	1	1	0	0	0	7	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						9	4	9	4		9	4	-1829.25	-1816.5	97	-23	0	1	1	0	0	0	0	0	
+						9	6	9	5		9	5	-1909.75	-1758.88	60	-79	0	1	1	0	0	0	0	0	
+
+
+6	12	-1945.38	-1712.25	6	32766	0	2	2	1	0	1	0	0	0	1	1	0	0	0	7	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						9	5	9	5		9	5	-1909.75	-1758.88	60	-79	0	1	1	0	0	0	0	0	
+						9	7	9	6		9	6	-1970.88	-1656.13	41	-91	0	1	1	0	0	0	0	0	
+
+
+7	14	-1996.38	-1600	6	32766	0	2	2	1	0	1	0	0	0	1	1	0	0	0	7	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						9	6	9	6		9	6	-1970.88	-1656.13	41	-91	0	1	1	0	0	0	0	0	
+						9	8	9	7		9	7	-2004.38	-1550.38	16	-98	0	1	1	0	0	0	0	0	
+
+
+8	16	-2012.5	-1500.75	6	32766	0	2	2	1	0	1	0	0	0	1	1	0	0	0	7	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						17	0	17	1		9	8	-2007.13	-1425.5	-7	-99	0	1	1	0	0	0	0	0	
+						9	7	9	7		9	7	-2004.38	-1550.38	16	-98	0	1	1	0	0	0	0	0	
+
+
+
+Section 2: 
+NaviID 	TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	m_nPathNodeWidth 	m_nNumLeftLanes 	m_nNumRightLanes 	m_bTrafficLightDirection 	unk1 	m_nTrafficLightState 	m_bTrainCrossing 	m_bUnk 	
+0	9	0	-1696.75	-1821.88	99	11	0	1	1	0	0	0	0	0	
+1	9	0	-1601.38	-1808.13	-98	-15	0	1	1	0	0	0	0	0	
+2	9	1	-1536.75	-1793	95	28	0	1	1	0	0	0	0	0	
+3	9	3	-1762.63	-1826.75	99	2	0	1	1	0	0	0	0	0	
+4	9	4	-1829.25	-1816.5	97	-23	0	1	1	0	0	0	0	0	
+5	9	5	-1909.75	-1758.88	60	-79	0	1	1	0	0	0	0	0	
+6	9	6	-1970.88	-1656.13	41	-91	0	1	1	0	0	0	0	0	
+7	9	7	-2004.38	-1550.38	16	-98	0	1	1	0	0	0	0	0	
+

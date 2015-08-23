@@ -1,0 +1,1774 @@
+Number of Nodes: 513
+Number of Vehicle Nodes: 205
+Number of ped Nodes: 308
+Number of Navi/CCarPathLink Nodes: 211
+Number of Links: 1054
+
+Section 1: 
+nodeID 	connectednodesStart 	x 	y 	z 	cost 	width 	type 	m_nNumLinks 	m_nTrafficLevel 	m_bRoadBlocks 	m_bWaterNode 	m_bEmergencyVehiclesOnly 	unk1 	m_bDontWander 	unk2 	m_bNotHighway 	m_bHighway 	unk3 	unk4 	m_nSpawnProbability 	m_nBehaviourType 	
+0	0	-607.125	744.75	10.375	32766	0	1	2	0	1	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	197	35	0		35	0	-593.375	743.875	-99	5	0	1	1	0	0	0	0	0	
+						35	1	35	1		35	0	-625.5	745.875	99	-6	0	1	1	0	0	0	0	0	
+
+
+1	2	-643.875	747	10.375	32766	0	1	2	0	1	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	16	35	2		35	1	-662.375	748	99	-5	0	1	1	1	0	2	0	0	
+						35	0	35	1		35	0	-625.5	745.875	99	-6	0	1	1	0	0	0	0	0	
+
+
+2	4	-531.25	676.875	9.75	32766	0	1	2	0	0	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	3	35	5		35	2	-534.75	674.875	87	48	0	2	0	0	0	0	0	0	
+						35	9	35	6		35	2	-528.75	679.75	-65	-75	0	0	2	0	0	0	0	0	
+
+
+3	6	-538.375	672.875	9.75	32766	0	1	2	0	0	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	2	35	5		35	2	-534.75	674.875	87	48	0	2	0	0	0	0	0	0	
+						35	4	35	7		35	3	-541.875	671.75	95	29	0	2	0	0	0	0	0	0	
+
+
+4	8	-545.375	670.75	9.75	32766	0	1	2	0	0	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	3	35	7		35	3	-541.875	671.75	95	29	0	2	0	0	0	0	0	0	
+						35	5	35	8		35	4	-550.75	669.875	98	14	0	2	0	0	0	0	0	0	
+
+
+5	10	-556.25	669.125	9.75	32766	0	1	2	0	1	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	4	35	8		35	4	-550.75	669.875	98	14	0	2	0	0	0	0	0	0	
+						35	6	35	9		35	5	-572.375	666.75	98	14	0	2	0	0	0	0	0	0	
+
+
+6	12	-588.5	664.375	9.75	32766	0	1	2	0	1	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	5	35	9		35	5	-572.375	666.75	98	14	0	2	0	0	0	0	0	0	
+						35	7	35	10		35	6	-604.75	662	98	14	0	2	0	0	0	0	0	0	
+
+
+7	14	-621	659.625	9.75	32766	0	1	2	0	1	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	18	35	11		35	7	-631.875	658	96	26	0	2	0	0	0	0	0	0	
+						35	6	35	10		35	6	-604.75	662	98	14	0	2	0	0	0	0	0	0	
+
+
+8	16	-520.125	694.875	9.75	32766	0	1	2	0	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	11	35	12		35	8	-509.125	721.625	-38	-92	0	0	2	1	0	1	0	0	
+						35	10	35	13		35	8	-521.625	691	37	92	0	2	0	0	0	0	0	0	
+
+
+9	18	-526.25	682.625	9.75	32766	0	1	2	0	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	2	35	6		35	2	-528.75	679.75	-65	-75	0	0	2	0	0	0	0	0	
+						35	10	35	14		35	9	-524.75	684.875	-54	-83	0	0	2	0	0	0	0	0	
+
+
+10	20	-523.25	687.25	9.75	32766	0	1	2	0	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	8	35	13		35	8	-521.625	691	37	92	0	2	0	0	0	0	0	0	
+						35	9	35	14		35	9	-524.75	684.875	-54	-83	0	0	2	0	0	0	0	0	
+
+
+11	22	-505	731	9.625	32766	0	1	3	0	0	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						43	58	35	4		35	11	-501.25	739.75	-38	-92	0	1	1	1	0	1	0	0	
+						35	8	35	12		35	8	-509.125	721.625	-38	-92	0	0	2	1	0	1	0	0	
+						35	194	35	15		35	11	-514.25	734.625	94	-32	0	1	1	0	0	2	0	0	
+
+
+12	25	-677	648.5	9.875	32766	120	1	2	0	0	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	204	35	16		35	12	-678.125	626.125	-18	98	120	0	1	0	0	0	0	0	
+						35	15	35	17		35	12	-676.375	659.75	-4	-99	120	1	0	0	0	0	0	0	
+
+
+13	27	-673.625	716.125	9.75	32766	0	1	2	0	0	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	16	35	18		35	13	-672.625	738.5	-4	-99	0	2	0	1	0	1	0	0	
+						35	14	35	19		35	13	-674.125	704.75	4	99	0	0	2	0	0	0	0	0	
+
+
+14	29	-674.75	693.5	9.875	32766	120	1	2	0	1	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	13	35	19		35	13	-674.125	704.75	4	99	0	0	2	0	0	0	0	0	
+						35	15	35	20		35	14	-675.25	682.25	4	99	120	0	2	0	0	0	0	0	
+
+
+15	31	-675.875	671	9.875	32766	120	1	2	0	0	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	12	35	17		35	12	-676.375	659.75	-4	-99	120	1	0	0	0	0	0	0	
+						35	14	35	20		35	14	-675.25	682.25	4	99	120	0	2	0	0	0	0	0	
+
+
+16	33	-672	748.625	10.125	32766	0	1	4	0	0	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	1	35	2		35	1	-662.375	748	99	-5	0	1	1	1	0	2	0	0	
+						43	5	35	3		35	16	-682	749	99	-6	0	1	1	1	0	2	0	0	
+						35	13	35	18		35	13	-672.625	738.5	-4	-99	0	2	0	1	0	1	0	0	
+						43	69	43	63		35	16	-671.25	757.125	-1	-99	0	1	1	0	0	1	0	0	
+
+
+17	37	-657.5	631.875	9.75	32766	120	1	2	0	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	204	35	21		35	17	-658.25	625.75	53	84	120	1	0	0	0	0	0	0	
+						35	19	35	22		35	17	-654.75	638.125	-39	-91	120	0	1	0	0	0	0	0	
+
+
+18	39	-643.875	653.25	9.75	32766	120	1	2	0	0	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	7	35	11		35	7	-631.875	658	96	26	0	2	0	0	0	0	0	0	
+						35	19	35	23		35	18	-648	648.75	68	73	120	2	0	0	0	0	0	0	
+
+
+19	41	-652.125	644.375	9.75	32766	120	1	2	0	0	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	17	35	22		35	17	-654.75	638.125	-39	-91	120	0	1	0	0	0	0	0	
+						35	18	35	23		35	18	-648	648.75	68	73	120	2	0	0	0	0	0	0	
+
+
+20	43	-732.5	169.125	9.875	32766	76	1	2	0	0	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	28	35	24		35	20	-728.375	186.75	-20	-97	76	2	2	0	0	0	0	0	
+						35	27	35	25		35	20	-733.75	162.875	19	98	76	2	2	0	0	0	0	0	
+
+
+21	45	-750	82.625	9.875	32766	76	1	2	0	0	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						34	0	34	0		34	0	-751.25	76	-19	-98	76	2	2	0	0	0	0	0	
+						35	22	35	26		35	21	-748.75	88.75	-19	-98	76	2	2	0	0	0	0	0	
+
+
+22	47	-747.5	95	9.875	32766	76	1	2	0	0	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	21	35	26		35	21	-748.75	88.75	-19	-98	76	2	2	0	0	0	0	0	
+						35	23	35	27		35	22	-746.25	101.125	-19	-98	76	2	2	0	0	0	0	0	
+
+
+23	49	-745	107.375	9.875	32766	76	1	2	0	1	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	22	35	27		35	22	-746.25	101.125	-19	-98	76	2	2	0	0	0	0	0	
+						35	24	35	28		35	23	-743.75	113.5	-19	-97	76	2	2	0	0	0	0	0	
+
+
+24	51	-742.5	119.625	9.875	32766	76	1	2	0	0	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	23	35	28		35	23	-743.75	113.5	-19	-97	76	2	2	0	0	0	0	0	
+						35	25	35	29		35	24	-741.25	125.75	-19	-98	76	2	2	0	0	0	0	0	
+
+
+25	53	-740	132	9.875	32766	76	1	2	0	0	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	24	35	29		35	24	-741.25	125.75	-19	-98	76	2	2	0	0	0	0	0	
+						35	26	35	30		35	25	-738.75	138.125	-19	-98	76	2	2	0	0	0	0	0	
+
+
+26	55	-737.5	144.375	9.875	32766	76	1	2	0	0	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	25	35	30		35	25	-738.75	138.125	-19	-98	76	2	2	0	0	0	0	0	
+						35	27	35	31		35	26	-736.25	150.5	-19	-98	76	2	2	0	0	0	0	0	
+
+
+27	57	-735	156.75	9.875	32766	76	1	2	0	0	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	20	35	25		35	20	-733.75	162.875	19	98	76	2	2	0	0	0	0	0	
+						35	26	35	31		35	26	-736.25	150.5	-19	-98	76	2	2	0	0	0	0	0	
+
+
+28	59	-726.625	196.875	10.125	32766	76	1	3	0	0	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	20	35	24		35	20	-728.375	186.75	-20	-97	76	2	2	0	0	0	0	0	
+						35	38	35	32		35	28	-725	206.125	-19	-98	76	2	2	0	0	1	0	0	
+						34	25	35	33		34	25	-745.875	200.25	-98	17	76	1	1	0	0	2	0	0	
+
+
+29	62	-665.5	26.625	22.75	32766	25	1	2	0	0	0	0	0	0	0	0	1	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	106	35	34		35	29	-656.625	26.375	-99	2	25	1	1	0	0	0	0	0	
+						35	36	35	35		35	29	-671.25	26.75	99	-2	25	1	1	0	0	0	0	0	
+
+
+30	64	-742	29.375	15.375	32766	2	1	2	0	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						34	8	35	36		34	8	-746.125	29.375	-100	0	0	1	1	0	0	0	0	0	
+						35	31	35	37		35	30	-737.5	29.125	-99	4	2	1	1	0	0	0	0	0	
+
+
+31	66	-733	29	15.75	32766	8	1	2	0	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	30	35	37		35	30	-737.5	29.125	-99	4	2	1	1	0	0	0	0	0	
+						35	32	35	38		35	31	-729.5	28.875	-99	1	8	1	1	0	0	0	0	0	
+
+
+32	68	-726.125	28.875	15.875	32766	25	1	2	0	0	0	0	0	0	0	0	1	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	31	35	38		35	31	-729.5	28.875	-99	1	8	1	1	0	0	0	0	0	
+						35	33	35	39		35	32	-723.375	28.625	-99	6	25	1	1	0	0	0	0	0	
+
+
+33	70	-720.75	28.5	16.5	32766	25	1	2	0	0	0	0	0	0	0	0	1	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	32	35	39		35	32	-723.375	28.625	-99	6	25	1	1	0	0	0	0	0	
+						35	34	35	40		35	33	-712.25	28.125	-99	3	25	1	1	0	0	0	0	0	
+
+
+34	72	-703.875	27.875	18.375	32766	25	1	2	0	0	0	0	0	0	0	0	1	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	33	35	40		35	33	-712.25	28.125	-99	3	25	1	1	0	0	0	0	0	
+						35	35	35	41		35	34	-696.875	27.5	-99	4	25	1	1	0	0	0	0	0	
+
+
+35	74	-690	27.25	20.25	32766	25	1	2	0	0	0	0	0	0	0	0	1	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	34	35	41		35	34	-696.875	27.5	-99	4	25	1	1	0	0	0	0	0	
+						35	36	35	42		35	35	-683.5	27	-99	2	25	1	1	0	0	0	0	0	
+
+
+36	76	-677.125	26.875	21.875	32766	25	1	2	0	0	0	0	0	0	0	0	1	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	29	35	35		35	29	-671.25	26.75	99	-2	25	1	1	0	0	0	0	0	
+						35	35	35	42		35	35	-683.5	27	-99	2	25	1	1	0	0	0	0	0	
+
+
+37	78	-715	255.625	9.875	32766	76	1	2	0	0	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	39	35	43		35	37	-710	280.25	-19	-97	76	2	2	1	0	1	0	0	
+						35	38	35	44		35	37	-717.5	243.25	19	98	76	2	2	0	0	0	0	0	
+
+
+38	80	-720	230.875	9.875	32766	76	1	2	0	1	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	28	35	32		35	28	-725	206.125	-19	-98	76	2	2	0	0	1	0	0	
+						35	37	35	44		35	37	-717.5	243.25	19	98	76	2	2	0	0	0	0	0	
+
+
+39	82	-708.125	289.375	9.875	32766	76	1	3	0	0	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	37	35	43		35	37	-710	280.25	-19	-97	76	2	2	1	0	1	0	0	
+						35	41	35	45		35	39	-706.375	298.625	-19	-98	76	2	2	0	0	1	0	0	
+						35	47	35	46		35	39	-722.25	293.125	97	-20	76	1	1	0	0	2	0	0	
+
+
+40	85	-692.625	397.125	9.875	32766	76	1	2	0	0	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	70	35	47		35	40	-691.125	410.875	-10	-99	76	2	2	0	0	0	0	0	
+						35	46	35	48		35	40	-693.25	390.25	10	99	76	2	2	0	0	0	0	0	
+
+
+41	87	-702.5	317.25	9.875	32766	76	1	2	0	0	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	39	35	45		35	39	-706.375	298.625	-19	-98	76	2	2	0	0	1	0	0	
+						35	42	35	49		35	41	-701	324.625	-19	-98	76	2	2	0	0	0	0	0	
+
+
+42	89	-699.5	332.125	9.875	32766	76	1	2	0	0	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	41	35	49		35	41	-701	324.625	-19	-98	76	2	2	0	0	0	0	0	
+						35	43	35	50		35	42	-698.875	337.25	-10	-99	76	2	2	0	0	0	0	0	
+
+
+43	91	-698.375	342.5	9.875	32766	76	1	2	0	1	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	42	35	50		35	42	-698.875	337.25	-10	-99	76	2	2	0	0	0	0	0	
+						35	44	35	51		35	43	-697.625	349.25	-10	-99	76	2	2	0	0	0	0	0	
+
+
+44	93	-697	356.125	9.875	32766	76	1	2	0	0	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	43	35	51		35	43	-697.625	349.25	-10	-99	76	2	2	0	0	0	0	0	
+						35	45	35	52		35	44	-696.25	363	-10	-99	76	2	2	0	0	0	0	0	
+
+
+45	95	-695.5	369.875	9.875	32766	76	1	2	0	0	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	44	35	52		35	44	-696.25	363	-10	-99	76	2	2	0	0	0	0	0	
+						35	46	35	53		35	45	-694.75	376.625	-10	-99	76	2	2	0	0	0	0	0	
+
+
+46	97	-694	383.5	9.875	32766	76	1	2	0	0	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	40	35	48		35	40	-693.25	390.25	10	99	76	2	2	0	0	0	0	0	
+						35	45	35	53		35	45	-694.75	376.625	-10	-99	76	2	2	0	0	0	0	0	
+
+
+47	99	-745	297	10	32766	76	1	2	0	0	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	39	35	46		35	39	-722.25	293.125	97	-20	76	1	1	0	0	2	0	0	
+						34	49	34	53		34	49	-757.5	299.25	-98	18	76	1	1	0	0	0	0	0	
+
+
+48	101	-58.5	86.5	16.5	32766	25	1	2	0	0	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	77	35	54		35	48	-69.75	83.875	97	22	25	1	1	0	0	0	0	0	
+						35	49	35	55		35	48	-56.125	87.75	-87	-47	25	1	1	0	0	0	0	0	
+
+
+49	103	-53.875	89	16.25	32766	25	1	2	0	0	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	48	35	55		35	48	-56.125	87.75	-87	-47	25	1	1	0	0	0	0	0	
+						35	50	35	56		35	49	-51.5	90.625	-81	-57	25	1	1	0	0	0	0	0	
+
+
+50	105	-49.25	92.25	16.25	32766	25	1	2	0	0	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	49	35	56		35	49	-51.5	90.625	-81	-57	25	1	1	0	0	0	0	0	
+						35	51	35	57		35	50	-42.375	98.375	-74	-67	25	1	1	0	0	0	0	0	
+
+
+51	107	-35.625	104.625	17.125	32766	25	1	2	0	1	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	50	35	57		35	50	-42.375	98.375	-74	-67	25	1	1	0	0	0	0	0	
+						35	52	35	58		35	51	-30	109.75	-73	-67	25	1	1	0	0	0	0	0	
+
+
+52	109	-24.375	114.875	17.625	32766	25	1	2	0	1	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	51	35	58		35	51	-30	109.75	-73	-67	25	1	1	0	0	0	0	0	
+						35	53	35	59		35	52	-19	119.375	-76	-64	25	1	1	0	0	0	0	0	
+
+
+53	111	-13.625	124	18	32766	25	1	2	0	1	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	52	35	59		35	52	-19	119.375	-76	-64	25	1	1	0	0	0	0	0	
+						36	170	35	60		35	53	-4.25	132.75	-73	-68	25	1	1	0	0	0	0	0	
+
+
+54	113	-172.75	657.5	6	32766	0	2	2	2	0	1	0	0	0	0	1	0	0	0	7	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	180	35	61		35	54	-239.625	637.875	85	51	0	1	1	0	0	0	0	0	
+						35	55	35	62		35	54	-139.375	646.625	-95	31	0	1	1	0	0	0	0	0	
+
+
+55	115	-106.125	635.75	6	32766	0	2	2	2	0	1	0	0	0	0	1	0	0	0	7	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	54	35	62		35	54	-139.375	646.625	-95	31	0	1	1	0	0	0	0	0	
+						35	56	35	63		35	55	-71.5	631.875	-99	11	0	1	1	0	0	0	0	0	
+
+
+56	117	-36.875	628	6	32766	0	2	2	2	0	1	0	0	0	0	1	0	0	0	7	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						36	433	36	196		35	56	28	646.875	-90	-43	0	0	1	0	0	0	0	0	
+						35	55	35	63		35	55	-71.5	631.875	-99	11	0	1	1	0	0	0	0	0	
+
+
+57	119	-116.25	257.75	6	32766	0	2	2	2	0	1	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	187	35	64		35	57	-123.625	205.625	12	99	0	0	1	0	0	0	0	0	
+						35	61	35	65		35	57	-107.625	282.25	-32	-94	0	1	0	0	0	0	0	0	
+
+
+58	121	-119.125	399.5	6	32766	0	2	2	2	0	1	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	177	35	66		35	58	-176.625	385	91	39	0	1	0	0	0	0	0	0	
+						35	59	35	67		35	58	-97.375	396.5	-99	13	0	0	1	0	0	0	0	0	
+
+
+59	123	-75.75	393.5	6	32766	0	2	2	2	0	1	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	58	35	67		35	58	-97.375	396.5	-99	13	0	0	1	0	0	0	0	0	
+						35	60	35	68		35	59	-72.75	373.5	-14	98	0	0	1	0	0	0	0	0	
+
+
+60	125	-69.75	353.625	6	32766	0	2	2	2	0	1	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	59	35	68		35	59	-72.75	373.5	-14	98	0	0	1	0	0	0	0	0	
+						35	61	35	69		35	60	-84.375	330.25	53	84	0	0	1	0	0	0	0	0	
+
+
+61	127	-99.125	306.875	6	32766	0	2	2	2	0	1	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	57	35	65		35	57	-107.625	282.25	-32	-94	0	1	0	0	0	0	0	0	
+						35	60	35	69		35	60	-84.375	330.25	53	84	0	0	1	0	0	0	0	0	
+
+
+62	129	-419.125	656.75	6	32766	0	2	2	0	0	1	0	0	0	0	1	0	0	0	7	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						43	223	35	70		35	62	-379.625	726.125	-52	-85	0	2	1	0	0	0	0	0	
+						35	182	35	71		35	62	-457.125	574.125	49	86	0	2	1	0	0	0	0	0	
+
+
+63	131	-461	352.75	6	32766	0	2	1	3	0	1	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	68	35	72		35	63	-438.875	328.875	-67	73	0	1	1	0	0	0	0	0	
+
+
+64	132	-279.25	296.5	6	32766	0	2	2	3	0	1	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	183	35	73		35	64	-311	345.75	63	-77	0	1	1	0	0	0	0	0	
+						35	65	35	74		35	64	-285.25	270.5	22	97	0	1	1	0	0	0	0	0	
+
+
+65	134	-291.375	244.625	6	32766	0	2	2	3	0	1	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	64	35	74		35	64	-285.25	270.5	22	97	0	1	1	0	0	0	0	0	
+						35	66	35	75		35	65	-319.5	233.75	93	35	0	1	1	0	0	0	0	0	
+
+
+66	136	-347.625	223	6	32766	0	2	2	3	0	1	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	65	35	75		35	65	-319.5	233.75	93	35	0	1	1	0	0	0	0	0	
+						35	67	35	76		35	66	-375.75	236.75	89	-44	0	1	1	0	0	0	0	0	
+
+
+67	138	-403.875	250.625	6	32766	0	2	2	3	0	1	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	66	35	76		35	66	-375.75	236.75	89	-44	0	1	1	0	0	0	0	0	
+						35	68	35	77		35	67	-410.375	277.875	23	-97	0	1	1	0	0	0	0	0	
+
+
+68	140	-416.875	305.125	6	32766	0	2	2	3	0	1	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	63	35	72		35	63	-438.875	328.875	-67	73	0	1	1	0	0	0	0	0	
+						35	67	35	77		35	67	-410.375	277.875	23	-97	0	1	1	0	0	0	0	0	
+
+
+69	142	-603.25	190.75	6	32766	0	2	3	0	0	1	0	0	0	0	1	0	0	0	7	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	185	35	78		35	69	-615	299	-12	-99	0	0	1	0	0	0	0	0	
+						35	190	35	79		35	69	-587	82.875	-8	99	0	1	0	0	0	0	0	0	
+						35	189	35	80		35	69	-506.75	154.375	-96	24	0	1	1	0	0	0	0	0	
+
+
+70	145	-688.25	438.125	9.875	32766	76	1	2	0	0	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	40	35	47		35	40	-691.125	410.875	-10	-99	76	2	2	0	0	0	0	0	
+						35	71	35	81		35	70	-686.75	451.75	-10	-99	76	2	2	0	0	0	0	0	
+
+
+71	147	-685.375	465.5	9.875	32766	76	1	2	0	0	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	70	35	81		35	70	-686.75	451.75	-10	-99	76	2	2	0	0	0	0	0	
+						35	72	35	82		35	71	-683.875	479.125	-10	-99	76	2	2	0	0	0	0	0	
+
+
+72	149	-682.5	492.875	9.875	32766	76	1	2	0	1	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	71	35	82		35	71	-683.875	479.125	-10	-99	76	2	2	0	0	0	0	0	
+						35	73	35	83		35	72	-681	506.5	-10	-99	76	2	2	0	0	0	0	0	
+
+
+73	151	-679.625	520.125	9.875	32766	76	1	2	0	0	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	72	35	83		35	72	-681	506.5	-10	-99	76	2	2	0	0	0	0	0	
+						35	74	35	84		35	73	-678.125	533.75	-10	-99	76	2	2	0	0	0	0	0	
+
+
+74	153	-676.75	547.5	9.875	32766	120	1	2	0	0	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	73	35	84		35	73	-678.125	533.75	-10	-99	76	2	2	0	0	0	0	0	
+						35	75	35	85		35	74	-675.25	561.125	-10	-99	120	2	2	0	0	0	0	0	
+
+
+75	155	-673.875	574.75	9.875	32766	120	1	2	0	0	0	0	0	0	0	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	204	35	86		35	75	-670.375	607.125	-10	-99	120	1	1	0	0	0	0	0	
+						35	74	35	85		35	74	-675.25	561.125	-10	-99	120	2	2	0	0	0	0	0	
+
+
+76	157	-225	55	25.125	32766	25	1	2	0	0	0	0	0	0	0	0	1	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	87	35	87		35	76	-241.125	52.5	98	14	25	1	1	0	0	0	0	0	
+						35	85	35	88		35	76	-216.875	56.25	-98	-15	25	1	1	0	0	0	0	0	
+
+
+77	159	-79.5	81.75	19.125	32766	25	1	2	0	0	0	0	0	0	0	0	1	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	48	35	54		35	48	-69.75	83.875	97	22	25	1	1	0	0	0	0	0	
+						35	78	35	89		35	77	-87.875	79.875	97	21	25	1	1	0	0	0	0	0	
+
+
+78	161	-96.375	78.125	21.25	32766	25	1	2	0	0	0	0	0	0	0	0	1	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	77	35	89		35	77	-87.875	79.875	97	21	25	1	1	0	0	0	0	0	
+						35	79	35	90		35	78	-104.375	76.5	97	19	25	1	1	0	0	0	0	0	
+
+
+79	163	-112.375	74.875	22.875	32766	25	1	2	0	0	0	0	0	0	0	0	1	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	78	35	90		35	78	-104.375	76.5	97	19	25	1	1	0	0	0	0	0	
+						35	80	35	91		35	79	-120.375	73.25	98	19	25	1	1	0	0	0	0	0	
+
+
+80	165	-128.375	71.75	24.125	32766	25	1	2	0	0	0	0	0	0	0	0	1	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	79	35	91		35	79	-120.375	73.25	98	19	25	1	1	0	0	0	0	0	
+						35	81	35	92		35	80	-136.375	70.25	98	18	25	1	1	0	0	0	0	0	
+
+
+81	167	-144.375	68.75	25	32766	25	1	2	0	1	0	0	0	0	0	0	1	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	80	35	92		35	80	-136.375	70.25	98	18	25	1	1	0	0	0	0	0	
+						35	82	35	93		35	81	-152.375	67.25	98	18	25	1	1	0	0	0	0	0	
+
+
+82	169	-160.5	65.75	25.25	32766	25	1	2	0	0	0	0	0	0	0	0	1	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	81	35	93		35	81	-152.375	67.25	98	18	25	1	1	0	0	0	0	0	
+						35	83	35	94		35	82	-168.625	64.25	98	17	25	1	1	0	0	0	0	0	
+
+
+83	171	-176.75	62.875	25.125	32766	25	1	2	0	0	0	0	0	0	0	0	1	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	82	35	94		35	82	-168.625	64.25	98	17	25	1	1	0	0	0	0	0	
+						35	84	35	95		35	83	-184.75	61.5	98	16	25	1	1	0	0	0	0	0	
+
+
+84	173	-192.875	60.125	25.125	32766	25	1	2	0	0	0	0	0	0	0	0	1	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	83	35	95		35	83	-184.75	61.5	98	16	25	1	1	0	0	0	0	0	
+						35	85	35	96		35	84	-200.875	58.75	98	16	25	1	1	0	0	0	0	0	
+
+
+85	175	-208.875	57.5	25.125	32766	25	1	2	0	0	0	0	0	0	0	0	1	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	76	35	88		35	76	-216.875	56.25	-98	-15	25	1	1	0	0	0	0	0	
+						35	84	35	96		35	84	-200.875	58.75	98	16	25	1	1	0	0	0	0	0	
+
+
+86	177	-403.625	34.125	25.125	32766	25	1	2	0	0	0	0	0	0	0	0	1	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	97	35	97		35	86	-419.875	32.75	99	7	25	1	1	0	0	0	0	0	
+						35	95	35	98		35	86	-395.5	34.75	-99	-7	25	1	1	0	0	0	0	0	
+
+
+87	179	-257.25	50.25	25.125	32766	25	1	2	0	0	0	0	0	0	0	0	1	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	76	35	87		35	76	-241.125	52.5	98	14	25	1	1	0	0	0	0	0	
+						35	88	35	99		35	87	-265.375	49.125	99	12	25	1	1	0	0	0	0	0	
+
+
+88	181	-273.5	48.125	25.125	32766	25	1	2	0	0	0	0	0	0	0	0	1	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	87	35	99		35	87	-265.375	49.125	99	12	25	1	1	0	0	0	0	0	
+						35	89	35	100		35	88	-281.625	47	99	13	25	1	1	0	0	0	0	0	
+
+
+89	183	-289.75	45.875	25.125	32766	25	1	2	0	0	0	0	0	0	0	0	1	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	88	35	100		35	88	-281.625	47	99	13	25	1	1	0	0	0	0	0	
+						35	90	35	101		35	89	-297.875	44.875	99	11	25	1	1	0	0	0	0	0	
+
+
+90	185	-306.125	44	25.125	32766	25	1	2	0	0	0	0	0	0	0	0	1	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	89	35	101		35	89	-297.875	44.875	99	11	25	1	1	0	0	0	0	0	
+						35	91	35	102		35	90	-314.25	43	99	11	25	1	1	0	0	0	0	0	
+
+
+91	187	-322.375	42.125	25.125	32766	25	1	2	0	1	0	0	0	0	0	0	1	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	90	35	102		35	90	-314.25	43	99	11	25	1	1	0	0	0	0	0	
+						35	92	35	103		35	91	-330.375	41.125	99	12	25	1	1	0	0	0	0	0	
+
+
+92	189	-338.5	40.125	25.125	32766	25	1	2	0	0	0	0	0	0	0	0	1	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	91	35	103		35	91	-330.375	41.125	99	12	25	1	1	0	0	0	0	0	
+						35	93	35	104		35	92	-346.625	39.25	99	10	25	1	1	0	0	0	0	0	
+
+
+93	191	-354.875	38.375	25.125	32766	25	1	2	0	0	0	0	0	0	0	0	1	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	92	35	104		35	92	-346.625	39.25	99	10	25	1	1	0	0	0	0	0	
+						35	94	35	105		35	93	-362.875	37.625	99	9	25	1	1	0	0	0	0	0	
+
+
+94	193	-371	36.875	25.125	32766	25	1	2	0	0	0	0	0	0	0	0	1	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	93	35	105		35	93	-362.875	37.625	99	9	25	1	1	0	0	0	0	0	
+						35	95	35	106		35	94	-379.25	36.125	99	9	25	1	1	0	0	0	0	0	
+
+
+95	195	-387.5	35.375	25.125	32766	25	1	2	0	0	0	0	0	0	0	0	1	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	86	35	98		35	86	-395.5	34.75	-99	-7	25	1	1	0	0	0	0	0	
+						35	94	35	106		35	94	-379.25	36.125	99	9	25	1	1	0	0	0	0	0	
+
+
+96	197	-583.5	26	25.125	32766	25	1	2	0	0	0	0	0	0	0	0	1	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	107	35	107		35	96	-599.75	25.875	99	0	25	1	1	0	0	0	0	0	
+						35	105	35	108		35	96	-575.25	26.125	-99	-1	25	1	1	0	0	0	0	0	
+
+
+97	199	-436.25	31.625	25.125	32766	25	1	2	0	0	0	0	0	0	0	0	1	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	86	35	97		35	86	-419.875	32.75	99	7	25	1	1	0	0	0	0	0	
+						35	98	35	109		35	97	-444.375	31.125	99	6	25	1	1	0	0	0	0	0	
+
+
+98	201	-452.5	30.625	25.125	32766	25	1	2	0	0	0	0	0	0	0	0	1	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	97	35	109		35	97	-444.375	31.125	99	6	25	1	1	0	0	0	0	0	
+						35	99	35	110		35	98	-460.625	30.125	99	6	25	1	1	0	0	0	0	0	
+
+
+99	203	-468.875	29.625	25.125	32766	25	1	2	0	0	0	0	0	0	0	0	1	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	98	35	110		35	98	-460.625	30.125	99	6	25	1	1	0	0	0	0	0	
+						35	100	35	111		35	99	-477	29.125	99	5	25	1	1	0	0	0	0	0	
+
+
+100	205	-485.25	28.75	25.125	32766	25	1	2	0	0	0	0	0	0	0	0	1	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	99	35	111		35	99	-477	29.125	99	5	25	1	1	0	0	0	0	0	
+						35	101	35	112		35	100	-493.375	28.375	99	3	25	1	1	0	0	0	0	0	
+
+
+101	207	-501.5	28.125	25.125	32766	25	1	2	0	1	0	0	0	0	0	0	1	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	100	35	112		35	100	-493.375	28.375	99	3	25	1	1	0	0	0	0	0	
+						35	102	35	113		35	101	-509.625	27.75	99	3	25	1	1	0	0	0	0	0	
+
+
+102	209	-517.875	27.5	25.125	32766	25	1	2	0	0	0	0	0	0	0	0	1	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	101	35	113		35	101	-509.625	27.75	99	3	25	1	1	0	0	0	0	0	
+						35	103	35	114		35	102	-526	27.25	99	3	25	1	1	0	0	0	0	0	
+
+
+103	211	-534.25	27	25.125	32766	25	1	2	0	0	0	0	0	0	0	0	1	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	102	35	114		35	102	-526	27.25	99	3	25	1	1	0	0	0	0	0	
+						35	104	35	115		35	103	-542.375	26.75	99	2	25	1	1	0	0	0	0	0	
+
+
+104	213	-550.625	26.625	25.125	32766	25	1	2	0	0	0	0	0	0	0	0	1	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	103	35	115		35	103	-542.375	26.75	99	2	25	1	1	0	0	0	0	0	
+						35	105	35	116		35	104	-558.75	26.375	99	2	25	1	1	0	0	0	0	0	
+
+
+105	215	-567	26.25	25.125	32766	25	1	2	0	0	0	0	0	0	0	0	1	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	96	35	108		35	96	-575.25	26.125	-99	-1	25	1	1	0	0	0	0	0	
+						35	104	35	116		35	104	-558.75	26.375	99	2	25	1	1	0	0	0	0	0	
+
+
+106	217	-649	26.25	24.125	32766	25	1	2	0	0	0	0	0	0	0	0	1	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	29	35	34		35	29	-656.625	26.375	-99	2	25	1	1	0	0	0	0	0	
+						35	108	35	117		35	106	-640.75	26.125	-99	0	25	1	1	0	0	0	0	0	
+
+
+107	219	-616	25.875	25.25	32766	25	1	2	0	1	0	0	0	0	0	0	1	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	96	35	107		35	96	-599.75	25.875	99	0	25	1	1	0	0	0	0	0	
+						35	108	35	118		35	107	-624.25	26	99	-1	25	1	1	0	0	0	0	0	
+
+
+108	221	-632.5	26.125	25	32766	25	1	2	0	0	0	0	0	0	0	0	1	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	106	35	117		35	106	-640.75	26.125	-99	0	25	1	1	0	0	0	0	0	
+						35	107	35	118		35	107	-624.25	26	99	-1	25	1	1	0	0	0	0	0	
+
+
+109	223	-21.375	491.125	11.25	32766	0	1	1	3	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	111	35	119		35	109	-17.375	489	-88	46	0	1	1	0	0	0	0	0	
+
+
+110	224	-3.875	481.625	11.375	32766	0	1	2	3	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						36	264	36	293		35	110	0.875	479.125	-88	45	0	1	1	0	0	0	0	0	
+						35	111	35	120		35	110	-8.625	484.25	87	-48	0	1	1	0	0	0	0	0	
+
+
+111	226	-13.375	486.875	11.375	32766	0	1	2	3	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	109	35	119		35	109	-17.375	489	-88	46	0	1	1	0	0	0	0	0	
+						35	110	35	120		35	110	-8.625	484.25	87	-48	0	1	1	0	0	0	0	0	
+
+
+112	228	-206.375	464.875	16.875	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	141	35	121		35	112	-180.375	473	-87	-48	0	1	1	0	0	0	0	0	
+						35	114	35	122		35	112	-214.75	465.375	99	-6	0	1	1	0	0	0	0	0	
+
+
+113	230	-232.625	477	16.5	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	115	35	123		35	113	-236	493.5	-19	-97	0	1	1	0	0	0	0	0	
+						35	114	35	124		35	113	-227.875	471.5	-64	76	0	1	1	0	0	0	0	0	
+
+
+114	232	-223.25	466	17.5	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	112	35	122		35	112	-214.75	465.375	99	-6	0	1	1	0	0	0	0	0	
+						35	113	35	124		35	113	-227.875	471.5	-64	76	0	1	1	0	0	0	0	0	
+
+
+115	234	-221.375	532.25	14.375	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	113	35	123		35	113	-236	493.5	-19	-97	0	1	1	0	0	0	0	0	
+						35	124	35	125		35	115	-220.75	539.25	-7	-99	0	1	1	0	0	0	0	0	
+
+
+116	236	-129.25	582.875	12.125	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	174	35	126		35	116	-124	576.25	-72	69	0	1	1	0	0	0	0	0	
+						35	117	35	127		35	116	-134.25	586.75	79	-61	0	1	1	0	0	0	0	0	
+
+
+117	238	-139.25	590.625	12.875	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	116	35	127		35	116	-134.25	586.75	79	-61	0	1	1	0	0	0	0	0	
+						35	118	35	128		35	117	-144.75	594.25	83	-55	0	1	1	0	0	0	0	0	
+
+
+118	240	-150.375	598	13.25	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	117	35	128		35	117	-144.75	594.25	83	-55	0	1	1	0	0	0	0	0	
+						35	119	35	129		35	118	-158.75	602	90	-43	0	1	1	0	0	0	0	0	
+
+
+119	242	-167.125	606	12.75	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	118	35	129		35	118	-158.75	602	90	-43	0	1	1	0	0	0	0	0	
+						35	120	35	130		35	119	-175.375	609.125	93	-36	0	1	1	0	0	0	0	0	
+
+
+120	244	-183.625	612.375	12.25	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	119	35	130		35	119	-175.375	609.125	93	-36	0	1	1	0	0	0	0	0	
+						35	121	35	131		35	120	-187.125	607.125	56	82	0	1	1	0	0	0	0	0	
+
+
+121	246	-190.75	601.875	12.75	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	120	35	131		35	120	-187.125	607.125	56	82	0	1	1	0	0	0	0	0	
+						35	122	35	132		35	121	-196.625	593.375	57	81	0	1	1	0	0	0	0	0	
+
+
+122	248	-202.625	584.875	13.75	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	121	35	132		35	121	-196.625	593.375	57	81	0	1	1	0	0	0	0	0	
+						35	123	35	133		35	122	-206	575.5	33	94	0	1	1	0	0	0	0	0	
+
+
+123	250	-209.375	566.125	14	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	122	35	133		35	122	-206	575.5	33	94	0	1	1	0	0	0	0	0	
+						35	124	35	134		35	123	-214.75	556.25	48	87	0	1	1	0	0	0	0	0	
+
+
+124	252	-220.25	546.375	14.25	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	115	35	125		35	115	-220.75	539.25	-7	-99	0	1	1	0	0	0	0	0	
+						35	123	35	134		35	123	-214.75	556.25	48	87	0	1	1	0	0	0	0	0	
+
+
+125	254	-8.125	471.25	9.625	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						36	266	36	296		35	125	15.125	463.125	-90	43	0	1	1	0	0	0	0	0	
+						35	126	35	135		35	125	-12.875	473.5	89	-43	0	1	1	0	0	0	0	0	
+
+
+126	256	-17.625	475.875	7.75	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	125	35	135		35	125	-12.875	473.5	89	-43	0	1	1	0	0	0	0	0	
+						35	127	35	136		35	126	-22.875	478	92	-37	0	1	1	0	0	0	0	0	
+
+
+127	258	-28.25	480.125	7.625	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	126	35	136		35	126	-22.875	478	92	-37	0	1	1	0	0	0	0	0	
+						35	128	35	137		35	127	-31.375	481.25	93	-34	0	1	1	0	0	0	0	0	
+
+
+128	260	-34.625	482.5	7.625	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	162	35	138		35	128	-43	486.25	97	-24	0	1	1	0	0	0	0	0	
+						35	127	35	137		35	127	-31.375	481.25	93	-34	0	1	1	0	0	0	0	0	
+
+
+129	262	-3.625	234.375	25	32766	0	1	2	3	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						36	285	35	140		35	129	-0.5	228.75	-47	87	0	1	1	0	0	0	0	0	
+						35	130	35	141		35	129	-6.625	239.875	48	-87	0	1	1	0	0	0	0	0	
+
+
+130	264	-9.75	245.5	25	32766	0	1	2	3	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	129	35	141		35	129	-6.625	239.875	48	-87	0	1	1	0	0	0	0	0	
+						35	135	35	142		35	130	-18.875	245.125	99	3	0	1	1	0	0	0	0	0	
+
+
+131	266	-44	179.125	25.5	32766	0	1	2	3	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	132	35	143		35	131	-43.875	190.25	-1	-99	0	1	1	0	0	0	0	0	
+						35	134	35	144		35	131	-37.125	165.125	-43	89	0	1	1	0	0	0	0	0	
+
+
+132	268	-43.75	201.5	25	32766	0	1	2	3	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	131	35	143		35	131	-43.875	190.25	-1	-99	0	1	1	0	0	0	0	0	
+						35	133	35	145		35	132	-40.25	218.125	-20	-97	0	1	1	0	0	0	0	0	
+
+
+133	270	-36.75	234.75	24.5	32766	0	1	2	3	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	132	35	145		35	132	-40.25	218.125	-20	-97	0	1	1	0	0	0	0	0	
+						35	135	35	146		35	133	-32.375	239.75	-64	-76	0	1	1	0	0	0	0	0	
+
+
+134	272	-30.375	151.125	26	32766	0	1	2	3	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	131	35	144		35	131	-37.125	165.125	-43	89	0	1	1	0	0	0	0	0	
+						35	136	35	147		35	134	-27	147.25	-66	74	0	1	1	0	0	0	0	0	
+
+
+135	274	-28.125	244.875	23.75	32766	0	1	2	3	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	130	35	142		35	130	-18.875	245.125	99	3	0	1	1	0	0	0	0	0	
+						35	133	35	146		35	133	-32.375	239.75	-64	-76	0	1	1	0	0	0	0	0	
+
+
+136	276	-23.625	143.5	25	32766	0	1	2	3	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						36	284	35	139		35	136	-8.5	129.125	-72	69	0	1	1	0	0	0	0	0	
+						35	134	35	147		35	134	-27	147.25	-66	74	0	1	1	0	0	0	0	0	
+
+
+137	278	-12.5	82.75	27.25	32766	0	1	2	3	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						36	318	36	346		35	137	10.75	98.5	-81	-57	0	1	1	0	0	0	0	0	
+						35	138	35	148		35	137	-12.125	73.375	-3	99	0	1	1	0	0	0	0	0	
+
+
+138	280	-11.875	64.125	26.5	32766	0	1	2	3	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	137	35	148		35	137	-12.125	73.375	-3	99	0	1	1	0	0	0	0	0	
+						35	139	35	149		35	138	-16.625	51.125	34	93	0	1	1	0	0	0	0	0	
+
+
+139	282	-21.5	38.125	23	32766	0	1	2	3	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	138	35	149		35	138	-16.625	51.125	34	93	0	1	1	0	0	0	0	0	
+						35	140	35	150		35	139	-23.75	28.75	23	97	0	1	1	0	0	0	0	0	
+
+
+140	284	-26.125	19.375	19.375	32766	0	1	2	3	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	139	35	150		35	139	-23.75	28.75	23	97	0	1	1	0	0	0	0	0	
+						27	38	35	151		27	38	-26.125	9.5	0	-100	0	1	1	0	0	0	0	0	
+
+
+141	286	-173.875	482.75	14.75	32766	0	1	3	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	112	35	121		35	112	-180.375	473	-87	-48	0	1	1	0	0	0	0	0	
+						35	142	35	152		35	141	-173.125	497.875	-2	-99	0	1	1	0	0	0	0	0	
+						35	143	35	153		35	141	-161.25	479.875	-98	17	0	1	1	0	0	0	0	0	
+
+
+142	289	-173.25	507.25	14.5	32766	0	1	3	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	141	35	152		35	141	-173.125	497.875	-2	-99	0	1	1	0	0	0	0	0	
+						35	149	35	154		35	142	-180.625	517.875	22	-97	0	1	1	0	0	0	0	0	
+						35	144	35	155		35	142	-162.5	503.125	-96	27	0	1	1	0	0	0	0	0	
+
+
+143	292	-153.375	479.125	12.5	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	141	35	153		35	141	-161.25	479.875	-98	17	0	1	1	0	0	0	0	0	
+						35	147	35	156		35	143	-147.625	480.375	-97	-22	0	1	1	0	0	0	0	0	
+
+
+144	294	-151.125	500.875	14.375	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	142	35	155		35	142	-162.5	503.125	-96	27	0	1	1	0	0	0	0	0	
+						35	145	35	157		35	144	-147.125	497.75	-78	61	0	1	1	0	0	0	0	0	
+
+
+145	296	-143.25	494.75	13.625	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	144	35	157		35	144	-147.125	497.75	-78	61	0	1	1	0	0	0	0	0	
+						35	146	35	158		35	145	-139.875	491.625	-73	67	0	1	1	0	0	0	0	0	
+
+
+146	298	-136.625	488.625	12	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	145	35	158		35	145	-139.875	491.625	-73	67	0	1	1	0	0	0	0	0	
+						35	147	35	159		35	146	-139.25	485.125	61	78	0	1	1	0	0	0	0	0	
+
+
+147	300	-142	481.75	11.375	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	143	35	156		35	143	-147.625	480.375	-97	-22	0	1	1	0	0	0	0	0	
+						35	146	35	159		35	146	-139.25	485.125	61	78	0	1	1	0	0	0	0	0	
+
+
+148	302	-159.375	586.125	14	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	176	35	160		35	148	-154.625	584.875	-84	52	0	1	1	0	0	0	0	0	
+						35	156	35	161		35	148	-161.375	586.25	99	-6	0	1	1	0	0	0	0	0	
+
+
+149	304	-179.375	534	15.75	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	142	35	154		35	142	-180.625	517.875	22	-97	0	1	1	0	0	0	0	0	
+						35	150	35	162		35	149	-179.125	542.875	-2	-99	0	1	1	0	0	0	0	0	
+
+
+150	306	-179	551.875	16.625	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	149	35	162		35	149	-179.125	542.875	-2	-99	0	1	1	0	0	0	0	0	
+						35	151	35	163		35	150	-178.25	557.875	-11	-99	0	1	1	0	0	0	0	0	
+
+
+151	308	-177.625	563.875	16.75	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	150	35	163		35	150	-178.25	557.875	-11	-99	0	1	1	0	0	0	0	0	
+						35	152	35	164		35	151	-176.75	568.75	-16	-98	0	1	1	0	0	0	0	0	
+
+
+152	310	-176	573.75	16.375	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	151	35	164		35	151	-176.75	568.75	-16	-98	0	1	1	0	0	0	0	0	
+						35	153	35	165		35	152	-174.75	577.75	-28	-95	0	1	1	0	0	0	0	0	
+
+
+153	312	-173.625	581.75	15.25	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	152	35	165		35	152	-174.75	577.75	-28	-95	0	1	1	0	0	0	0	0	
+						35	154	35	166		35	153	-172.125	583	-76	-64	0	1	1	0	0	0	0	0	
+
+
+154	314	-170.625	584.25	14.75	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	153	35	166		35	153	-172.125	583	-76	-64	0	1	1	0	0	0	0	0	
+						35	155	35	167		35	154	-168.875	585	-91	-39	0	1	1	0	0	0	0	0	
+
+
+155	316	-167.125	585.75	14.375	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	154	35	167		35	154	-168.875	585	-91	-39	0	1	1	0	0	0	0	0	
+						35	156	35	168		35	155	-165.25	586	-98	-16	0	1	1	0	0	0	0	0	
+
+
+156	318	-163.375	586.375	14	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	148	35	161		35	148	-161.375	586.25	99	-6	0	1	1	0	0	0	0	0	
+						35	155	35	168		35	155	-165.25	586	-98	-16	0	1	1	0	0	0	0	0	
+
+
+157	320	-72.5	543.875	11	32766	0	1	2	3	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	198	35	169		35	157	-79.5	550.75	74	-66	0	1	1	0	0	0	0	0	
+						35	161	35	170		35	157	-69.875	540.5	-60	79	0	1	1	0	0	0	0	0	
+
+
+158	322	-42.625	508.75	8	32766	0	1	1	3	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	159	35	171		35	158	-47.125	513.625	67	-73	0	1	1	0	0	0	0	0	
+
+
+159	323	-51.75	518.625	9.125	32766	0	1	2	3	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	158	35	171		35	158	-47.125	513.625	67	-73	0	1	1	0	0	0	0	0	
+						35	160	35	172		35	159	-55.875	523.75	62	-78	0	1	1	0	0	0	0	0	
+
+
+160	325	-60	529	10.25	32766	0	1	2	3	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	159	35	172		35	159	-55.875	523.75	62	-78	0	1	1	0	0	0	0	0	
+						35	161	35	173		35	160	-63.625	533	67	-74	0	1	1	0	0	0	0	0	
+
+
+161	327	-67.375	537.125	10.75	32766	0	1	2	3	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	157	35	170		35	157	-69.875	540.5	-60	79	0	1	1	0	0	0	0	0	
+						35	160	35	173		35	160	-63.625	533	67	-74	0	1	1	0	0	0	0	0	
+
+
+162	329	-53.625	487.25	8	32766	0	1	3	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	128	35	138		35	128	-43	486.25	97	-24	0	1	1	0	0	0	0	0	
+						35	165	35	174		35	162	-64.75	492.75	88	-47	0	1	1	0	0	0	0	0	
+						35	164	35	175		35	162	-59.375	480.125	96	27	0	1	1	0	0	0	0	0	
+
+
+163	332	-73	485.75	10	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	165	35	176		35	163	-77.375	492.25	11	-99	0	1	1	0	0	0	0	0	
+						35	164	35	177		35	163	-70.125	484.5	-92	38	0	1	1	0	0	0	0	0	
+
+
+164	334	-67.25	483.375	7.625	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	162	35	175		35	162	-59.375	480.125	96	27	0	1	1	0	0	0	0	0	
+						35	163	35	177		35	163	-70.125	484.5	-92	38	0	1	1	0	0	0	0	0	
+
+
+165	336	-74.5	498.5	10.25	32766	0	1	3	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	162	35	174		35	162	-64.75	492.75	88	-47	0	1	1	0	0	0	0	0	
+						35	163	35	176		35	163	-77.375	492.25	11	-99	0	1	1	0	0	0	0	0	
+						35	167	35	178		35	165	-77.5	504	63	-76	0	1	1	0	0	0	0	0	
+
+
+166	339	-102.75	553.75	12.75	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	199	35	179		35	166	-98.875	557.125	-86	-50	0	1	1	0	0	0	0	0	
+						35	172	35	180		35	166	-104	551	41	91	0	1	1	0	0	0	0	0	
+
+
+167	341	-85	511.125	11.375	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	165	35	178		35	165	-77.5	504	63	-76	0	1	1	0	0	0	0	0	
+						35	168	35	181		35	167	-87.75	514.125	67	-73	0	1	1	0	0	0	0	0	
+
+
+168	343	-90.5	517.125	12	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	167	35	181		35	167	-87.75	514.125	67	-73	0	1	1	0	0	0	0	0	
+						35	169	35	182		35	168	-93.5	520	71	-69	0	1	1	0	0	0	0	0	
+
+
+169	345	-96.5	523	12.75	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	168	35	182		35	168	-93.5	520	71	-69	0	1	1	0	0	0	0	0	
+						35	170	35	183		35	169	-98.875	525.625	68	-73	0	1	1	0	0	0	0	0	
+
+
+170	347	-101.375	528.25	13.25	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	169	35	183		35	169	-98.875	525.625	68	-73	0	1	1	0	0	0	0	0	
+						35	171	35	184		35	170	-103.5	531.375	55	-83	0	1	1	0	0	0	0	0	
+
+
+171	349	-105.625	534.625	13.375	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	170	35	184		35	170	-103.5	531.375	55	-83	0	1	1	0	0	0	0	0	
+						35	173	35	185		35	171	-106.25	537.75	19	-98	0	1	1	0	0	0	0	0	
+
+
+172	351	-105.25	548.25	13.125	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	166	35	180		35	166	-104	551	41	91	0	1	1	0	0	0	0	0	
+						35	173	35	186		35	172	-106	544.5	21	97	0	1	1	0	0	0	0	0	
+
+
+173	353	-106.875	540.875	13.5	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	171	35	185		35	171	-106.25	537.75	19	-98	0	1	1	0	0	0	0	0	
+						35	172	35	186		35	172	-106	544.5	21	97	0	1	1	0	0	0	0	0	
+
+
+174	355	-119	573	13.375	32766	0	1	3	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	116	35	126		35	116	-124	576.25	-72	69	0	1	1	0	0	0	0	0	
+						35	200	35	187		35	174	-111.75	575.625	-92	-37	0	1	1	0	0	0	0	0	
+						35	175	35	188		35	174	-132.25	566.75	99	4	0	1	1	0	0	0	0	0	
+
+
+175	358	-140.25	572.125	14	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	174	35	188		35	174	-132.25	566.75	99	4	0	1	1	0	0	0	0	0	
+						35	176	35	189		35	175	-143.5	575.25	72	-68	0	1	1	0	0	0	0	0	
+
+
+176	360	-146.875	578.375	14	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	148	35	160		35	148	-154.625	584.875	-84	52	0	1	1	0	0	0	0	0	
+						35	175	35	189		35	175	-143.5	575.25	72	-68	0	1	1	0	0	0	0	0	
+
+
+177	362	-226	353.875	6	32766	0	2	2	2	0	1	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	58	35	66		35	58	-176.625	385	91	39	0	1	0	0	0	0	0	0	
+						35	179	35	190		35	177	-245.125	365.25	85	-51	0	1	0	0	0	0	0	0	
+
+
+178	364	-295.125	405.75	6	32766	0	2	2	2	0	1	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	181	35	191		35	178	-322.375	445.25	23	-97	0	1	0	0	0	0	0	0	
+						35	179	35	192		35	178	-279.625	391.125	-72	68	0	0	1	0	0	0	0	0	
+
+
+179	366	-264.25	376.625	6	32766	0	2	2	2	0	1	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	177	35	190		35	177	-245.125	365.25	85	-51	0	1	0	0	0	0	0	0	
+						35	178	35	192		35	178	-279.625	391.125	-72	68	0	0	1	0	0	0	0	0	
+
+
+180	368	-277.25	594.625	6	32766	0	2	2	2	0	1	0	0	0	1	1	0	0	0	7	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	54	35	61		35	54	-239.625	637.875	85	51	0	1	1	0	0	0	0	0	
+						35	181	35	193		35	180	-304	550.125	38	92	0	0	1	0	0	0	0	0	
+
+
+181	370	-317.625	497.25	6	32766	0	2	2	2	0	1	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	178	35	191		35	178	-322.375	445.25	23	-97	0	1	0	0	0	0	0	0	
+						35	180	35	193		35	180	-304	550.125	38	92	0	0	1	0	0	0	0	0	
+
+
+182	372	-489.625	534.125	6	32766	0	2	3	0	0	1	0	0	0	1	1	0	0	0	7	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	62	35	71		35	62	-457.125	574.125	49	86	0	2	1	0	0	0	0	0	
+						35	185	35	194		35	182	-528.25	477.75	52	84	0	1	0	0	0	0	0	0	
+						35	184	35	195		35	182	-415.875	472.5	-70	70	0	1	1	0	0	0	0	0	
+
+
+183	375	-350.25	383.375	6	32766	0	2	2	3	0	1	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	64	35	73		35	64	-311	345.75	63	-77	0	1	1	0	0	0	0	0	
+						35	184	35	196		35	183	-366.5	405.25	59	-80	0	1	1	0	0	0	0	0	
+
+
+184	377	-382.75	427.125	6	32766	0	2	2	3	0	1	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	182	35	195		35	182	-415.875	472.5	-70	70	0	1	1	0	0	0	0	0	
+						35	183	35	196		35	183	-366.5	405.25	59	-80	0	1	1	0	0	0	0	0	
+
+
+185	379	-578.75	391.5	6	32766	0	2	2	0	0	1	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	69	35	78		35	69	-615	299	-12	-99	0	0	1	0	0	0	0	0	
+						35	182	35	194		35	182	-528.25	477.75	52	84	0	1	0	0	0	0	0	0	
+
+
+186	381	-244	142.125	6	32766	0	2	3	2	0	1	0	0	0	1	1	0	0	0	7	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	187	35	197		35	186	-180.5	147.875	-99	-8	0	1	1	0	0	0	0	0	
+						35	188	35	198		35	186	-313	147.625	99	-2	0	1	1	0	0	0	0	0	
+						35	191	35	199		35	186	-249.75	89.125	9	99	0	0	1	0	0	0	0	0	
+
+
+187	384	-129.625	152.25	6	32766	0	2	3	2	0	1	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	57	35	64		35	57	-123.625	205.625	12	99	0	0	1	0	0	0	0	0	
+						35	186	35	197		35	186	-180.5	147.875	-99	-8	0	1	1	0	0	0	0	0	
+						35	192	35	200		35	187	-134	102.5	8	99	0	0	1	0	0	0	0	0	
+
+
+188	387	-371.875	145.875	6	32766	0	2	2	0	0	1	0	0	0	1	1	0	0	0	7	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	186	35	198		35	186	-313	147.625	99	-2	0	1	1	0	0	0	0	0	
+						35	189	35	201		35	188	-405.125	147.125	99	-3	0	1	1	0	0	0	0	0	
+
+
+189	389	-438.5	148.375	6	32766	0	2	2	0	0	1	0	0	0	1	1	0	0	0	7	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	69	35	80		35	69	-506.75	154.375	-96	24	0	1	1	0	0	0	0	0	
+						35	188	35	201		35	188	-405.125	147.125	99	-3	0	1	1	0	0	0	0	0	
+
+
+190	391	-588.5	12.75	6	32766	0	2	2	1	0	1	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	69	35	79		35	69	-587	82.875	-8	99	0	1	0	0	0	0	0	0	
+						27	61	27	64		27	61	-586.375	-48.25	3	-99	0	1	0	0	0	0	0	0	
+
+
+191	393	-254.75	33.5	6	32766	0	2	1	3	0	1	0	0	0	1	1	0	0	0	7	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	186	35	199		35	186	-249.75	89.125	9	99	0	0	1	0	0	0	0	0	
+
+
+192	394	-139.5	39.5	6	32766	0	2	2	2	0	1	0	0	0	1	1	0	0	0	7	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	187	35	200		35	187	-134	102.5	8	99	0	0	1	0	0	0	0	0	
+						27	60	27	65		27	60	-147.5	-27.375	-17	-98	0	0	1	0	0	0	0	0	
+
+
+193	396	-570.125	742.625	10.375	32766	0	1	2	0	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	197	35	202		35	193	-580.125	742.875	99	-5	0	1	1	0	0	0	0	0	
+						35	196	35	203		35	193	-561	742	-99	6	0	1	1	0	0	0	0	0	
+
+
+194	398	-524.75	737.75	10	32766	0	1	2	0	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	11	35	15		35	11	-514.25	734.625	94	-32	0	1	1	0	0	2	0	0	
+						35	195	35	204		35	194	-529.125	739	95	-28	0	1	1	0	0	0	0	0	
+
+
+195	400	-533.5	740.375	10.375	32766	0	1	2	0	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	194	35	204		35	194	-529.125	739	95	-28	0	1	1	0	0	0	0	0	
+						35	196	35	205		35	195	-542.625	740.875	99	-6	0	1	1	0	0	0	0	0	
+
+
+196	402	-551.875	741.5	10.375	32766	0	1	2	0	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	193	35	203		35	193	-561	742	-99	6	0	1	1	0	0	0	0	0	
+						35	195	35	205		35	195	-542.625	740.875	99	-6	0	1	1	0	0	0	0	0	
+
+
+197	404	-587.5	743.625	10.375	32766	0	1	3	0	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	0	35	0		35	0	-593.375	743.875	-99	5	0	1	1	0	0	0	0	0	
+						35	193	35	202		35	193	-580.125	742.875	99	-5	0	1	1	0	0	0	0	0	
+						43	253	43	255		35	197	-587.875	753.25	4	-99	0	1	1	0	0	0	0	0	
+
+
+198	407	-84.625	554.75	11.375	32766	0	1	2	3	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	157	35	169		35	157	-79.5	550.75	74	-66	0	1	1	0	0	0	0	0	
+						35	199	35	206		35	198	-89	558.375	92	-38	0	1	1	0	0	0	0	0	
+
+
+199	409	-94.25	558.75	11.875	32766	0	1	3	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	166	35	179		35	166	-98.875	557.125	-86	-50	0	1	1	0	0	0	0	0	
+						35	198	35	206		35	198	-89	558.375	92	-38	0	1	1	0	0	0	0	0	
+						35	201	35	207		35	199	-94.875	564.5	6	-99	0	1	1	0	0	0	0	0	
+
+
+200	412	-106.125	578.25	11.625	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	174	35	187		35	174	-111.75	575.625	-92	-37	0	1	1	0	0	0	0	0	
+						35	203	35	208		35	200	-103	577.5	-97	23	0	1	1	0	0	0	0	0	
+
+
+201	414	-94.875	569.125	11.5	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	199	35	207		35	199	-94.875	564.5	6	-99	0	1	1	0	0	0	0	0	
+						35	202	35	209		35	201	-95.75	571.5	33	-94	0	1	1	0	0	0	0	0	
+
+
+202	416	-96.625	574	11.25	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	201	35	209		35	201	-95.75	571.5	33	-94	0	1	1	0	0	0	0	0	
+						35	203	35	210		35	202	-98.25	575.375	77	-63	0	1	1	0	0	0	0	0	
+
+
+203	418	-100	576.75	11.375	32766	0	1	2	2	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	200	35	208		35	200	-103	577.5	-97	23	0	1	1	0	0	0	0	0	
+						35	202	35	210		35	202	-98.25	575.375	77	-63	0	1	1	0	0	0	0	0	
+
+
+204	420	-670	612	10	32766	120	1	3	0	0	0	0	0	0	1	1	0	0	0	15	0	
+						areaID 	nodeID 	CarPathLinkareaID 	CarPathLinkId 		TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	
+						35	12	35	16		35	12	-678.125	626.125	-18	98	120	0	1	0	0	0	0	0	
+						35	17	35	21		35	17	-658.25	625.75	53	84	120	1	0	0	0	0	0	0	
+						35	75	35	86		35	75	-670.375	607.125	-10	-99	120	1	1	0	0	0	0	0	
+
+
+205	423	-710.5	386.25	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+206	425	-714	358.5	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+207	427	-716.75	331.75	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+208	429	-723.75	300.125	9.875	32766	32	1	3	0	0	0	0	0	0	0	0	0	0	0	15	0	
+209	432	-738.5	223.625	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+210	434	-735.375	240.375	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+211	436	-747	290.25	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+212	438	-726.25	286	10	32766	32	1	3	0	0	0	0	0	0	0	0	0	0	0	15	0	
+213	441	-729.875	265.625	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+214	443	-734.5	554.25	10	32766	32	1	1	0	0	0	0	0	0	0	0	0	0	0	15	0	
+215	444	-705.25	440.375	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+216	446	-703.125	463.625	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+217	448	-700.5	486.125	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+218	450	-698.375	507.875	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+219	452	-694.875	538.125	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+220	454	-703.5	545	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+221	456	-715.25	551	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+222	458	-685.5	635.375	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+223	460	-721.5	572.875	10	32766	32	1	1	0	0	0	0	0	0	0	0	0	0	0	15	0	
+224	461	-715.875	575.375	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+225	463	-700.625	580.375	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+226	465	-690	587.75	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+227	467	-686.5	616.625	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+228	469	-725.625	744.125	10	32766	24	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+229	471	-747.75	745.875	10	32766	24	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+230	473	-520.5	677.375	9.875	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+231	475	-526.75	670.5	10	32766	24	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+232	477	-535.625	665.625	10	32766	24	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+233	479	-551	662.375	10	32766	24	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+234	481	-575.5	658.75	10	32766	24	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+235	483	-600.5	655.125	10	32766	24	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+236	485	-629.375	650.875	10	32766	24	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+237	487	-640.125	647	10	32766	24	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+238	489	-510.25	699.625	9.875	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+239	491	-517.25	682.625	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+240	493	-670	445.875	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+241	495	-660.75	534.5	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+242	497	-663.75	508.125	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+243	499	-666.875	475.125	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+244	501	-529.375	692	9.625	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+245	503	-647.875	659.75	10	32766	24	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+246	505	-634.125	665.125	10	32766	24	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+247	507	-622.5	667	10	32766	24	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+248	509	-599.25	670.25	10	32766	24	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+249	511	-568	675	10	32766	24	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+250	513	-546.25	678.375	10	32766	24	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+251	515	-535.375	683.25	9.875	32766	24	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+252	517	-668.625	667.75	10	32766	24	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+253	519	-618	737.75	10.5	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+254	521	-644.125	739.375	10.5	32766	24	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+255	523	-665.125	740.25	10.125	32766	24	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+256	525	-666.375	717.875	10	32766	24	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+257	527	-667.375	695.375	10	32766	24	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+258	529	-61.5	94.5	16.875	32766	32	1	1	0	0	0	0	0	0	0	0	0	0	0	15	0	
+259	530	-24.5	124.375	17.875	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+260	532	-48.875	102.625	16.75	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+261	534	-56.75	96.625	16.5	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+262	536	-50.75	80.875	16.5	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+263	538	-21	107.375	17.5	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+264	540	-44.625	85	16.625	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+265	542	-677.5	375.5	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+266	544	-739.375	48.375	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+267	546	-732	85.25	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+268	548	-724.625	121.625	10.125	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+269	550	-717	159.125	10.125	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+270	552	-709.5	196.125	10.125	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+271	554	-702.125	233.25	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+272	556	-694.375	271.75	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+273	558	-685.75	312.75	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+274	560	-681.75	331.875	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+275	562	-742	207.125	10	32766	32	1	3	0	0	0	0	0	0	0	0	0	0	0	15	0	
+276	565	-744.875	192.25	10.125	32766	32	1	3	0	0	0	0	0	0	0	0	0	0	0	15	0	
+277	568	-748.75	172.75	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+278	570	-679.875	741.5	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+279	572	-681.25	715	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+280	574	-682.25	690.125	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+281	576	-683.875	664.125	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+282	578	-653.75	598.625	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+283	580	-646.25	638.75	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+284	582	-650.625	629.375	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+285	584	-648.5	634.25	10	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+286	586	-501.375	721	9.875	32766	32	1	3	0	0	0	0	0	0	0	0	0	0	0	15	0	
+287	589	-495.25	734.375	9.75	32766	32	1	3	0	0	0	0	0	0	0	0	0	0	0	15	0	
+288	592	-533.75	733	10.5	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+289	594	-515.125	727	9.625	32766	32	1	4	0	0	0	0	0	0	0	0	0	0	0	15	0	
+290	598	-509.125	740.875	9.375	32766	32	1	4	0	0	0	0	0	0	0	0	0	0	0	15	0	
+291	602	-560	749.5	10.5	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+292	604	-533	747.625	10.5	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+293	606	-67.5	75.75	17.75	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+294	608	-56.875	78.25	16.625	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+295	610	-62.25	77	17.125	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+296	612	-75	74	18.875	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+297	614	-84.25	72	20	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+298	616	-734.375	20.75	15.75	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+299	618	-720	20	16.625	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+300	620	-726.375	19.75	16.125	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+301	622	-3.625	234.375	25	32766	16	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+302	624	-9.75	245.5	25	32766	16	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+303	626	-44	179.125	25.5	32766	16	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+304	628	-43.75	201.5	25	32766	16	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+305	630	-36.75	234.75	24.5	32766	16	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+306	632	-30.375	151.125	26	32766	16	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+307	634	-28.125	244.875	23.75	32766	16	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+308	636	-23.625	143.5	25	32766	16	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+309	638	-12.5	82.75	27.25	32766	16	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+310	640	-29.875	64.125	26.5	32766	16	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+311	642	-34.75	31.375	23	32766	16	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+312	644	-97.125	574.375	11.25	32766	80	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+313	646	-22.75	498	7.625	32766	80	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+314	648	-45.75	513.25	8.25	32766	80	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+315	650	-71.5	541.25	11	32766	80	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+316	652	-85.25	553.25	11.375	32766	80	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+317	654	-94.25	562.625	11.375	32766	80	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+318	656	-199	603.5	12.75	32766	80	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+319	658	-120.75	582.125	12.125	32766	80	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+320	660	-135.125	587.375	12.875	32766	80	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+321	662	-152.5	597.25	13.25	32766	80	1	3	0	0	0	0	0	0	0	0	0	0	0	15	0	
+322	665	-167.125	606	12.75	32766	80	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+323	667	-184	611.375	12.25	32766	80	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+324	669	-119.75	558	13.875	32766	40	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+325	671	-132.5	561.5	13.875	32766	80	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+326	673	-7.25	473.75	9.625	32766	64	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+327	675	-104.875	548.375	13.125	32766	40	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+328	677	-93.75	529.5	12.5	32766	40	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+329	679	-89.5	516.25	11.875	32766	40	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+330	681	-84.125	504.5	11.125	32766	40	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+331	683	-82.25	489	10.125	32766	48	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+332	685	-72.5	479	8.375	32766	48	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+333	687	-55	478	7.625	32766	48	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+334	689	-37.375	480.75	7.625	32766	64	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+335	691	-27.625	483	7.75	32766	64	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+336	693	-103.75	550.875	12.875	32766	16	1	1	0	0	0	0	0	0	0	0	0	0	0	15	0	
+337	694	-101.25	553.75	12.625	32766	16	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+338	696	-98.25	557	12.125	32766	16	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+339	698	-93.5	558	11.875	32766	16	1	1	0	0	0	0	0	0	0	0	0	0	0	15	0	
+340	699	-166.875	569	16.375	32766	80	1	3	0	0	0	0	0	0	0	0	0	0	0	15	0	
+341	702	-151.625	576	14.25	32766	80	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+342	704	-155.125	569.25	14.875	32766	80	1	3	0	0	0	0	0	0	0	0	0	0	0	15	0	
+343	707	-209.125	580	14.25	32766	80	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+344	709	-217.875	582.25	13.5	32766	80	1	3	0	0	0	0	0	0	0	0	0	0	0	15	0	
+345	712	-194.875	584	15.875	32766	80	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+346	714	-183.25	541.5	16.75	32766	80	1	3	0	0	0	0	0	0	0	0	0	0	0	15	0	
+347	717	-255	492.25	14	32766	80	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+348	719	-222.625	549.875	14.125	32766	80	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+349	721	-222.375	539.25	14.25	32766	80	1	3	0	0	0	0	0	0	0	0	0	0	0	15	0	
+350	724	-224.5	528.75	14.5	32766	80	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+351	726	-228.5	514.625	15	32766	80	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+352	728	-234.375	507.375	15	32766	80	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+353	730	-244.75	500.5	14.5	32766	80	1	3	0	0	0	0	0	0	0	0	0	0	0	15	0	
+354	733	-207.375	460.125	14.5	32766	80	1	3	0	0	0	0	0	0	0	0	0	0	0	15	0	
+355	736	-247.375	467	13.375	32766	80	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+356	738	-231.875	457	13.5	32766	80	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+357	740	-219.5	453.375	13.75	32766	80	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+358	742	-219.125	474.875	15.875	32766	80	1	3	0	0	0	0	0	0	0	0	0	0	0	15	0	
+359	745	-230.5	482.25	15.625	32766	80	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+360	747	-180.125	520.625	14.625	32766	80	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+361	749	-201.75	494.125	17.875	32766	80	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+362	751	-194.125	505.25	15.5	32766	80	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+363	753	-186.625	516	14.375	32766	80	1	3	0	0	0	0	0	0	0	0	0	0	0	15	0	
+364	756	-175.5	502.5	14.625	32766	80	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+365	758	-176.25	470.375	14.5	32766	80	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+366	760	-162.75	481.125	14.125	32766	80	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+367	762	-157.75	490.625	14.375	32766	80	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+368	764	-164.375	502	14.625	32766	80	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+369	766	-203.75	530.75	14.875	32766	80	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+370	768	-209.25	532.75	14.25	32766	80	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+371	770	-143.75	60.375	25.125	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+372	772	-106.25	67.125	22.5	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+373	774	-118.875	64.875	23.625	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+374	776	-131.375	62.375	24.5	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+375	778	-256.5	41.625	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+376	780	-157.75	57.625	25.375	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+377	782	-169	55.75	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+378	784	-178.5	53.875	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+379	786	-191.375	51.625	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+380	788	-201.375	49.875	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+381	790	-212	48.5	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+382	792	-222.5	46.75	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+383	794	-233.25	45.125	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+384	796	-244.75	43.125	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+385	798	-358.375	29.375	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+386	800	-278.375	38.75	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+387	802	-286.5	37.625	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+388	804	-294.75	36.625	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+389	806	-304	35.625	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+390	808	-313.375	34.25	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+391	810	-321.125	33.375	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+392	812	-330.5	32.5	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+393	814	-339.5	31.5	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+394	816	-349	30.5	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+395	818	-466.125	21.25	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+396	820	-378.125	27.875	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+397	822	-386.625	26.875	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+398	824	-395.5	26.25	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+399	826	-405.5	25.375	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+400	828	-415.875	24.25	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+401	830	-425.625	23.75	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+402	832	-433.375	23.375	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+403	834	-445.375	22.625	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+404	836	-455.75	22	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+405	838	-574.125	17.5	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+406	840	-480	20.625	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+407	842	-488	20.125	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+408	844	-497.625	19.75	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+409	846	-507.625	19.25	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+410	848	-516.5	18.875	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+411	850	-526.125	18.625	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+412	852	-537.125	18.25	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+413	854	-548.125	18	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+414	856	-559.625	18	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+415	858	-702.75	19.375	18.75	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+416	860	-594.25	17.625	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+417	862	-609.25	17.625	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+418	864	-625.75	17.5	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+419	866	-638.875	17.875	24.75	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+420	868	-652.875	17.875	23.875	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+421	870	-667.125	18.25	22.75	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+422	872	-678	18.625	21.625	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+423	874	-691.625	18.875	20.125	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+424	876	-706.625	36.75	18.5	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+425	878	-733.875	37.125	15.75	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+426	880	-727.875	37.75	16	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+427	882	-721	37.75	16.5	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+428	884	-714.75	37	17	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+429	886	-662	35.125	23.125	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+430	888	-695.75	36.125	19.5	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+431	890	-688.125	35.75	20.5	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+432	892	-681	35.75	21.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+433	894	-674.875	35.25	21.875	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+434	896	-667.75	35.25	22.625	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+435	898	-583.25	34.5	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+436	900	-648.5	35	24.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+437	902	-639.75	34.75	24.75	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+438	904	-631.75	34.625	25.125	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+439	906	-624	34.5	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+440	908	-617.125	34.375	25.375	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+441	910	-609.75	34.375	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+442	912	-599.75	34.625	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+443	914	-592.125	34.5	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+444	916	-505.75	36.25	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+445	918	-569.5	34.75	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+446	920	-564	34.75	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+447	922	-557.75	34.875	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+448	924	-550	35	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+449	926	-543.5	35.125	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+450	928	-536.875	35.375	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+451	930	-529	35.5	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+452	932	-521.5	35.75	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+453	934	-514.5	35.875	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+454	936	-438.25	39.875	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+455	938	-496	36.625	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+456	940	-489.25	37	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+457	942	-482.875	37.375	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+458	944	-475.625	37.5	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+459	946	-469.125	38	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+460	948	-461.625	38.5	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+461	950	-453.125	39	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+462	952	-445.625	39.375	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+463	954	-363.875	46	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+464	956	-424.375	41	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+465	958	-420	41.25	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+466	960	-412.25	42	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+467	962	-404.125	42.375	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+468	964	-396.375	43.25	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+469	966	-388.25	43.75	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+470	968	-380.5	44.75	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+471	970	-372.25	45.25	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+472	972	-288.375	54.5	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+473	974	-352.75	47.125	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+474	976	-345.125	47.875	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+475	978	-336.75	48.875	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+476	980	-328.125	49.75	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+477	982	-319.5	50.625	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+478	984	-312.125	51.75	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+479	986	-304	52.625	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+480	988	-296.75	53.5	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+481	990	-212.75	65.375	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+482	992	-276	56.125	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+483	994	-269.5	57	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+484	996	-262.875	57.875	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+485	998	-253	59.375	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+486	1000	-246.25	60.5	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+487	1002	-238.5	61.375	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+488	1004	-229.875	62.875	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+489	1006	-222	63.875	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+490	1008	-138.125	78.625	24.625	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+491	1010	-201.25	67.25	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+492	1012	-194	68.625	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+493	1014	-185.375	69.875	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+494	1016	-177.875	71.25	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+495	1018	-168.75	72.875	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+496	1020	-161.875	74	25.375	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+497	1022	-154.125	75.5	25.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+498	1024	-146.125	77.125	25.125	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+499	1026	-73.875	91.75	18.125	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+500	1028	-122.5	81.5	23.625	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+501	1030	-113.5	83.25	22.875	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+502	1032	-105.125	84.875	22	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+503	1034	-97.5	86.375	21.25	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+504	1036	-89.125	88.25	20.125	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+505	1038	-83.125	89.625	19.375	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+506	1040	-68.375	93.125	17.375	32766	32	1	1	0	0	0	0	0	0	0	0	0	0	0	15	0	
+507	1041	-666.25	633.375	10	32766	24	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+508	1043	-658.125	650	10	32766	24	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+509	1045	-662	641.375	10	32766	24	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+510	1047	-573.625	735	10.5	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+511	1049	-560.5	734.375	10.5	32766	32	1	3	0	0	0	0	0	0	0	0	0	0	0	15	0	
+512	1052	-584.625	735.75	10.5	32766	32	1	2	0	0	0	0	0	0	0	0	0	0	0	15	0	
+
+Section 2: 
+NaviID 	TargetareaID	Targetnodeid 	x 	y 	dirX 	dirY 	m_nPathNodeWidth 	m_nNumLeftLanes 	m_nNumRightLanes 	m_bTrafficLightDirection 	unk1 	m_nTrafficLightState 	m_bTrainCrossing 	m_bUnk 	
+0	35	0	-593.375	743.875	-99	5	0	1	1	0	0	0	0	0	
+1	35	0	-625.5	745.875	99	-6	0	1	1	0	0	0	0	0	
+2	35	1	-662.375	748	99	-5	0	1	1	1	0	2	0	0	
+3	35	16	-682	749	99	-6	0	1	1	1	0	2	0	0	
+4	35	11	-501.25	739.75	-38	-92	0	1	1	1	0	1	0	0	
+5	35	2	-534.75	674.875	87	48	0	2	0	0	0	0	0	0	
+6	35	2	-528.75	679.75	-65	-75	0	0	2	0	0	0	0	0	
+7	35	3	-541.875	671.75	95	29	0	2	0	0	0	0	0	0	
+8	35	4	-550.75	669.875	98	14	0	2	0	0	0	0	0	0	
+9	35	5	-572.375	666.75	98	14	0	2	0	0	0	0	0	0	
+10	35	6	-604.75	662	98	14	0	2	0	0	0	0	0	0	
+11	35	7	-631.875	658	96	26	0	2	0	0	0	0	0	0	
+12	35	8	-509.125	721.625	-38	-92	0	0	2	1	0	1	0	0	
+13	35	8	-521.625	691	37	92	0	2	0	0	0	0	0	0	
+14	35	9	-524.75	684.875	-54	-83	0	0	2	0	0	0	0	0	
+15	35	11	-514.25	734.625	94	-32	0	1	1	0	0	2	0	0	
+16	35	12	-678.125	626.125	-18	98	120	0	1	0	0	0	0	0	
+17	35	12	-676.375	659.75	-4	-99	120	1	0	0	0	0	0	0	
+18	35	13	-672.625	738.5	-4	-99	0	2	0	1	0	1	0	0	
+19	35	13	-674.125	704.75	4	99	0	0	2	0	0	0	0	0	
+20	35	14	-675.25	682.25	4	99	120	0	2	0	0	0	0	0	
+21	35	17	-658.25	625.75	53	84	120	1	0	0	0	0	0	0	
+22	35	17	-654.75	638.125	-39	-91	120	0	1	0	0	0	0	0	
+23	35	18	-648	648.75	68	73	120	2	0	0	0	0	0	0	
+24	35	20	-728.375	186.75	-20	-97	76	2	2	0	0	0	0	0	
+25	35	20	-733.75	162.875	19	98	76	2	2	0	0	0	0	0	
+26	35	21	-748.75	88.75	-19	-98	76	2	2	0	0	0	0	0	
+27	35	22	-746.25	101.125	-19	-98	76	2	2	0	0	0	0	0	
+28	35	23	-743.75	113.5	-19	-97	76	2	2	0	0	0	0	0	
+29	35	24	-741.25	125.75	-19	-98	76	2	2	0	0	0	0	0	
+30	35	25	-738.75	138.125	-19	-98	76	2	2	0	0	0	0	0	
+31	35	26	-736.25	150.5	-19	-98	76	2	2	0	0	0	0	0	
+32	35	28	-725	206.125	-19	-98	76	2	2	0	0	1	0	0	
+33	34	25	-745.875	200.25	-98	17	76	1	1	0	0	2	0	0	
+34	35	29	-656.625	26.375	-99	2	25	1	1	0	0	0	0	0	
+35	35	29	-671.25	26.75	99	-2	25	1	1	0	0	0	0	0	
+36	34	8	-746.125	29.375	-100	0	0	1	1	0	0	0	0	0	
+37	35	30	-737.5	29.125	-99	4	2	1	1	0	0	0	0	0	
+38	35	31	-729.5	28.875	-99	1	8	1	1	0	0	0	0	0	
+39	35	32	-723.375	28.625	-99	6	25	1	1	0	0	0	0	0	
+40	35	33	-712.25	28.125	-99	3	25	1	1	0	0	0	0	0	
+41	35	34	-696.875	27.5	-99	4	25	1	1	0	0	0	0	0	
+42	35	35	-683.5	27	-99	2	25	1	1	0	0	0	0	0	
+43	35	37	-710	280.25	-19	-97	76	2	2	1	0	1	0	0	
+44	35	37	-717.5	243.25	19	98	76	2	2	0	0	0	0	0	
+45	35	39	-706.375	298.625	-19	-98	76	2	2	0	0	1	0	0	
+46	35	39	-722.25	293.125	97	-20	76	1	1	0	0	2	0	0	
+47	35	40	-691.125	410.875	-10	-99	76	2	2	0	0	0	0	0	
+48	35	40	-693.25	390.25	10	99	76	2	2	0	0	0	0	0	
+49	35	41	-701	324.625	-19	-98	76	2	2	0	0	0	0	0	
+50	35	42	-698.875	337.25	-10	-99	76	2	2	0	0	0	0	0	
+51	35	43	-697.625	349.25	-10	-99	76	2	2	0	0	0	0	0	
+52	35	44	-696.25	363	-10	-99	76	2	2	0	0	0	0	0	
+53	35	45	-694.75	376.625	-10	-99	76	2	2	0	0	0	0	0	
+54	35	48	-69.75	83.875	97	22	25	1	1	0	0	0	0	0	
+55	35	48	-56.125	87.75	-87	-47	25	1	1	0	0	0	0	0	
+56	35	49	-51.5	90.625	-81	-57	25	1	1	0	0	0	0	0	
+57	35	50	-42.375	98.375	-74	-67	25	1	1	0	0	0	0	0	
+58	35	51	-30	109.75	-73	-67	25	1	1	0	0	0	0	0	
+59	35	52	-19	119.375	-76	-64	25	1	1	0	0	0	0	0	
+60	35	53	-4.25	132.75	-73	-68	25	1	1	0	0	0	0	0	
+61	35	54	-239.625	637.875	85	51	0	1	1	0	0	0	0	0	
+62	35	54	-139.375	646.625	-95	31	0	1	1	0	0	0	0	0	
+63	35	55	-71.5	631.875	-99	11	0	1	1	0	0	0	0	0	
+64	35	57	-123.625	205.625	12	99	0	0	1	0	0	0	0	0	
+65	35	57	-107.625	282.25	-32	-94	0	1	0	0	0	0	0	0	
+66	35	58	-176.625	385	91	39	0	1	0	0	0	0	0	0	
+67	35	58	-97.375	396.5	-99	13	0	0	1	0	0	0	0	0	
+68	35	59	-72.75	373.5	-14	98	0	0	1	0	0	0	0	0	
+69	35	60	-84.375	330.25	53	84	0	0	1	0	0	0	0	0	
+70	35	62	-379.625	726.125	-52	-85	0	2	1	0	0	0	0	0	
+71	35	62	-457.125	574.125	49	86	0	2	1	0	0	0	0	0	
+72	35	63	-438.875	328.875	-67	73	0	1	1	0	0	0	0	0	
+73	35	64	-311	345.75	63	-77	0	1	1	0	0	0	0	0	
+74	35	64	-285.25	270.5	22	97	0	1	1	0	0	0	0	0	
+75	35	65	-319.5	233.75	93	35	0	1	1	0	0	0	0	0	
+76	35	66	-375.75	236.75	89	-44	0	1	1	0	0	0	0	0	
+77	35	67	-410.375	277.875	23	-97	0	1	1	0	0	0	0	0	
+78	35	69	-615	299	-12	-99	0	0	1	0	0	0	0	0	
+79	35	69	-587	82.875	-8	99	0	1	0	0	0	0	0	0	
+80	35	69	-506.75	154.375	-96	24	0	1	1	0	0	0	0	0	
+81	35	70	-686.75	451.75	-10	-99	76	2	2	0	0	0	0	0	
+82	35	71	-683.875	479.125	-10	-99	76	2	2	0	0	0	0	0	
+83	35	72	-681	506.5	-10	-99	76	2	2	0	0	0	0	0	
+84	35	73	-678.125	533.75	-10	-99	76	2	2	0	0	0	0	0	
+85	35	74	-675.25	561.125	-10	-99	120	2	2	0	0	0	0	0	
+86	35	75	-670.375	607.125	-10	-99	120	1	1	0	0	0	0	0	
+87	35	76	-241.125	52.5	98	14	25	1	1	0	0	0	0	0	
+88	35	76	-216.875	56.25	-98	-15	25	1	1	0	0	0	0	0	
+89	35	77	-87.875	79.875	97	21	25	1	1	0	0	0	0	0	
+90	35	78	-104.375	76.5	97	19	25	1	1	0	0	0	0	0	
+91	35	79	-120.375	73.25	98	19	25	1	1	0	0	0	0	0	
+92	35	80	-136.375	70.25	98	18	25	1	1	0	0	0	0	0	
+93	35	81	-152.375	67.25	98	18	25	1	1	0	0	0	0	0	
+94	35	82	-168.625	64.25	98	17	25	1	1	0	0	0	0	0	
+95	35	83	-184.75	61.5	98	16	25	1	1	0	0	0	0	0	
+96	35	84	-200.875	58.75	98	16	25	1	1	0	0	0	0	0	
+97	35	86	-419.875	32.75	99	7	25	1	1	0	0	0	0	0	
+98	35	86	-395.5	34.75	-99	-7	25	1	1	0	0	0	0	0	
+99	35	87	-265.375	49.125	99	12	25	1	1	0	0	0	0	0	
+100	35	88	-281.625	47	99	13	25	1	1	0	0	0	0	0	
+101	35	89	-297.875	44.875	99	11	25	1	1	0	0	0	0	0	
+102	35	90	-314.25	43	99	11	25	1	1	0	0	0	0	0	
+103	35	91	-330.375	41.125	99	12	25	1	1	0	0	0	0	0	
+104	35	92	-346.625	39.25	99	10	25	1	1	0	0	0	0	0	
+105	35	93	-362.875	37.625	99	9	25	1	1	0	0	0	0	0	
+106	35	94	-379.25	36.125	99	9	25	1	1	0	0	0	0	0	
+107	35	96	-599.75	25.875	99	0	25	1	1	0	0	0	0	0	
+108	35	96	-575.25	26.125	-99	-1	25	1	1	0	0	0	0	0	
+109	35	97	-444.375	31.125	99	6	25	1	1	0	0	0	0	0	
+110	35	98	-460.625	30.125	99	6	25	1	1	0	0	0	0	0	
+111	35	99	-477	29.125	99	5	25	1	1	0	0	0	0	0	
+112	35	100	-493.375	28.375	99	3	25	1	1	0	0	0	0	0	
+113	35	101	-509.625	27.75	99	3	25	1	1	0	0	0	0	0	
+114	35	102	-526	27.25	99	3	25	1	1	0	0	0	0	0	
+115	35	103	-542.375	26.75	99	2	25	1	1	0	0	0	0	0	
+116	35	104	-558.75	26.375	99	2	25	1	1	0	0	0	0	0	
+117	35	106	-640.75	26.125	-99	0	25	1	1	0	0	0	0	0	
+118	35	107	-624.25	26	99	-1	25	1	1	0	0	0	0	0	
+119	35	109	-17.375	489	-88	46	0	1	1	0	0	0	0	0	
+120	35	110	-8.625	484.25	87	-48	0	1	1	0	0	0	0	0	
+121	35	112	-180.375	473	-87	-48	0	1	1	0	0	0	0	0	
+122	35	112	-214.75	465.375	99	-6	0	1	1	0	0	0	0	0	
+123	35	113	-236	493.5	-19	-97	0	1	1	0	0	0	0	0	
+124	35	113	-227.875	471.5	-64	76	0	1	1	0	0	0	0	0	
+125	35	115	-220.75	539.25	-7	-99	0	1	1	0	0	0	0	0	
+126	35	116	-124	576.25	-72	69	0	1	1	0	0	0	0	0	
+127	35	116	-134.25	586.75	79	-61	0	1	1	0	0	0	0	0	
+128	35	117	-144.75	594.25	83	-55	0	1	1	0	0	0	0	0	
+129	35	118	-158.75	602	90	-43	0	1	1	0	0	0	0	0	
+130	35	119	-175.375	609.125	93	-36	0	1	1	0	0	0	0	0	
+131	35	120	-187.125	607.125	56	82	0	1	1	0	0	0	0	0	
+132	35	121	-196.625	593.375	57	81	0	1	1	0	0	0	0	0	
+133	35	122	-206	575.5	33	94	0	1	1	0	0	0	0	0	
+134	35	123	-214.75	556.25	48	87	0	1	1	0	0	0	0	0	
+135	35	125	-12.875	473.5	89	-43	0	1	1	0	0	0	0	0	
+136	35	126	-22.875	478	92	-37	0	1	1	0	0	0	0	0	
+137	35	127	-31.375	481.25	93	-34	0	1	1	0	0	0	0	0	
+138	35	128	-43	486.25	97	-24	0	1	1	0	0	0	0	0	
+139	35	136	-8.5	129.125	-72	69	0	1	1	0	0	0	0	0	
+140	35	129	-0.5	228.75	-47	87	0	1	1	0	0	0	0	0	
+141	35	129	-6.625	239.875	48	-87	0	1	1	0	0	0	0	0	
+142	35	130	-18.875	245.125	99	3	0	1	1	0	0	0	0	0	
+143	35	131	-43.875	190.25	-1	-99	0	1	1	0	0	0	0	0	
+144	35	131	-37.125	165.125	-43	89	0	1	1	0	0	0	0	0	
+145	35	132	-40.25	218.125	-20	-97	0	1	1	0	0	0	0	0	
+146	35	133	-32.375	239.75	-64	-76	0	1	1	0	0	0	0	0	
+147	35	134	-27	147.25	-66	74	0	1	1	0	0	0	0	0	
+148	35	137	-12.125	73.375	-3	99	0	1	1	0	0	0	0	0	
+149	35	138	-16.625	51.125	34	93	0	1	1	0	0	0	0	0	
+150	35	139	-23.75	28.75	23	97	0	1	1	0	0	0	0	0	
+151	27	38	-26.125	9.5	0	-100	0	1	1	0	0	0	0	0	
+152	35	141	-173.125	497.875	-2	-99	0	1	1	0	0	0	0	0	
+153	35	141	-161.25	479.875	-98	17	0	1	1	0	0	0	0	0	
+154	35	142	-180.625	517.875	22	-97	0	1	1	0	0	0	0	0	
+155	35	142	-162.5	503.125	-96	27	0	1	1	0	0	0	0	0	
+156	35	143	-147.625	480.375	-97	-22	0	1	1	0	0	0	0	0	
+157	35	144	-147.125	497.75	-78	61	0	1	1	0	0	0	0	0	
+158	35	145	-139.875	491.625	-73	67	0	1	1	0	0	0	0	0	
+159	35	146	-139.25	485.125	61	78	0	1	1	0	0	0	0	0	
+160	35	148	-154.625	584.875	-84	52	0	1	1	0	0	0	0	0	
+161	35	148	-161.375	586.25	99	-6	0	1	1	0	0	0	0	0	
+162	35	149	-179.125	542.875	-2	-99	0	1	1	0	0	0	0	0	
+163	35	150	-178.25	557.875	-11	-99	0	1	1	0	0	0	0	0	
+164	35	151	-176.75	568.75	-16	-98	0	1	1	0	0	0	0	0	
+165	35	152	-174.75	577.75	-28	-95	0	1	1	0	0	0	0	0	
+166	35	153	-172.125	583	-76	-64	0	1	1	0	0	0	0	0	
+167	35	154	-168.875	585	-91	-39	0	1	1	0	0	0	0	0	
+168	35	155	-165.25	586	-98	-16	0	1	1	0	0	0	0	0	
+169	35	157	-79.5	550.75	74	-66	0	1	1	0	0	0	0	0	
+170	35	157	-69.875	540.5	-60	79	0	1	1	0	0	0	0	0	
+171	35	158	-47.125	513.625	67	-73	0	1	1	0	0	0	0	0	
+172	35	159	-55.875	523.75	62	-78	0	1	1	0	0	0	0	0	
+173	35	160	-63.625	533	67	-74	0	1	1	0	0	0	0	0	
+174	35	162	-64.75	492.75	88	-47	0	1	1	0	0	0	0	0	
+175	35	162	-59.375	480.125	96	27	0	1	1	0	0	0	0	0	
+176	35	163	-77.375	492.25	11	-99	0	1	1	0	0	0	0	0	
+177	35	163	-70.125	484.5	-92	38	0	1	1	0	0	0	0	0	
+178	35	165	-77.5	504	63	-76	0	1	1	0	0	0	0	0	
+179	35	166	-98.875	557.125	-86	-50	0	1	1	0	0	0	0	0	
+180	35	166	-104	551	41	91	0	1	1	0	0	0	0	0	
+181	35	167	-87.75	514.125	67	-73	0	1	1	0	0	0	0	0	
+182	35	168	-93.5	520	71	-69	0	1	1	0	0	0	0	0	
+183	35	169	-98.875	525.625	68	-73	0	1	1	0	0	0	0	0	
+184	35	170	-103.5	531.375	55	-83	0	1	1	0	0	0	0	0	
+185	35	171	-106.25	537.75	19	-98	0	1	1	0	0	0	0	0	
+186	35	172	-106	544.5	21	97	0	1	1	0	0	0	0	0	
+187	35	174	-111.75	575.625	-92	-37	0	1	1	0	0	0	0	0	
+188	35	174	-132.25	566.75	99	4	0	1	1	0	0	0	0	0	
+189	35	175	-143.5	575.25	72	-68	0	1	1	0	0	0	0	0	
+190	35	177	-245.125	365.25	85	-51	0	1	0	0	0	0	0	0	
+191	35	178	-322.375	445.25	23	-97	0	1	0	0	0	0	0	0	
+192	35	178	-279.625	391.125	-72	68	0	0	1	0	0	0	0	0	
+193	35	180	-304	550.125	38	92	0	0	1	0	0	0	0	0	
+194	35	182	-528.25	477.75	52	84	0	1	0	0	0	0	0	0	
+195	35	182	-415.875	472.5	-70	70	0	1	1	0	0	0	0	0	
+196	35	183	-366.5	405.25	59	-80	0	1	1	0	0	0	0	0	
+197	35	186	-180.5	147.875	-99	-8	0	1	1	0	0	0	0	0	
+198	35	186	-313	147.625	99	-2	0	1	1	0	0	0	0	0	
+199	35	186	-249.75	89.125	9	99	0	0	1	0	0	0	0	0	
+200	35	187	-134	102.5	8	99	0	0	1	0	0	0	0	0	
+201	35	188	-405.125	147.125	99	-3	0	1	1	0	0	0	0	0	
+202	35	193	-580.125	742.875	99	-5	0	1	1	0	0	0	0	0	
+203	35	193	-561	742	-99	6	0	1	1	0	0	0	0	0	
+204	35	194	-529.125	739	95	-28	0	1	1	0	0	0	0	0	
+205	35	195	-542.625	740.875	99	-6	0	1	1	0	0	0	0	0	
+206	35	198	-89	558.375	92	-38	0	1	1	0	0	0	0	0	
+207	35	199	-94.875	564.5	6	-99	0	1	1	0	0	0	0	0	
+208	35	200	-103	577.5	-97	23	0	1	1	0	0	0	0	0	
+209	35	201	-95.75	571.5	33	-94	0	1	1	0	0	0	0	0	
+210	35	202	-98.25	575.375	77	-63	0	1	1	0	0	0	0	0	
+
