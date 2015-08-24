@@ -173,7 +173,7 @@ class SAPathSingleNode():
             self.path.seek(self._offset + (self.numNodes * 28) + (self.numNavinodes * 14) + (self.numLinks * 4) + 768, 0)
             for i in range(self.numLinks):
                 self.navilinks.append({})
-                carpathlinkaddress = unpack('h', self.path.read(2))[0]
+                carpathlinkaddress = unpack('H', self.path.read(2))[0]
                 self.navilinks[i]['carpathlink'] = carpathlinkaddress & 1023
                 self.navilinks[i]['area'] = carpathlinkaddress >> 10
         return self.navilinks
@@ -217,9 +217,14 @@ class SAPaths:
 
                 # add its connection
                 for j in range(pathnode.numberOfLinks):
-                    nextLinkAddress = pathfile.Links()[pathnode.baseLink + j]
+                    next_link = pathnode.baseLink + j
+                    nextNodeAddress = pathfile.Links()[next_link]
+                    carPathLinkAddress = pathfile.NaviLinks()[next_link]
 
-                    print (nextLinkAddress)
+                    carPathLink = odict_path_files[carPathLinkAddress['area']].NaviNodes()[carPathLinkAddress['carpathlink']]
+                    nextNode = odict_path_files[nextNodeAddress['area']].Paths()[nextNodeAddress['node']]
+
+                    pathnode.links
 
                 self.vehiclePathNodes[pathnode.nodeAddress] = pathnode
 
