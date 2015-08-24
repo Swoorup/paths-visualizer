@@ -151,7 +151,7 @@ class SAPathVisualizer(bpy.types.Operator) :
     
     def invoke(self, context, event):
         self.path = SAPaths()
-        self.path.LoadFromDirectory(r'E:\Output')
+        self.path.load_from_directory(r'E:\Output')
         
         self.CleanScene()
         self.RenderPathNodes(context)

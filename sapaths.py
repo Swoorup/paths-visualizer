@@ -2,6 +2,13 @@ from os.path import isfile, join
 from os import walk
 from struct import unpack
 from io import BytesIO
+import re
+import collections
+
+class NodeAddress:
+    def __init__(self):
+        self.areaID = -1
+        self.nodeID = -1
 
 class PathNode:
     def __init__(self):
@@ -9,8 +16,7 @@ class PathNode:
         self.y = 0.0
         self.z = 0.0
         self.baseLink = -1
-        self.areaID = -1
-        self.nodeID = -1
+        self.nodeAddress = NodeAddress()
         
         self.width = 0
         self.floodcolor = -1
@@ -33,12 +39,25 @@ class PathNode:
         self.spawnProbability = 0
         self.behaviourType = 0
 
+        self.links = collections.OrderedDict()
+
 class CarPathLink:
     def __init__(self):
-        self.x =  0.0
+        self.x = 0.0
         self.y = 0.0
+        self.linkedNodeAddress = NodeAddress()
+        self.dirX = 0.0
+        self.dirY = 0.0
+        self.width = 0
+        self.numLeftLanes = 0
+        self.numRightLanes = 0
+        self.trafficLight = 0
+        
+        self.trafficLightState = 0
+        self.isTrainCrossing = 0
+        
 
-class SAPathSingleArea():
+class SAPathSingleNode():
     def __init__(self, node):
         self.path = BytesIO(open(node, "rb").read())
         
@@ -71,8 +90,8 @@ class SAPathSingleArea():
                 self.path.read(2) # heuristic path cost
                 
                 node.baseLink =  unpack('h', self.path.read(2))[0]
-                node.areaID = unpack('h', self.path.read(2))[0]
-                node.nodeID = unpack('h', self.path.read(2))[0]
+                node.nodeAddress.areaID = unpack('h', self.path.read(2))[0]
+                node.nodeAddress.nodeID = unpack('h', self.path.read(2))[0]
                 node.width = unpack('b', self.path.read(1))[0] / 8
                 node.floodcolor = unpack('b', self.path.read(1))[0]
                 
@@ -117,14 +136,27 @@ class SAPathSingleArea():
         if len(self.navinodes) != self.numNavinodes:
             self.path.seek(self._offset + (self.numNodes * 28), 0)
             for i in range(self.numNavinodes):
-                self.navinodes.append({})
-                self.navinodes[i]['x']        = float(unpack('h', self.path.read(2))[0]) / 8
-                self.navinodes[i]['y']        = float(unpack('h', self.path.read(2))[0]) / 8
-                self.navinodes[i]['area']    = unpack('h', self.path.read(2))[0]
-                self.navinodes[i]['node']    = unpack('h', self.path.read(2))[0]
-                self.navinodes[i]['disx']    = float(unpack('b', self.path.read(1))[0]) / 8
-                self.navinodes[i]['disy']    = float(unpack('b', self.path.read(1))[0]) / 8
-                self.navinodes[i]['flags']    = unpack('I', self.path.read(4))[0]
+                carpathlink = CarPathLink()
+                carpathlink.x = float(unpack('h', self.path.read(2))[0]) / 8
+                carpathlink.y = float(unpack('h', self.path.read(2))[0]) / 8
+                carpathlink.linkedNodeAddress.areaID =  unpack('h', self.path.read(2))[0]
+                carpathlink.linkedNodeAddress.nodeID =  unpack('h', self.path.read(2))[0]
+                carpathlink.dirX = float(unpack('b', self.path.read(1))[0]) / 100
+                carpathlink.dirY = float(unpack('b', self.path.read(1))[0]) / 100
+
+                carpathlink.width = unpack('b', self.path.read(1))[0]
+                
+                flags =  unpack('B', self.path.read(1))[0]
+                carpathlink.numLeftLanes = flags & 7
+                carpathlink.numRightLanes = (flags >> 3) & 7
+                carpathlink.trafficLight = (flags >> 4) & 1
+                
+                flags =  unpack('B', self.path.read(1))[0]
+                carpathlink.trafficLightState = flags & 11
+                carpathlink.isTrainCrossing = (flags >> 2) & 1
+
+                flags =  unpack('B', self.path.read(1))[0]
+                self.navinodes.append(carpathlink)
         return self.navinodes
         
     def Links(self):
@@ -132,15 +164,18 @@ class SAPathSingleArea():
             self.path.seek(self._offset + (self.numNodes * 28) + (self.numNavinodes * 14), 0)
             for i in range(self.numLinks):
                 self.links.append({})
-                self.links[i]['area']    = unpack('h', self.path.read(2))[0]
-                self.links[i]['node']    = unpack('h', self.path.read(2))[0]
+                self.links[i]['area'] = unpack('h', self.path.read(2))[0]
+                self.links[i]['node'] = unpack('h', self.path.read(2))[0]
         return self.links
         
     def NaviLinks(self):
         if len(self.navilinks) != self.numLinks:
             self.path.seek(self._offset + (self.numNodes * 28) + (self.numNavinodes * 14) + (self.numLinks * 4) + 768, 0)
             for i in range(self.numLinks):
-                self.navilinks.append(unpack('h', self.path.read(2))[0])
+                self.navilinks.append({})
+                carpathlinkaddress = unpack('h', self.path.read(2))[0]
+                self.navilinks[i]['carpathlink'] = carpathlinkaddress & 1023
+                self.navilinks[i]['area'] = carpathlinkaddress >> 10
         return self.navilinks
     
     def LinkLengths(self):
@@ -152,25 +187,45 @@ class SAPathSingleArea():
         
     def Close(self):
         self.path.close()
-        
+
+
 class SAPaths:
+
     def __init__(self):
-        self.vehiclePathNodes = []
-        self.pedPathNodes = []
-        self.numVehicleNodes = 0
-        self.numPedNodes = 0
-    
-    def LoadFromDirectory(self, dirpath):
+        self.vehiclePathNodes = collections.OrderedDict()
+        self.pedPathNodes = collections.OrderedDict()
+
+    def load_from_directory(self, dirpath):
         f = []
         for (dirpath, dirnames, filenames) in walk(dirpath):
             f.extend(filenames)
             break
-        
-        for i in f:
-            if i.lower().startswith("nodes") and i.lower().endswith(".dat"):
-                pathfile = SAPathSingleArea(join(dirpath, i));
-                self.vehiclePathNodes.extend(pathfile.Paths()[:pathfile.numVehnodes])
-                self.pedPathNodes.extend(pathfile.Paths()[pathfile.numVehnodes:pathfile.numNodes])
-                self.numVehicleNodes += pathfile.numVehnodes
-                self.numPedNodes += pathfile.numPednodes
-                
+
+        dict_path_files = {}
+        for i in (files for files in f if files.lower().startswith("nodes") and files.lower().endswith(".dat")):
+            area_id = int(re.search(r'\d+', i).group())
+            dict_path_files[area_id] = SAPathSingleNode(join(dirpath, i))
+
+        odict_path_files = collections.OrderedDict(sorted(dict_path_files.items()))
+
+        # for each file
+        for area, pathfile in odict_path_files.items():
+            for i in range(pathfile.numVehnodes):
+
+                # add node
+                pathnode = pathfile.Paths()[i]
+
+                # add its connection
+                for j in range(pathnode.numberOfLinks):
+                    nextLinkAddress = pathfile.Links()[pathnode.baseLink + j]
+
+                    print (nextLinkAddress)
+
+                self.vehiclePathNodes[pathnode.nodeAddress] = pathnode
+
+"""
+        self.vehiclePathNodes.extend(pathfile.Paths()[:pathfile.numVehnodes])
+        self.pedPathNodes.extend(pathfile.Paths()[pathfile.numVehnodes:pathfile.numNodes])
+        self.numVehicleNodes += pathfile.numVehnodes
+        self.numPedNodes += pathfile.numPednodes
+                """
