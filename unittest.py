@@ -1,5 +1,7 @@
-__author__ = 'Swoorup'
+﻿__author__ = 'Swoorup'
 import sapaths
+import imp
+imp.reload(sapaths)
 
 paths = sapaths.SAPaths()
-paths.load_nodes_from_directory(r"E:\Output")
+paths.load_nodes_from_directory(r"G:\paths-visualizer\Vanilla\Compiled\SA")

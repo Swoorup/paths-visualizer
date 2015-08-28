@@ -1,4 +1,4 @@
-from os.path import isfile, join
+﻿from os.path import isfile, join
 from os import walk
 from struct import unpack
 from io import BytesIO
@@ -155,20 +155,80 @@ class SAPaths:
         self.nodes = []
         self.carpathlinks = []
 
-    @staticmethod
-    def __validateCarPathLink(self, ListNodes, ListCarPathLinks):
-        for node in ListNodes:
-            nodeID = ListNodes.index(node)
-            if node['_nodeType'] == 'ped':
-                continue
+        self.carnodes = []
+        self.pednodes = []
+        self.boatnodes = []
 
+    def __validateCarPathLink(self):
+        for node in self.carnodes:
             for link in node['_links']:
-                linkNode = ListNodes[link['targetID']]
-                assert node['isWaterNode'] == linkNode['isWaterNode']
-                carpathlink = ListCarPathLinks[link['carpathlinkID']]
-                assert nodeID >= carpathlink['targetID']
-                if nodeID != carpathlink['targetID']: assert(link['targetID'] == carpathlink['targetID'])
+                linkNode = link['targetNode']
+                #print(linkNode)
+                carpathlink = link['carpathlink']
+                if node is not carpathlink['navigationTarget']:
+                    print("LinkedNODE: ", linkNode['x'], linkNode['y'], linkNode['z'])
+                    print("NavTarget: ", carpathlink['navigationTarget']['x'], carpathlink['navigationTarget']['y'], carpathlink['navigationTarget']['z'])
+
+                    # sa path nodes are strange bugged here please check node 211, area 6
+                    assert linkNode is carpathlink['navigationTarget']
+                else:
+                    print("Yippie Kai Ye")
+
+        for node in self.boatnodes:
+            for link in node['_links']:
+                linkNode = link['targetNode']
+                carpathlink = link['carpathlink']
+                if node is not carpathlink['navigationTarget']:
+                    assert linkNode is carpathlink['navigationTarget']
         print("[x] Finished Validation: Check for assertion errors")
+
+
+    def seperate_nodes(self, areafiles):
+        for area, currentfile in areafiles.items():
+            for i in range(currentfile.mHeader['NumNodes']):
+                node = currentfile.mPathnodes[i]
+
+                # delete unused parameter
+                # del node['areaID']
+                # del node['nodeID']
+
+                node['_links'] = []
+                for k in range(node['numberOfLinks']):
+                    linkArrayIndex = node['baseLink'] + k
+                    linkInfo = {}
+                    linkInfo['targetNode'] =        areafiles[currentfile.mLinks[linkArrayIndex]['area']].mPathnodes[currentfile.mLinks[linkArrayIndex]['node']]
+                    linkInfo['length'] =        currentfile.mLinklengths[node['baseLink'] + k]   # can be removed as we need to recalculate them anyway
+                    linkInfo['intersection'] =  currentfile.mPathintersectionsflags[node['baseLink'] + k]
+                    # only add car path link if vehicle node
+                    if i < currentfile.mHeader['NumVehNodes']:
+                        linkInfo['carpathlink'] = areafiles[currentfile.mNavi[linkArrayIndex]['area']].mCarpathlinks[currentfile.mNavi[linkArrayIndex]['carpathlink']]
+                    node['_links'].append(linkInfo)
+
+                del node['numberOfLinks']
+                del node['baseLink']
+
+                if i < currentfile.mHeader['NumVehNodes']:
+                    # add to car or boat
+                    if node['isWaterNode']:
+                        self.boatnodes.append(node)
+                    else:
+                        self.carnodes.append(node)
+                else:
+                    self.pednodes.append(node)
+
+            # car paths are automatically linked to nodes
+            for i in range(currentfile.mHeader['NumCarPathLinks']):
+                carpathlink = currentfile.mCarpathlinks[i]
+                carpathlink['navigationTarget'] = areafiles[carpathlink['targetArea']].mPathnodes[carpathlink['targetNode']]
+                del carpathlink['targetNode']
+                del carpathlink['targetArea']
+
+        # validation
+        #self.__validateCarPathLink()
+
+        # TODO: merge carpathlink
+        # TODO: seperate lines by their unique properties
+
 
     @staticmethod
     def unify_all_nodes(self, dictionaryAreaFile):
@@ -248,4 +308,5 @@ class SAPaths:
 
         odict_path_files = collections.OrderedDict(sorted(dict_path_files.items()))
 
-        self.unify_all_nodes(self, odict_path_files)
+        #self.unify_all_nodes(self, odict_path_files)
+        self.seperate_nodes(odict_path_files)
