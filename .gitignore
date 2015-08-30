@@ -1,7 +1,6 @@
 .idea/
-__pycache__/
-*.pyc
 *.sln
 *.suo
 *.pyproj
 *.pyc
+__pycache__/sapaths.cpython-34.pyc
