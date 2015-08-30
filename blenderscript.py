@@ -1,138 +1,99 @@
 ﻿__author__ = 'Swoorup'
 import sapaths
 import bpy
+import bmesh
 from mathutils import Vector
 
 import imp
 imp.reload(sapaths)
 
-paths = sapaths.SAPaths()
-paths.load_nodes_from_directory(r"G:\paths-visualizer\Vanilla\Compiled\SA")
+def loadPathMesh(ob, nodes):
+    bm = bmesh.new()
+    bm.from_mesh(ob.data)
 
+    # add all vertices
+    for node in nodes:
+        bm.verts.new((node['x'], node['y'], node['z']))
 
+    bm.verts.index_update()
+    bm.verts.ensure_lookup_table()
 
-#"""
-def addPointsToCurve(node, pointList):
-    if node['_btraversed'] == True:
-        return False
-
-    pointList.append((node['x'], node['y'], node['z']))
-    node['_btraversed'] = True
-    return True
-
-def tracePathCurve(nodestart):
-    points = []
-    addPointsToCurve(nodestart, points)
-
-    # select the link which is actually a line
-    secondNode = None
-    for link in nodestart['_links']:
-        linkedNode = link['targetNode']
-        if linkedNode['_btraversed']:
-            continue
-        nSubLink = len(linkedNode['_links'])
-        if nSubLink == 2 or nSubLink == 1:
-            secondNode = linkedNode
-            break
-
-    if secondNode == None:
-        return
-
-    #assert(secondNode['_btraversed'] != True)
-    addPointsToCurve(secondNode, points)
-
-    node = secondNode
-    while True:
-        #if len(node['_links']) != 2:
-            #break
-
-        oldnode = node
+    # connect all the edge data
+    for node in nodes:
+        i = node['id']
         for link in node['_links']:
             linkedNode = link['targetNode']
-            if addPointsToCurve(linkedNode, points) == False:
+            carpathlink = link['carpathlink']
+            linkedIndex = linkedNode['id']
+            
+            try:
+                #bm.edges.new((bm.verts[i], bm.verts[carpathlink['navigationTarget']['id']]))
+                bm.edges.new((bm.verts[i], bm.verts[linkedIndex]))
+            except ValueError: # already exist
                 continue
 
-            node = linkedNode
-            break
-        
-        if oldnode is node:
-            break
+    bm.edges.ensure_lookup_table()
+    bm.verts.ensure_lookup_table()
 
-    endnode = node
-    addPointsToCurve(endnode, points)
+    node_width_key = bm.verts.layers.float.new('node_width')
+    node_area_id = bm.verts.layers.int.new('node_areaid')
+    node_node_id = bm.verts.layers.int.new('node_id')
+    node_behaviour = bm.verts.layers.int.new('node_behaviour')
+    # add the per node properties
+    for node in nodes:
+        bm.verts[node['id']][node_width_key] = node['width']
+        bm.verts[node['id']][node_area_id] = node['areaID']
+        bm.verts[node['id']][node_node_id] = node['nodeID']
+        bm.verts[node['id']][node_behaviour] = node['behaviourType']
 
-    out2 = []
-    [out2.extend(list(j)+[0.0]) for j in points]
+    bm.to_mesh(ob.data)
+    bm.free()
 
-    theLineData = bpy.data.curves.new(name="sasas",type='CURVE')
-    theLineData.dimensions = '3D'
-    theLineData.fill_mode = 'FULL'
+def loadCarPathLinkMesh(ob, pathlinks):
+    bm = bmesh.new()
+    bm.from_mesh(ob.data)
 
-    # define points that make the line
-    polyline = theLineData.splines.new('POLY')
-    polyline.points.add(len(points) - 1)
-    polyline.points.foreach_set('co', out2)
+    for carpathlink in pathlinks:
+        bm.verts.new((carpathlink['x'], carpathlink['y'], 0.0))
+        bm.verts.new((carpathlink['x'] + carpathlink['dirX'] , carpathlink['y'] + carpathlink['dirY'], 0.0))
+        bm.verts.new((carpathlink['navigationTarget']['x'] , carpathlink['navigationTarget']['y'], 0.0))
+    bm.verts.index_update()
+    bm.verts.ensure_lookup_table()
 
-    theLine = bpy.data.objects.new('LineOne',theLineData)
-    bpy.context.scene.objects.link(theLine)
-    theLine.location = (0.0,0.0,0.0)
+    for carpathlink in pathlinks:
+        id = carpathlink['id']
+        bm.edges.new((bm.verts[id * 3], bm.verts[id * 3 + 1]))
+        bm.edges.new((bm.verts[id * 3], bm.verts[id * 3 + 2]))
+    bm.to_mesh(ob.data)
+    bm.free()
 
-for node in paths.carnodes:
-    if node['_btraversed']:
-        continue
+def loadSAPathsAsMesh(nodesDir):
+    paths = sapaths.SAPaths()
+    paths.load_nodes_from_directory(nodesDir)    
+    #paths.load_nodes_from_directory(r"E:\Output")  
 
-    # always trace line from a junction
-    #if len(node['_links']) != 2:
-    tracePathCurve(node)
+    # Create mesh 
+    me = bpy.data.meshes.new('myMesh') 
+    # Create object
+    ob = bpy.data.objects.new('carNodes', me) 
+    bpy.context.scene.objects.link(ob)
+    loadPathMesh(ob, paths.carnodes)
 
+    # Create object
+    ob = bpy.data.objects.new('boatNodes', bpy.data.meshes.new('myMesh')) 
+    bpy.context.scene.objects.link(ob)
+    loadPathMesh(ob, paths.boatnodes)
 
-# create an object that uses the linedata
+    # Create object
+    ob = bpy.data.objects.new('pedNodes', bpy.data.meshes.new('myMesh')) 
+    bpy.context.scene.objects.link(ob)
+    #loadPathMesh(ob, paths.pednodes)
 
-
-"""
-for i in paths.carnodes:
-    if i['_btraversed']:
-        continue
-
-    # start a line from an intersection
-    #if len(paths.nodes[i]['_links']) == 2:
-        #continue
-
-    # Traverse through the car path nodes for tracing a line
-    #print(i, paths.nodes[i]['floodcolor'])
-    points = []
-    node = i
-    while (True):
-        if node['_btraversed']:
-            break
-
-        # A line can have only 2 endpoints
-        if len(node['_links']) > 2:
-            break
-
-        points.append((node['x'], node['y'], node['z']))
-        node['_btraversed'] = True
-
-        for link in node['_links']:
-            linkNode = link['targetNode']
-            carpathlink = link['carpathlink']
-            if node is not carpathlink['navigationTarget']:
-                points.append((linkNode['x'], linkNode['y'], linkNode['z']))
-                node = link['targetNode']
-
-    out2 = []
-    [out2.extend(list(j)+[0.0]) for j in points]
-    # define points that make the line
-    polyline = theLineData.splines.new('POLY')
-    polyline.points.add(len(points) - 1)
-    polyline.points.foreach_set('co', out2)
-
-# create an object that uses the linedata
-theLine = bpy.data.objects.new('LineOne',theLineData)
-bpy.context.scene.objects.link(theLine)
-theLine.location = (0.0,0.0,0.0)
-
-# blender is slow as hell in editing huge large amount of curves even in a single object
-#bpy.ops.object.convert(target='MESH')
-
-# """
+    #DEBUG HELPER
+    ob = bpy.data.objects.new('boatpathlinknodes', bpy.data.meshes.new('myMesh')) 
+    bpy.context.scene.objects.link(ob)
+    loadCarPathLinkMesh(ob, paths.boatpathlinknodes)
+    ob = bpy.data.objects.new('carpathlinknodes', bpy.data.meshes.new('myMesh')) 
+    bpy.context.scene.objects.link(ob)
+    loadCarPathLinkMesh(ob, paths.carpathlinknodes)
+    
