@@ -173,10 +173,8 @@ class SAPaths:
                     print("LinkedNODE: ", linkNode['x'], linkNode['y'], linkNode['z'])
                     print("NavTarget: ", carpathlink['navigationTarget']['x'], carpathlink['navigationTarget']['y'], carpathlink['navigationTarget']['z'])
 
-                    # sa path nodes are strange bugged here please check node 211, area 6
-                    assert linkNode is carpathlink['navigationTarget']
-                else:
-                    print("Yippie Kai Ye")
+                    # sa path nodes are strange bugged here please check node 
+                    
 
         for node in self.boatnodes:
             for link in node['_links']:
@@ -190,9 +188,10 @@ class SAPaths:
         """
         [x] CarPathLink Node are the directional nodes which they are placed between the two endpoints of a curve
         [x] MIGHT determine the interpolation in some cases
-        [x] the navigation target is the appropriate vector it is heading in XY axis and disregards the target's z value
+        [x] the navigation target node pointed is the vector it is heading in XY axis and disregarding its's z value: See Node 211, area 6
         [x] normal vector provide a very rough approximation
         """
+
 
 
 
