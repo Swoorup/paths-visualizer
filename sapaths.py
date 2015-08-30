@@ -16,7 +16,7 @@ class SAPathSingleNode:
         self.mNavi = []
         self.mLinklengths = []
         self.mPathintersectionsflags = []
-        self.___offfset = 20
+        self.___offset = 20
 
         # headers
         self.mHeader['NumNodes'] = unpack('I', self.path.read(4))[0]
@@ -35,23 +35,23 @@ class SAPathSingleNode:
 
     def __read_pathnodes(self):
         if len(self.mPathnodes) != self.mHeader['NumNodes']:
-            self.path.seek(self.___offfset, 0)
+            self.path.seek(self.___offset, 0)
             for i in range(self.mHeader['NumNodes']):
                 self.mPathnodes.append({})
                 self.path.read(4)  # Memory Address
                 self.path.read(4)  # Zero
 
                 self.mPathnodes[i] = collections.OrderedDict()
-                self.mPathnodes[i]['x'] = float(unpack('h', self.path.read(2))[0]) / 8
-                self.mPathnodes[i]['y'] = float(unpack('h', self.path.read(2))[0]) / 8
-                self.mPathnodes[i]['z'] = float(unpack('h', self.path.read(2))[0]) / 8
+                self.mPathnodes[i]['x'] = float(unpack('h', self.path.read(2))[0]) / 8.0
+                self.mPathnodes[i]['y'] = float(unpack('h', self.path.read(2))[0]) / 8.0
+                self.mPathnodes[i]['z'] = float(unpack('h', self.path.read(2))[0]) / 8.0
 
                 self.path.read(2)  # heuristic path cost
 
                 self.mPathnodes[i]['baseLink'] = unpack('h', self.path.read(2))[0]
                 self.mPathnodes[i]['areaID'] = unpack('h', self.path.read(2))[0]
                 self.mPathnodes[i]['nodeID'] = unpack('h', self.path.read(2))[0]
-                self.mPathnodes[i]['width'] = unpack('b', self.path.read(1))[0] / 8
+                self.mPathnodes[i]['width'] = float(unpack('b', self.path.read(1))[0]) / 8.0
                 self.mPathnodes[i]['floodcolor'] = unpack('b', self.path.read(1))[0]
 
                 flags = unpack('B', self.path.read(1))[0]
@@ -82,11 +82,11 @@ class SAPathSingleNode:
 
     def __read_carpathlinks(self):
         if len(self.mCarpathlinks) != self.mHeader['NumCarPathLinks']:
-            self.path.seek(self.___offfset + (self.mHeader['NumNodes'] * 28), 0)
+            self.path.seek(self.___offset + (self.mHeader['NumNodes'] * 28), 0)
             for i in range(self.mHeader['NumCarPathLinks']):
                 self.mCarpathlinks.append({})
-                self.mCarpathlinks[i]['x'] = float(unpack('h', self.path.read(2))[0]) / 8
-                self.mCarpathlinks[i]['y'] = float(unpack('h', self.path.read(2))[0]) / 8
+                self.mCarpathlinks[i]['x'] = float(unpack('h', self.path.read(2))[0]) / 8.0
+                self.mCarpathlinks[i]['y'] = float(unpack('h', self.path.read(2))[0]) / 8.0
                 self.mCarpathlinks[i]['targetArea'] = unpack('h', self.path.read(2))[0]
                 self.mCarpathlinks[i]['targetNode'] = unpack('h', self.path.read(2))[0]
                 self.mCarpathlinks[i]['dirX'] = float(unpack('b', self.path.read(1))[0]) / 100
@@ -108,7 +108,7 @@ class SAPathSingleNode:
 
     def __read_links_array(self):
         if len(self.mLinks) != self.mHeader['NumLinksArray']:
-            self.path.seek(self.___offfset + (self.mHeader['NumNodes'] * 28) + (self.mHeader['NumCarPathLinks'] * 14), 0)
+            self.path.seek(self.___offset + (self.mHeader['NumNodes'] * 28) + (self.mHeader['NumCarPathLinks'] * 14), 0)
             for i in range(self.mHeader['NumLinksArray']):
                 self.mLinks.append({})
                 self.mLinks[i]['area'] = unpack('h', self.path.read(2))[0]
@@ -118,7 +118,7 @@ class SAPathSingleNode:
 
     def __read_carpathlinks_array(self):
         if len(self.mNavi) != self.mHeader['NumLinksArray']:
-            self.path.seek(self.___offfset + (self.mHeader['NumNodes'] * 28) + (self.mHeader['NumCarPathLinks'] * 14) + (self.mHeader['NumLinksArray'] * 4) + 768,0)
+            self.path.seek(self.___offset + (self.mHeader['NumNodes'] * 28) + (self.mHeader['NumCarPathLinks'] * 14) + (self.mHeader['NumLinksArray'] * 4) + 768,0)
             for i in range(self.mHeader['NumLinksArray']):
                 self.mNavi.append({})
                 carpathlinkaddress = unpack('H', self.path.read(2))[0]
@@ -129,7 +129,7 @@ class SAPathSingleNode:
 
     def __read_linklengths(self):
         if len(self.mLinklengths) != self.mHeader['NumLinksArray']:
-            self.path.seek(self.___offfset + (self.mHeader['NumNodes'] * 28) + (self.mHeader['NumCarPathLinks'] * 14) + (self.mHeader['NumLinksArray'] * 4) + 768 + (self.mHeader['NumLinksArray'] * 2), 0)
+            self.path.seek(self.___offset + (self.mHeader['NumNodes'] * 28) + (self.mHeader['NumCarPathLinks'] * 14) + (self.mHeader['NumLinksArray'] * 4) + 768 + (self.mHeader['NumLinksArray'] * 2), 0)
             for i in range(self.mHeader['NumLinksArray']):
                 self.mLinklengths.append(unpack('b', self.path.read(1))[0])
         return self.mLinklengths
@@ -137,13 +137,17 @@ class SAPathSingleNode:
     # atm it seem buggy
     def __read_pathintersection_flags(self):
         if len(self.mPathintersectionsflags) != self.mHeader['NumLinksArray']:
-            self.path.seek(self.___offfset + (self.mHeader['NumNodes'] * 28) + (self.mHeader['NumCarPathLinks'] * 14) + (self.mHeader['NumLinksArray'] * 4) + 768 + (self.mHeader['NumLinksArray'] * 2) + self.mHeader['NumLinksArray'], 0)
+            self.path.seek(self.___offset + (self.mHeader['NumNodes'] * 28) + (self.mHeader['NumCarPathLinks'] * 14) + (self.mHeader['NumLinksArray'] * 4) + 768 + (self.mHeader['NumLinksArray'] * 2) + self.mHeader['NumLinksArray'], 0)
             for i in range(self.mHeader['NumLinksArray']):
                 self.mPathintersectionsflags.append({})
-                flags = unpack('B', self.path.read(1))[0]
+                flags = None
+                try:
+                    flags = unpack('B', self.path.read(1))[0]
+                except:
+                    # print("Error in reading path intersection. Ignoring...")
+                    flags = 0
                 self.mPathintersectionsflags[i]['isRoadCross'] = True if flags & 1 else False
                 self.mPathintersectionsflags[i]['isTrafficLight'] = True if flags & 2 else False
-
         return self.mPathintersectionsflags
 
     def Close(self):
@@ -152,13 +156,13 @@ class SAPathSingleNode:
 
 class SAPaths:
     def __init__(self):
-        self.nodes = []
-        self.carpathlinks = []
-
         self.carnodes = []
-        self.pednodes = []
         self.boatnodes = []
+        self.pednodes = []
 
+        self.carpathlinknodes = []
+        self.boatpathlinknodes = []
+        
     def __validateCarPathLink(self):
         for node in self.carnodes:
             for link in node['_links']:
@@ -182,13 +186,24 @@ class SAPaths:
                     assert linkNode is carpathlink['navigationTarget']
         print("[x] Finished Validation: Check for assertion errors")
 
+    def combine_carpathlink_nodes(self):
+        """
+        [x] CarPathLink Node are the directional nodes which they are placed between the two endpoints of a curve
+        [x] MIGHT determine the interpolation in some cases
+        [x] the navigation target is the appropriate vector it is heading in XY axis and disregards the target's z value
+        [x] normal vector provide a very rough approximation
+        """
+
+
+
+
 
     def seperate_nodes(self, areafiles):
         for area, currentfile in areafiles.items():
             for i in range(currentfile.mHeader['NumNodes']):
                 node = currentfile.mPathnodes[i]
 
-                # delete unused parameter
+                # TODO: delete unused parameter
                 # del node['areaID']
                 # del node['nodeID']
 
@@ -196,7 +211,7 @@ class SAPaths:
                 for k in range(node['numberOfLinks']):
                     linkArrayIndex = node['baseLink'] + k
                     linkInfo = {}
-                    linkInfo['targetNode'] =        areafiles[currentfile.mLinks[linkArrayIndex]['area']].mPathnodes[currentfile.mLinks[linkArrayIndex]['node']]
+                    linkInfo['targetNode'] =    areafiles[currentfile.mLinks[linkArrayIndex]['area']].mPathnodes[currentfile.mLinks[linkArrayIndex]['node']]
                     linkInfo['length'] =        currentfile.mLinklengths[node['baseLink'] + k]   # can be removed as we need to recalculate them anyway
                     linkInfo['intersection'] =  currentfile.mPathintersectionsflags[node['baseLink'] + k]
                     # only add car path link if vehicle node
@@ -216,6 +231,8 @@ class SAPaths:
                 else:
                     self.pednodes.append(node)
 
+                del node['isWaterNode']
+
             # car paths are automatically linked to nodes
             for i in range(currentfile.mHeader['NumCarPathLinks']):
                 carpathlink = currentfile.mCarpathlinks[i]
@@ -223,13 +240,41 @@ class SAPaths:
                 del carpathlink['targetNode']
                 del carpathlink['targetArea']
 
+        for i in range(len(self.boatnodes)):
+            self.boatnodes[i]['id'] = i
+
+        for i in range(len(self.carnodes)):
+            self.carnodes[i]['id'] = i
+
+        for i in range(len(self.pednodes)):
+            self.pednodes[i]['id'] = i
+
+        # DEBUG HELPER
+        i = 0
+        for node in self.carnodes:
+            for link in node['_links']:
+                carpathlink = link['carpathlink']
+                if 'id' not in carpathlink:
+                    carpathlink['id'] = i
+                    i = i+1
+                    self.carpathlinknodes.append(carpathlink)
+
+        i = 0
+        for node in self.boatnodes:
+            for link in node['_links']:
+                carpathlink = link['carpathlink']
+                if 'id' not in carpathlink:
+                    carpathlink['id'] = i
+                    i = i+1
+                    self.boatpathlinknodes.append(carpathlink)
+
         # validation
         #self.__validateCarPathLink()
 
         # TODO: merge carpathlink
         # TODO: seperate lines by their unique properties
 
-
+    # TODO: Remove this
     @staticmethod
     def unify_all_nodes(self, dictionaryAreaFile):
         list_all_nodes = []
