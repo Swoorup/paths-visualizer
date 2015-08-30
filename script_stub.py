@@ -1,4 +1,4 @@
-# This stub runs a python script relative to the currently open
+﻿# This stub runs a python script relative to the currently open
 # blend file, useful when editing scripts externally.
 
 import bpy
@@ -6,7 +6,7 @@ import os
 import sys
 
 # Use your own script name here:
-filename = r"G:\paths-visualizer\blenderscript.py"
+filename = r"E:\paths-visualizer\blenderview.py"
 
 filepath = os.path.join(os.path.dirname(bpy.data.filepath), filename)
 global_namespace = {"__file__": filepath, "__name__": "__main__"}
