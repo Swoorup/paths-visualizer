@@ -6,7 +6,7 @@ import os
 import sys
 
 # Use your own script name here:
-filename = r"E:\paths-visualizer\blenderview.py"
+filename = r"E:\paths-visualizer\__init__.py"
 
 filepath = os.path.join(os.path.dirname(bpy.data.filepath), filename)
 global_namespace = {"__file__": filepath, "__name__": "__main__"}

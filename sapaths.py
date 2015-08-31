@@ -97,10 +97,10 @@ class SAPathSingleNode:
                 flags = unpack('B', self.path.read(1))[0]
                 self.mCarpathlinks[i]['numLeftLanes'] = flags & 7
                 self.mCarpathlinks[i]['numRightLanes'] = (flags >> 3) & 7
-                self.mCarpathlinks[i]['trafficLight'] = (flags >> 4) & 1
+                self.mCarpathlinks[i]['trafficLightDirection'] = (flags >> 4) & 1
 
                 flags = unpack('B', self.path.read(1))[0]
-                self.mCarpathlinks[i]['trafficLightState'] = flags & 11
+                self.mCarpathlinks[i]['trafficLightBehaviour'] = flags & 11
                 self.mCarpathlinks[i]['isTrainCrossing'] = (flags >> 2) & 1
 
                 flags = unpack('B', self.path.read(1))[0]
