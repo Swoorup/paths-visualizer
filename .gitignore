@@ -3,4 +3,4 @@
 *.suo
 *.pyproj
 *.pyc
-__pycache__/sapaths.cpython-34.pyc
+*.pyc.*
