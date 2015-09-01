@@ -31,13 +31,13 @@ bl_info = {
 if "init_data" in locals():
     import importlib
     importlib.reload(ui_main_panel)
-    importlib.reload(path_mesh_loader)
+    importlib.reload(path_mesh_helper)
     importlib.reload(ui_mesh_vert_layer)
     importlib.reload(sapaths)
     print("Reloaded multifiles")
 else:
     from . import ui_main_panel
-    from . import path_mesh_loader
+    from . import path_mesh_helper
     from . import ui_mesh_vert_layer
     from . import sapaths
     print("Imported multifiles")
