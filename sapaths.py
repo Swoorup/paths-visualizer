@@ -41,7 +41,7 @@ class SAPathSingleNode:
                 self.path.read(4)  # Memory Address
                 self.path.read(4)  # Zero
 
-                self.mPathnodes[i] = collections.OrderedDict()
+#                self.mPathnodes[i] = collections.OrderedDict()
                 self.mPathnodes[i]['x'] = float(unpack('h', self.path.read(2))[0]) / 8.0
                 self.mPathnodes[i]['y'] = float(unpack('h', self.path.read(2))[0]) / 8.0
                 self.mPathnodes[i]['z'] = float(unpack('h', self.path.read(2))[0]) / 8.0
@@ -172,7 +172,6 @@ class SAPaths:
                 if node is not carpathlink['navigationTarget']:
                     print("LinkedNODE: ", linkNode['x'], linkNode['y'], linkNode['z'])
                     print("NavTarget: ", carpathlink['navigationTarget']['x'], carpathlink['navigationTarget']['y'], carpathlink['navigationTarget']['z'])
-
                     # sa path nodes are strange bugged here please check node 
                     
 
@@ -192,11 +191,6 @@ class SAPaths:
         [x] normal vector provide a very rough approximation
         """
 
-
-
-
-
-
     def seperate_nodes(self, areafiles):
         for area, currentfile in areafiles.items():
             for i in range(currentfile.mHeader['NumNodes']):
@@ -210,6 +204,9 @@ class SAPaths:
                 for k in range(node['numberOfLinks']):
                     linkArrayIndex = node['baseLink'] + k
                     linkInfo = {}
+                    print(linkArrayIndex)
+                    print(currentfile.mHeader['NumNodes'], currentfile.mHeader['NumLinksArray'])
+                    #print(currentfile.mLinks[linkArrayIndex]['area'], currentfile.mLinks[linkArrayIndex]['node'])
                     linkInfo['targetNode'] =    areafiles[currentfile.mLinks[linkArrayIndex]['area']].mPathnodes[currentfile.mLinks[linkArrayIndex]['node']]
                     linkInfo['length'] =        currentfile.mLinklengths[node['baseLink'] + k]   # can be removed as we need to recalculate them anyway
                     linkInfo['intersection'] =  currentfile.mPathintersectionsflags[node['baseLink'] + k]

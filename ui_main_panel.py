@@ -1,7 +1,7 @@
 ﻿import bpy
 import bmesh
 
-from . import path_mesh_loader
+from . import path_mesh_helper
 """
 
 GTA SA: sa_nodes_loader_operator
@@ -31,7 +31,7 @@ class test_nodes_loader_operator(bpy.types.Operator):
     path = bpy.props.StringProperty(name="sa_nodes_path")
 
     def execute(self, context):
-        path_mesh_loader.loadSAPathsAsMesh(self.path)
+        path_mesh_helper.loadSAPathsAsMesh(self.path)
         return {'FINISHED'}
 
 class sa_nodes_loader_operator(bpy.types.Operator):
@@ -41,7 +41,7 @@ class sa_nodes_loader_operator(bpy.types.Operator):
     directory = bpy.props.StringProperty(subtype="DIR_PATH")
 
     def execute(self, context):
-        path_mesh_loader.loadSAPathsAsMesh(self.directory)
+        path_mesh_helper.loadSAPathsAsMesh(self.directory)
         return {'FINISHED'}
 
     def invoke(self, context, event):
@@ -77,8 +77,6 @@ class PathsUltimatumPanel(bpy.types.Panel):
         layout = self.layout
 
         scene = context.scene
-
-       
 
         # Different sizes in a row
         row = layout.row()

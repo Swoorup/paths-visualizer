@@ -8,6 +8,7 @@ NODE_ISRESTRICTEDACCESS     = 'isRestrictedAccess'
 NODE_ISDONTWANDER           = 'isDontWander'
 NODE_SPEEDLIMIT             = 'speedlimit'
 NODE_SPAWNPROBABILITY       = 'spawnProbability'
+
 NODE_NUMLEFTLANES           = 'numLeftLanes'
 NODE_NUMRIGHTLANES          = 'numRightLanes'
 NODE_ISTRAINCROSSING        = 'isTrainCrossing'
