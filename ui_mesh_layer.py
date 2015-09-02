@@ -2,78 +2,136 @@
 import bmesh
 from . import path_mesh_helper
 from .ui_constants import *
-
-def writeUpdateToVert(self, context):
-    me = context.object.data
-    bm = bmesh.from_edit_mesh(me)
-    bmvert = bm.verts[self.index]
-    
-    #bmvert[bm.verts.layers.string[NODE_TYPE]]                = self.type
-    #bmvert[bm.verts.layers.int[NODE_AREAID]]                 = self.area
-    #bmvert[bm.verts.layers.int[NODE_ID]]                     = self.nodeid
-    #bmvert[bm.verts.layers.int[NODE_FLOOD]]                  = self.flood
-    
-    bmvert[bm.verts.layers.float[NODE_WIDTH]]                = self.width
-    bmvert[bm.verts.layers.int[NODE_BAHAVIOUR]]              = self.behaviour
-    bmvert[bm.verts.layers.int[NODE_ISDEADEND]]              = self.isdeadEnd
-    bmvert[bm.verts.layers.int[NODE_ISIGNORED]]              = self.isIgnoredNode
-    bmvert[bm.verts.layers.int[NODE_ISROADBLOCK]]            = self.isRoadBlock
-    bmvert[bm.verts.layers.int[NODE_ISEMERGENCYVEHICLEONLY]] = self.isEmergencyVehicleOnly
-    bmvert[bm.verts.layers.int[NODE_ISRESTRICTEDACCESS]]     = self.isRestrictedAccess
-    bmvert[bm.verts.layers.int[NODE_ISDONTWANDER]]           = self.isDontWander
-    bmvert[bm.verts.layers.int[NODE_SPEEDLIMIT]]             = self.speedlimit
-    bmvert[bm.verts.layers.int[NODE_SPAWNPROBABILITY]]       = self.spawnProbability
-    
-    print("fuck")
-    bmesh.update_edit_mesh(me, tessface=False, destructive=False)
-    #bm.free()
-
-def writeUpdateToEdge(self, context):
-    me = context.object.data
-    bm = bmesh.from_edit_mesh(me)
-    bmedge = bm.edges[self.index]
-    
-    bmedge[bm.edges.layers.float[EDGE_WIDTH]]                = self.width
-    bmedge[bm.edges.layers.int[EDGE_NUMLEFTLANES]]           = self.LeftLanes
-    bmedge[bm.edges.layers.int[EDGE_NUMRIGHTLANES]]          = self.RightLanes
-    bmedge[bm.edges.layers.int[EDGE_ISTRAINCROSSING]]        = self.isTrainCrossing
-    bmedge[bm.edges.layers.int[EDGE_TRAFFICLIGHTDIRECTION]]  = self.trafficLightDirection
-    bmedge[bm.edges.layers.int[EDGE_TRAFFICLIGHTBEHAVIOUR]]  = self.trafficLightBehaviour
-    bmesh.update_edit_mesh(me, tessface=False, destructive=False)
-    #bm.free()
     
 class MeshVertLayer(bpy.types.PropertyGroup):
+    def writeVertexWidth(self, context):
+        me = context.object.data
+        bm=bmesh.from_edit_mesh(me)
+        bm.verts[self.index][bm.verts.layers.float[NODE_WIDTH]] = self.width
+        bmesh.update_edit_mesh(me, tessface=False, destructive=False)
+    
+    def writeVertexBehaviour(self, context):
+        me = context.object.data
+        bm=bmesh.from_edit_mesh(me)
+        bm.verts[self.index][bm.verts.layers.int[NODE_BAHAVIOUR]] = self.behaviour
+        bmesh.update_edit_mesh(me, tessface=False, destructive=False)
+        
+    def writeVertexIsdeadEnd(self, context):
+        me = context.object.data
+        bm=bmesh.from_edit_mesh(me)
+        bm.verts[self.index][bm.verts.layers.int[NODE_ISDEADEND]] = self.behaviour
+        bmesh.update_edit_mesh(me, tessface=False, destructive=False)
+        
+    def writeVertexIsIgnoredNode(self, context):
+        me = context.object.data
+        bm=bmesh.from_edit_mesh(me)
+        bm.verts[self.index][bm.verts.layers.int[NODE_ISIGNORED]] = self.isIgnoredNode
+        bmesh.update_edit_mesh(me, tessface=False, destructive=False)
+        
+    def writeVertexIsRoadBlock(self, context):
+        me = context.object.data
+        bm=bmesh.from_edit_mesh(me)
+        bm.verts[self.index][bm.verts.layers.int[NODE_ISROADBLOCK]] = self.isRoadBlock
+        bmesh.update_edit_mesh(me, tessface=False, destructive=False)
+        
+    def writeVertexIsEmergencyVehicleOnly(self, context):
+        me = context.object.data
+        bm=bmesh.from_edit_mesh(me)
+        bm.verts[self.index][bm.verts.layers.int[NODE_ISEMERGENCYVEHICLEONLY]] = self.isEmergencyVehicleOnly
+        bmesh.update_edit_mesh(me, tessface=False, destructive=False)
+        
+    def writeVertexIsRestrictedAccess(self, context):
+        me = context.object.data
+        bm=bmesh.from_edit_mesh(me)
+        bm.verts[self.index][bm.verts.layers.int[NODE_ISRESTRICTEDACCESS]] = self.isRestrictedAccess
+        bmesh.update_edit_mesh(me, tessface=False, destructive=False)
+        
+    def writeVertexIsDontWander(self, context):
+        me = context.object.data
+        bm=bmesh.from_edit_mesh(me)
+        bm.verts[self.index][bm.verts.layers.int[NODE_ISDONTWANDER]] = self.isDontWander
+        bmesh.update_edit_mesh(me, tessface=False, destructive=False)
+        
+    def writeVertexSpeedlimit(self, context):
+        me = context.object.data
+        bm=bmesh.from_edit_mesh(me)
+        bm.verts[self.index][bm.verts.layers.int[NODE_SPEEDLIMIT]] = self.speedlimit
+        bmesh.update_edit_mesh(me, tessface=False, destructive=False)
+        
+    def writeVertexSpawnProbability(self, context):
+        me = context.object.data
+        bm=bmesh.from_edit_mesh(me)
+        bm.verts[self.index][bm.verts.layers.int[NODE_SPAWNPROBABILITY]] = self.spawnProbability
+        bmesh.update_edit_mesh(me, tessface=False, destructive=False)
+        
     index = bpy.props.IntProperty()
 
-    width                            = bpy.props.FloatProperty(update=writeUpdateToVert)
-    behaviour                        = bpy.props.IntProperty(update=writeUpdateToVert)
-    isdeadEnd                        = bpy.props.BoolProperty(update=writeUpdateToVert)
-    isIgnoredNode                    = bpy.props.BoolProperty(update=writeUpdateToVert)
-    isRoadBlock                      = bpy.props.BoolProperty(update=writeUpdateToVert)
-    isEmergencyVehicleOnly           = bpy.props.BoolProperty(update=writeUpdateToVert)
-    isRestrictedAccess               = bpy.props.BoolProperty(update=writeUpdateToVert)
-    isDontWander                     = bpy.props.BoolProperty(update=writeUpdateToVert)
-    speedlimit                       = bpy.props.IntProperty(update=writeUpdateToVert)
-    spawnProbability                 = bpy.props.IntProperty(update=writeUpdateToVert)
+    width                            = bpy.props.FloatProperty(update=writeVertexWidth)
+    behaviour                        = bpy.props.IntProperty(update=writeVertexBehaviour)
+    isdeadEnd                        = bpy.props.BoolProperty(update=writeVertexIsdeadEnd)
+    isIgnoredNode                    = bpy.props.BoolProperty(update=writeVertexIsIgnoredNode)
+    isRoadBlock                      = bpy.props.BoolProperty(update=writeVertexIsRoadBlock)
+    isEmergencyVehicleOnly           = bpy.props.BoolProperty(update=writeVertexIsEmergencyVehicleOnly)
+    isRestrictedAccess               = bpy.props.BoolProperty(update=writeVertexIsRestrictedAccess)
+    isDontWander                     = bpy.props.BoolProperty(update=writeVertexIsDontWander)
+    speedlimit                       = bpy.props.IntProperty(update=writeVertexSpeedlimit)
+    spawnProbability                 = bpy.props.IntProperty(update=writeVertexSpawnProbability)
+    
     type                             = bpy.props.StringProperty()
     area                             = bpy.props.IntProperty()
     nodeid                           = bpy.props.IntProperty()
     flood                            = bpy.props.IntProperty()
         
 class MeshEdgeLayer(bpy.types.PropertyGroup):
+    def writeEdgeWidth(self, context):
+        me = context.object.data
+        bm = bmesh.from_edit_mesh(me)
+        bm.edges[self.index][bm.edges.layers.float[EDGE_WIDTH]] = self.width
+        bmesh.update_edit_mesh(me, tessface=False, destructive=False)
+        
+    def writeEdgeLeftLanes(self, context):
+        me = context.object.data
+        bm = bmesh.from_edit_mesh(me)
+        bm.edges[self.index][bm.edges.layers.int[EDGE_NUMLEFTLANES]] = self.LeftLanes
+        bmesh.update_edit_mesh(me, tessface=False, destructive=False)
+        
+    def writeEdgeRightLanes(self, context):
+        me = context.object.data
+        bm = bmesh.from_edit_mesh(me)
+        bm.edges[self.index][bm.edges.layers.int[EDGE_NUMRIGHTLANES]] = self.RightLanes
+        bmesh.update_edit_mesh(me, tessface=False, destructive=False)
+        
+    def writeEdgeTrainCross(self, context):
+        me = context.object.data
+        bm = bmesh.from_edit_mesh(me)
+        bm.edges[self.index][bm.edges.layers.int[EDGE_ISTRAINCROSSING]] = self.isTrainCrossing
+        bmesh.update_edit_mesh(me, tessface=False, destructive=False)
+        
+    def writeEdgeTRL_DIR(self, context):
+        me = context.object.data
+        bm = bmesh.from_edit_mesh(me)
+        bm.edges[self.index][bm.edges.layers.int[EDGE_TRAFFICLIGHTDIRECTION]] = self.trafficLightDirection
+        bmesh.update_edit_mesh(me, tessface=False, destructive=False)
+        
+    def writeEdgeTRL_BEH(self, context):
+        me = context.object.data
+        bm = bmesh.from_edit_mesh(me)
+        bm.edges[self.index][bm.edges.layers.int[EDGE_TRAFFICLIGHTBEHAVIOUR]] = self.trafficLightBehaviour
+        bmesh.update_edit_mesh(me, tessface=False, destructive=False)
+        
     index = bpy.props.IntProperty()
 
-    width                            = bpy.props.FloatProperty(update=writeUpdateToEdge)
-    LeftLanes                        = bpy.props.IntProperty(update=writeUpdateToEdge)
-    RightLanes                       = bpy.props.IntProperty(update=writeUpdateToEdge)
-    isTrainCrossing                  = bpy.props.BoolProperty(update=writeUpdateToEdge)
-    trafficLightDirection            = bpy.props.IntProperty(update=writeUpdateToEdge)
-    trafficLightBehaviour            = bpy.props.IntProperty(update=writeUpdateToEdge)
+    width                            = bpy.props.FloatProperty(update=writeEdgeWidth)
+    LeftLanes                        = bpy.props.IntProperty(update=writeEdgeLeftLanes)
+    RightLanes                       = bpy.props.IntProperty(update=writeEdgeRightLanes)
+    isTrainCrossing                  = bpy.props.BoolProperty(update=writeEdgeTrainCross)
+    trafficLightDirection            = bpy.props.IntProperty(update=writeEdgeTRL_DIR)
+    trafficLightBehaviour            = bpy.props.IntProperty(update=writeEdgeTRL_BEH)
     
 class MeshLayer(bpy.types.PropertyGroup):
-    index = bpy.props.IntProperty()
+    vIndex = bpy.props.IntProperty()
+    eIndex = bpy.props.IntProperty()
     
-    isMyListOutdated = bpy.props.BoolProperty()
     vertList = bpy.props.CollectionProperty(type=MeshVertLayer)
     edgeList = bpy.props.CollectionProperty(type=MeshEdgeLayer)
 
@@ -106,6 +164,15 @@ class MeshVertLayerList(bpy.types.UIList):
             layout.label("area: " + str(item.area))
             layout.label("node: " +str(item.nodeid))
             layout.prop(item, "width", text="width", emboss=False)
+            layout.prop(item, "behaviour", text="behaviour", emboss=False)
+            layout.prop(item, "isdeadEnd", text="isdeadEnd", emboss=False)
+            layout.prop(item, "isIgnoredNode", text="isIgnoredNode", emboss=False)
+            layout.prop(item, "isRoadBlock", text="isRoadBlock", emboss=False)
+            layout.prop(item, "isEmergencyVehicleOnly", text="isEmergencyVehicleOnly", emboss=False)
+            layout.prop(item, "isRestrictedAccess", text="isRestrictedAccess", emboss=False)
+            layout.prop(item, "isDontWander", text="isDontWander", emboss=False)
+            layout.prop(item, "speedlimit", text="speedlimit", emboss=False)
+            layout.prop(item, "spawnProbability", text="spawnProbability", emboss=False)
 
         elif self.layout_type in {'GRID'}:
             layout.alignment = 'CENTER'
@@ -115,10 +182,10 @@ class MeshEdgeLayerList(bpy.types.UIList):
     def draw_item(self, context, layout, data, item, icon, active_data, active_propname):
         if self.layout_type in {'DEFAULT', 'COMPACT'}:
             layout.label(item.name)
-            #layout.prop(item, "LeftLanes", text="LeftLanes", emboss=False)
-            #layout.prop(item, "RightLanes", text="RightLanes", emboss=False)
-            layout.label("LeftLanes: " + str(item.LeftLanes))
-            layout.label("RightLanes: " +str(item.RightLanes))
+            layout.prop(item, "LeftLanes", text="LeftLanes", emboss=False)
+            layout.prop(item, "RightLanes", text="RightLanes", emboss=False)
+            #layout.label("LeftLanes: " + str(item.LeftLanes))
+            #layout.label("RightLanes: " +str(item.RightLanes))
             layout.prop(item, "width", text="width", emboss=False)
 
         elif self.layout_type in {'GRID'}:
@@ -136,13 +203,7 @@ def UpdateCollectionOnReq(self, context):
     
     selectedVertices = [v.index for v in bm.verts if v.select]
     selectedEdges = [e.index for e in bm.edges if e.select]
-    
-    #if len(selectedVertices) > 20:
-        #self.report({'ERROR'}, "fddf");
-        #return
-    
-    wm.mesh_layer.isMyListOutdated = False
-    
+   
     for i in selectedVertices:
         item = wm.mesh_layer.vertList.add()
         item.name = "v #%i" %i
@@ -151,12 +212,12 @@ def UpdateCollectionOnReq(self, context):
         bmvert = bm.verts[i]
         item.width                    =    bmvert[bm.verts.layers.float[NODE_WIDTH]]               
         item.behaviour                =    bmvert[bm.verts.layers.int[NODE_BAHAVIOUR]]             
-        item.isdeadEnd                =    bmvert[bm.verts.layers.int[NODE_ISDEADEND]]             
-        item.isIgnoredNode            =    bmvert[bm.verts.layers.int[NODE_ISIGNORED]]             
-        item.isRoadBlock              =    bmvert[bm.verts.layers.int[NODE_ISROADBLOCK]]           
-        item.isEmergencyVehicleOnly   =    bmvert[bm.verts.layers.int[NODE_ISEMERGENCYVEHICLEONLY]]
-        item.isRestrictedAccess       =    bmvert[bm.verts.layers.int[NODE_ISRESTRICTEDACCESS]]    
-        item.isDontWander             =    bmvert[bm.verts.layers.int[NODE_ISDONTWANDER]]          
+        item.isdeadEnd                =    bmvert[bm.verts.layers.int[NODE_ISDEADEND]] == 1
+        item.isIgnoredNode            =    bmvert[bm.verts.layers.int[NODE_ISIGNORED]] == 1
+        item.isRoadBlock              =    bmvert[bm.verts.layers.int[NODE_ISROADBLOCK]] == 1
+        item.isEmergencyVehicleOnly   =    bmvert[bm.verts.layers.int[NODE_ISEMERGENCYVEHICLEONLY]] == 1
+        item.isRestrictedAccess       =    bmvert[bm.verts.layers.int[NODE_ISRESTRICTEDACCESS]] == 1
+        item.isDontWander             =    bmvert[bm.verts.layers.int[NODE_ISDONTWANDER]] == 1
         item.speedlimit               =    bmvert[bm.verts.layers.int[NODE_SPEEDLIMIT]]            
         item.spawnProbability         =    bmvert[bm.verts.layers.int[NODE_SPAWNPROBABILITY]]      
         item.type                     =    bmvert[bm.verts.layers.string[NODE_TYPE]].decode()
@@ -177,29 +238,6 @@ def UpdateCollectionOnReq(self, context):
         item.isTrainCrossing          =    bmedge[bm.edges.layers.int[EDGE_ISTRAINCROSSING]]                     
         item.trafficLightDirection    =    bmedge[bm.edges.layers.int[EDGE_TRAFFICLIGHTDIRECTION]] 
         item.trafficLightBehaviour    =    bmedge[bm.edges.layers.int[EDGE_TRAFFICLIGHTBEHAVIOUR]] 
-    
-def CheckIfListOutdated(context):
-    wm = context.window_manager
-    
-    if wm.mesh_layer.isMyListOutdated:
-        return True
-        
-    ob = context.object
-    me = ob.data
-    bm = bmesh.from_edit_mesh(me)
-    
-    selectedVertices = [v.index for v in bm.verts if v.select]
-    selectedEdges = [e.index for e in bm.edges if e.select] 
-    
-    myVertList = [x.index for x in wm.mesh_layer.vertList] 
-    myEdgeList = [x.index for x in wm.mesh_layer.edgeList]
-    
-    if set(selectedVertices) == set(myVertList) and set(selectedEdges) == set(myEdgeList):
-        wm.mesh_layer.isMyListOutdated = False
-        return False
-    else:
-        wm.mesh_layer.isMyListOutdated = True
-        return True
     
 class display_editable_list_operator(bpy.types.Operator):
     """Test exporter which just writes hello world"""
@@ -246,15 +284,12 @@ class PathNodePropertiesPanel(bpy.types.Panel):
         
         row = layout.row(align=True)
         props = row.operator("paths.display_selected_for_edit")
-        
-        #if CheckIfListOutdated(context):
-            #return
            
         layout.label(text="Node Attributes")
-        layout.template_list("MeshVertLayerList", "", wm.mesh_layer, "vertList", wm.mesh_layer, "index")
+        layout.template_list("MeshVertLayerList", "", wm.mesh_layer, "vertList", wm.mesh_layer, "vIndex")
         
         layout.label(text="Edge Attributes")
-        layout.template_list("MeshEdgeLayerList", "", wm.mesh_layer, "edgeList", wm.mesh_layer, "index")
+        layout.template_list("MeshEdgeLayerList", "", wm.mesh_layer, "edgeList", wm.mesh_layer, "eIndex")
 
 
 def setupProps():
