@@ -32,13 +32,13 @@ if "init_data" in locals():
     import importlib
     importlib.reload(ui_main_panel)
     importlib.reload(path_mesh_helper)
-    importlib.reload(ui_mesh_vert_layer)
+    importlib.reload(ui_mesh_layer)
     importlib.reload(sapaths)
     print("Reloaded multifiles")
 else:
     from . import ui_main_panel
     from . import path_mesh_helper
-    from . import ui_mesh_vert_layer
+    from . import ui_mesh_layer
     from . import sapaths
     print("Imported multifiles")
 
@@ -49,12 +49,12 @@ import bpy
 def register():
     bpy.utils.register_module(__name__) 
     ui_main_panel.setupProps()
-    ui_mesh_vert_layer.setupProps()
+    ui_mesh_layer.setupProps()
     
 def unregister():
     bpy.utils.unregister_module(__name__) 
     ui_main_panel.removeProps()
-    ui_mesh_vert_layer.removeProps()
+    ui_mesh_layer.removeProps()
     
 if __name__ == "__main__":
     register()

@@ -16,7 +16,7 @@ def debugprintNode(msg, node):
 
     print('\n')
 
-def AddPathMeshVertLayers(bm):
+def AddPathMeshLayers(bm):
     bm.verts.layers.float.new(NODE_WIDTH)
     bm.verts.layers.int.new(NODE_BAHAVIOUR)
     bm.verts.layers.int.new(NODE_ISDEADEND)
@@ -27,17 +27,20 @@ def AddPathMeshVertLayers(bm):
     bm.verts.layers.int.new(NODE_ISDONTWANDER)
     bm.verts.layers.int.new(NODE_SPEEDLIMIT)
     bm.verts.layers.int.new(NODE_SPAWNPROBABILITY)
-    bm.verts.layers.int.new(NODE_NUMLEFTLANES)
-    bm.verts.layers.int.new(NODE_NUMRIGHTLANES)
-    bm.verts.layers.int.new(NODE_ISTRAINCROSSING)
+    
     bm.verts.layers.string.new(NODE_TYPE)
     bm.verts.layers.int.new(NODE_AREAID)
     bm.verts.layers.int.new(NODE_ID)
     bm.verts.layers.int.new(NODE_FLOOD)
-    bm.verts.layers.int.new(NODE_TRAFFICLIGHTDIRECTION)
-    bm.verts.layers.int.new(NODE_TRAFFICLIGHTBEHAVIOUR)
 
-def CopyValuesFromNodeToBMVert(node, bm, bmvert, nodeType, carPathLink=None):
+    bm.edges.layers.float.new(EDGE_WIDTH)
+    bm.edges.layers.int.new(EDGE_TRAFFICLIGHTDIRECTION)
+    bm.edges.layers.int.new(EDGE_TRAFFICLIGHTBEHAVIOUR)
+    bm.edges.layers.int.new(EDGE_NUMLEFTLANES)
+    bm.edges.layers.int.new(EDGE_NUMRIGHTLANES)
+    bm.edges.layers.int.new(EDGE_ISTRAINCROSSING)
+
+def CopyAttributesFromNodeToBMVert(node, bm, bmvert, nodeType):
     bmvert[bm.verts.layers.float[NODE_WIDTH]]                = node[NODE_WIDTH]
     bmvert[bm.verts.layers.int[NODE_BAHAVIOUR]]              = node[NODE_BAHAVIOUR]
     bmvert[bm.verts.layers.int[NODE_ISDEADEND]]              = node[NODE_ISDEADEND]
@@ -53,38 +56,26 @@ def CopyValuesFromNodeToBMVert(node, bm, bmvert, nodeType, carPathLink=None):
     bmvert[bm.verts.layers.int[NODE_ID]]                     = node[NODE_ID]
     bmvert[bm.verts.layers.int[NODE_FLOOD]]                  = node[NODE_FLOOD]
 
-    if carPathLink == None:
-        bmvert[bm.verts.layers.int[NODE_NUMLEFTLANES]]           = 0
-        bmvert[bm.verts.layers.int[NODE_NUMRIGHTLANES]]          = 0
-        bmvert[bm.verts.layers.int[NODE_ISTRAINCROSSING]]        = 0
-        bmvert[bm.verts.layers.int[NODE_TRAFFICLIGHTDIRECTION]]  = 0
-        bmvert[bm.verts.layers.int[NODE_TRAFFICLIGHTBEHAVIOUR]]  = 0
-    else:
-        bmvert[bm.verts.layers.int[NODE_NUMLEFTLANES]]           = carPathLink[NODE_NUMLEFTLANES]
-        bmvert[bm.verts.layers.int[NODE_NUMRIGHTLANES]]          = carPathLink[NODE_NUMRIGHTLANES]
-        bmvert[bm.verts.layers.int[NODE_ISTRAINCROSSING]]        = carPathLink[NODE_ISTRAINCROSSING]
-        bmvert[bm.verts.layers.int[NODE_TRAFFICLIGHTDIRECTION]]  = carPathLink[NODE_TRAFFICLIGHTDIRECTION]
-        bmvert[bm.verts.layers.int[NODE_TRAFFICLIGHTBEHAVIOUR]]  = carPathLink[NODE_TRAFFICLIGHTBEHAVIOUR]
+def CopyAttributesFromLinkToBMEdge(carPathLink, bm, bmedge):
+    bmedge[bm.edges.layers.float[EDGE_WIDTH]]                = carPathLink[EDGE_WIDTH]
+    bmedge[bm.edges.layers.int[EDGE_NUMLEFTLANES]]           = carPathLink[EDGE_NUMLEFTLANES]
+    bmedge[bm.edges.layers.int[EDGE_NUMRIGHTLANES]]          = carPathLink[EDGE_NUMRIGHTLANES]
+    bmedge[bm.edges.layers.int[EDGE_ISTRAINCROSSING]]        = carPathLink[EDGE_ISTRAINCROSSING]
+    bmedge[bm.edges.layers.int[EDGE_TRAFFICLIGHTDIRECTION]]  = carPathLink[EDGE_TRAFFICLIGHTDIRECTION]
+    bmedge[bm.edges.layers.int[EDGE_TRAFFICLIGHTBEHAVIOUR]]  = carPathLink[EDGE_TRAFFICLIGHTBEHAVIOUR]
 
-def createVehicleMesh(nodes):
-    verts = []
-    edges = []
-
-""" TODO: have edge layer to hold lane and other links information
-    Its quite evident this information can't be stored per vertex
-"""
-
+        
 def loadVehicleMesh(ob, nodes):
     bm = bmesh.new()
     bm.from_mesh(ob.data)
 
     # add the properties
-    AddPathMeshVertLayers(bm)
+    AddPathMeshLayers(bm)
     
     # add all vertices
     for node in nodes:
         bmvert = bm.verts.new((node['x'], node['y'], node['z']))
-        CopyValuesFromNodeToBMVert(node, bm, bmvert, 'path')
+        CopyAttributesFromNodeToBMVert(node, bm, bmvert, 'node')
 
     # add carpathlink vertex usually in the middle
     for node in nodes:
@@ -96,7 +87,7 @@ def loadVehicleMesh(ob, nodes):
             # carpathlinks point from higher id to lower id
             if node['id'] > linkedNode['id']:
                 bmvert = bm.verts.new((carpathlink['x'], carpathlink['y'], (node['z'] + linkedNode['z']) / 2.0))
-                CopyValuesFromNodeToBMVert(node, bm, bmvert, 'link', carpathlink)
+                CopyAttributesFromNodeToBMVert(node, bm, bmvert, 'link')
 
     bm.verts.index_update()
     bm.verts.ensure_lookup_table()
@@ -115,38 +106,15 @@ def loadVehicleMesh(ob, nodes):
                 # from and to order needs to be preserved to hold lane information, make sure blender does not play around with these
                 # TODO: check if link order is preserved by blender
                 # link to carpathpath 
-                bm.edges.new( (bm.verts[i], bm.verts[k]))
+                bmedge = bm.edges.new( (bm.verts[i], bm.verts[k]))
+                CopyAttributesFromLinkToBMEdge(carpathlink, bm, bmedge)
                 # then to targetnode
-                bm.edges.new( (bm.verts[k], bm.verts[linkedIndex])) 
+                bmedge = bm.edges.new( (bm.verts[k], bm.verts[linkedIndex])) 
+                CopyAttributesFromLinkToBMEdge(carpathlink, bm, bmedge)
                 # copy the carpathlink information
                 k = k+1
-
-
-    #bm.edges.ensure_lookup_table()
-    #bm.verts.ensure_lookup_table()
-    
     bm.to_mesh(ob.data)
     bm.free()
-
-def loadCarPathLinkMesh(ob, pathlinks):
-    bm = bmesh.new()
-    bm.from_mesh(ob.data)
-
-    for carpathlink in pathlinks:
-        bm.verts.new((carpathlink['x'], carpathlink['y'], 0.0))
-        bm.verts.new((carpathlink['x'] + carpathlink['dirX'] , carpathlink['y'] + carpathlink['dirY'], 0.0))
-        bm.verts.new((carpathlink['navigationTarget']['x'] , carpathlink['navigationTarget']['y'], 0.0))
-    
-        bm.verts.index_update()
-    bm.verts.ensure_lookup_table()
-
-    for carpathlink in pathlinks:
-        id = carpathlink['id']
-        bm.edges.new((bm.verts[id * 3], bm.verts[id * 3 + 1]))
-        bm.edges.new((bm.verts[id * 3], bm.verts[id * 3 + 2]))
-    bm.to_mesh(ob.data)
-    bm.free()
-
     
 def loadPedPathMesh(ob, nodes):
     bm = bmesh.new()
@@ -208,12 +176,4 @@ def loadSAPathsAsMesh(nodesDir):
     ob = bpy.data.objects.new('PathMeshPed', bpy.data.meshes.new('myMesh')) 
     bpy.context.scene.objects.link(ob)
     #loadPedPathMesh(ob, paths.pednodes)
-
-    #DEBUG HELPER
-    ob = bpy.data.objects.new('boatpathlinknodes', bpy.data.meshes.new('myMesh')) 
-    bpy.context.scene.objects.link(ob)
-    loadCarPathLinkMesh(ob, paths.boatpathlinknodes)
-    ob = bpy.data.objects.new('carpathlinknodes', bpy.data.meshes.new('myMesh')) 
-    bpy.context.scene.objects.link(ob)
-    #loadCarPathLinkMesh(ob, paths.carpathlinknodes)
     

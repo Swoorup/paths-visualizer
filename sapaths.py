@@ -4,7 +4,12 @@ from struct import unpack
 from io import BytesIO
 import re
 import collections
-from time import sleep
+
+def getBitFields(var, lOffset, size):
+    return (var >> lOffset) & ((2 ** size) -1)
+
+def getNodeNumberOfLinks(flags):
+    return getBitFields(flags, 0, 3)
 
 class SAPathSingleNode:
     def __init__(self, node):
@@ -92,7 +97,7 @@ class SAPathSingleNode:
                 self.mCarpathlinks[i]['dirX'] = float(unpack('b', self.path.read(1))[0]) / 100
                 self.mCarpathlinks[i]['dirY'] = float(unpack('b', self.path.read(1))[0]) / 100
 
-                self.mCarpathlinks[i]['width'] = unpack('b', self.path.read(1))[0]
+                self.mCarpathlinks[i]['width'] = unpack('b', self.path.read(1))[0] / 8
 
                 flags = unpack('B', self.path.read(1))[0]
                 self.mCarpathlinks[i]['numLeftLanes'] = flags & 7
@@ -204,8 +209,6 @@ class SAPaths:
                 for k in range(node['numberOfLinks']):
                     linkArrayIndex = node['baseLink'] + k
                     linkInfo = {}
-                    print(linkArrayIndex)
-                    print(currentfile.mHeader['NumNodes'], currentfile.mHeader['NumLinksArray'])
                     #print(currentfile.mLinks[linkArrayIndex]['area'], currentfile.mLinks[linkArrayIndex]['node'])
                     linkInfo['targetNode'] =    areafiles[currentfile.mLinks[linkArrayIndex]['area']].mPathnodes[currentfile.mLinks[linkArrayIndex]['node']]
                     linkInfo['length'] =        currentfile.mLinklengths[node['baseLink'] + k]   # can be removed as we need to recalculate them anyway
@@ -269,71 +272,6 @@ class SAPaths:
 
         # TODO: merge carpathlink
         # TODO: seperate lines by their unique properties
-
-    # TODO: Remove this
-    @staticmethod
-    def unify_all_nodes(self, dictionaryAreaFile):
-        list_all_nodes = []
-        list_all_carpathlinks = []
-
-        hash_node_id = {}
-        hash_carpathlink_id = {}
-
-        for area, file_node in dictionaryAreaFile.items():
-            # add all nodes
-            for i in range(file_node.mHeader['NumNodes']):
-                node = file_node.mPathnodes[i]
-                hash_node_id[(area, node['nodeID'])] = len(list_all_nodes)
-
-                # delete it as they are not used anymore
-                del node['areaID']
-                del node['nodeID']
-
-                node['_links'] = []
-                for k in range(node['numberOfLinks']):
-                    connectioninfo = {
-                        'target':               file_node.mLinks[node['baseLink'] + k],
-                        'navilink':             file_node.mNavi[node['baseLink'] + k],
-                        'length':               file_node.mLinklengths[node['baseLink'] + k],
-                        'intersection':         file_node.mPathintersectionsflags[node['baseLink'] + k],
-                    }
-                    node['_links'].append(connectioninfo)
-
-                del node['numberOfLinks']
-                del node['baseLink']
-                node['_nodeType'] = 'vehicle' if i < file_node.mHeader['NumVehNodes'] else 'ped'
-                list_all_nodes.append(node)
-
-            for i in range(file_node.mHeader['NumCarPathLinks']):
-                carpathlink = file_node.mCarpathlinks[i]
-                hash_carpathlink_id[(area, i)] = len(list_all_carpathlinks)
-                list_all_carpathlinks.append(carpathlink)
-
-        # assign the single IDs now, its better to let python do this stuff
-        for i in range(len(list_all_nodes)):
-            for k in range(len(list_all_nodes[i]['_links'])):
-                list_all_nodes[i]['_links'][k]['targetID'] = hash_node_id[(list_all_nodes[i]['_links'][k]['target']['area'],list_all_nodes[i]['_links'][k]['target']['node'])]
-                del list_all_nodes[i]['_links'][k]['target']
-
-                # Only vehicle can have the car path links
-                if list_all_nodes[i]['_nodeType'] == 'vehicle':
-                    list_all_nodes[i]['_links'][k]['carpathlinkID'] = hash_carpathlink_id[(list_all_nodes[i]['_links'][k]['navilink']['area'], list_all_nodes[i]['_links'][k]['navilink']['carpathlink'])]
-
-                del list_all_nodes[i]['_links'][k]['navilink']
-                # del allNodes[i]['_links'][k]['navilink']
-
-        # fix IDs in carpathlinks
-        for i in range(len(list_all_carpathlinks)):
-            list_all_carpathlinks[i]['targetID'] = hash_node_id[(list_all_carpathlinks[i]['targetArea'], list_all_carpathlinks[i]['targetNode'])]
-            del list_all_carpathlinks[i]['targetNode']
-            del list_all_carpathlinks[i]['targetArea']
-
-        # Optional validation
-        #self.__validateCarPathLink(self, list_all_nodes, list_all_carpathlinks)
-
-        self.nodes = list_all_nodes
-        self.carpathlinks = list_all_carpathlinks
-        # next search of line segments
 
     def load_nodes_from_directory(self, dirpath):
         f = []
