@@ -132,6 +132,8 @@ class MeshEdgeLayer(bpy.types.PropertyGroup):
 class MeshLayer(bpy.types.PropertyGroup):
     currentObj = StringProperty()
     
+    bSelectOnListClick = BoolProperty(default=False)
+
     vIndex = IntProperty()
     eIndex = IntProperty()
     
@@ -193,16 +195,16 @@ class MeshVertLayerList(bpy.types.UIList):
         bm = bmesh.from_edit_mesh(me)
         
         global prevVertSelection
-        if prevVertSelection == vIndex:
+        if prevVertSelection == vIndex or wm.mesh_layer.bSelectOnListClick == False:
             return
         
-        print("Changing vert to: " + str(vIndex))
-        if item.index != -1:
+        print("Changing vert for " + ob.name + "from: " + str(prevVertSelection) + " to: " + str(vIndex))
+        if item.index != -1 and len(vertList) > 0:
             for i in range(len(vertList)):
                 if i != vIndex:
                     bm.verts[vertList[i].index].select = False
         
-        bm.verts[vertList[vIndex].index].select = True
+            bm.verts[vertList[vIndex].index].select = True
         prevVertSelection = vIndex
 
 prevEdgeSelection = -1        
@@ -229,16 +231,16 @@ class MeshEdgeLayerList(bpy.types.UIList):
         bm = bmesh.from_edit_mesh(me)
         
         global prevEdgeSelection
-        if prevEdgeSelection == eIndex:
+        if prevEdgeSelection == eIndex or wm.mesh_layer.bSelectOnListClick == False:
             return
         
-        print("Changing edge to: " + str(eIndex))
-        if item.index != -1:
+        print("Changing edge for " + ob.name + "from: " + str(prevEdgeSelection) + " to: " + str(eIndex))
+        if item.index != -1 and len(edgeList) > 0:
             for i in range(len(edgeList)):
                 if i != eIndex:
                     bm.edges[edgeList[i].index].select = False
         
-        bm.edges[edgeList[eIndex].index].select = True
+            bm.edges[edgeList[eIndex].index].select = True
         prevEdgeSelection = eIndex
         
 def ClearCollection(context):
@@ -246,13 +248,29 @@ def ClearCollection(context):
     
     wm.mesh_layer.vertList.clear()
     wm.mesh_layer.edgeList.clear()
+
+    wm.mesh_layer.vIndex = -1
+    wm.mesh_layer.eIndex = -1
+    
+    global prevEdgeSelection, prevVertSelection
+    prevVertSelection = -1
+    prevEdgeSelection = -1
     
 def ClearCollectionIfNecessary(context):
     objname = bpy.context.object.name
     wm = context.window_manager
+
+    if context.object is None:
+        ClearCollection(context)
+        return
+
+    if context.object.type != 'MESH' or context.object.mode != 'EDIT':
+        ClearCollection(context)
+        return
     
     if (wm.mesh_layer.currentObj != objname): 
         ClearCollection(context)
+        return
 
 def UpdateCollectionOnReq(self, context):
     wm = context.window_manager
@@ -306,7 +324,7 @@ def UpdateCollectionOnReq(self, context):
 class display_editable_list_operator(bpy.types.Operator):
     """Test exporter which just writes hello world"""
     bl_idname = "paths.display_selected_for_edit"
-    bl_label = "Display Or Refresh Selected"
+    bl_label = "List/Refresh Properties"
 
     def execute(self, context):
         UpdateCollectionOnReq(self, context)
@@ -323,15 +341,19 @@ class PathNodePropertiesPanel(bpy.types.Panel):
 
     @classmethod
     def poll(cls, context):
-        return (context.object is not None and
-                context.object.type == 'MESH' and
-                context.object.mode == 'EDIT')
+        return True
 
     def draw(self, context):
         layout = self.layout
         wm = context.window_manager
         ClearCollectionIfNecessary(context)
         ob = context.object
+
+        if (context.object is None or
+                context.object.type != 'MESH' or
+                context.object.mode != 'EDIT'):
+            return
+
         me = ob.data
         bm = bmesh.from_edit_mesh(me)
         try:
@@ -345,9 +367,12 @@ class PathNodePropertiesPanel(bpy.types.Panel):
             layout.label("Vertex select only", icon = 'INFO')
             return
         
+        layout.label(text="Selected Vertices")
         row = layout.row(align=True)
+        row.scale_y = 1.5
         props = row.operator("paths.display_selected_for_edit")
-           
+        row.prop(wm.mesh_layer, "bSelectOnListClick", text="Select Vertex on Highlight")
+
         layout.label(text="Node Attributes")
         layout.template_list("MeshVertLayerList", "", wm.mesh_layer, "vertList", wm.mesh_layer, "vIndex")
         
