@@ -5,6 +5,9 @@ from io import BytesIO
 import re
 import collections
 
+PREFIX = "nodes"
+EXT = "dat"
+
 def getBitFields(var, lOffset, size):
     return (var >> lOffset) & ((2 ** size) -1)
 
@@ -36,7 +39,6 @@ class SAPathSingleNode:
         self.__read_carpathlinks_array()
         self.__read_linklengths()
         self.__read_pathintersection_flags()
-
 
     def __read_pathnodes(self):
         if len(self.mPathnodes) != self.mHeader['NumNodes']:
@@ -105,7 +107,7 @@ class SAPathSingleNode:
                 self.mCarpathlinks[i]['trafficLightDirection'] = (flags >> 4) & 1
 
                 flags = unpack('B', self.path.read(1))[0]
-                self.mCarpathlinks[i]['trafficLightBehaviour'] = flags & 11
+                self.mCarpathlinks[i]['trafficLightBehaviour'] = flags & 3
                 self.mCarpathlinks[i]['isTrainCrossing'] = (flags >> 2) & 1
 
                 flags = unpack('B', self.path.read(1))[0]
@@ -280,7 +282,7 @@ class SAPaths:
             break
 
         dict_path_files = {}
-        for i in (files for files in f if files.lower().startswith("nodes") and files.lower().endswith(".dat")):
+        for i in (files for files in f if files.lower().startswith(PREFIX) and files.lower().endswith("."+EXT)):
             area_id = int(re.search(r'\d+', i).group())
             filepath = join(dirpath, i)
             dict_path_files[area_id] = SAPathSingleNode(filepath)

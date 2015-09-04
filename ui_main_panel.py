@@ -3,7 +3,6 @@ import bmesh
 
 from . import path_mesh_helper
 """
-
 GTA SA: sa_nodes_loader_operator
 GTA VC: ipl_paths_loader_operator
 GTA IV: iv_nodes_loader_operator

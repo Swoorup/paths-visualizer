@@ -34,12 +34,14 @@ if "init_data" in locals():
     importlib.reload(path_mesh_helper)
     importlib.reload(ui_mesh_layer)
     importlib.reload(sapaths)
+    importlib.reload(ivpaths)
     print("Reloaded multifiles")
 else:
     from . import ui_main_panel
     from . import path_mesh_helper
     from . import ui_mesh_layer
     from . import sapaths
+    from . import ivpaths
     print("Imported multifiles")
 
 init_data = True

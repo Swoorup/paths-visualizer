@@ -2,7 +2,7 @@
 import bmesh
 from mathutils import Vector
 
-from . import sapaths
+from . import sapaths, ivpaths
 from .ui_constants import *
 
 def debugprintNode(msg, node):
@@ -156,6 +156,7 @@ def loadPedPathMesh(ob, nodes):
     bm.to_mesh(ob.data)
     bm.free()
 
+
 def loadSAPathsAsMesh(nodesDir):
     paths = sapaths.SAPaths()
     paths.load_nodes_from_directory(nodesDir)    
@@ -177,3 +178,52 @@ def loadSAPathsAsMesh(nodesDir):
     bpy.context.scene.objects.link(ob)
     #loadPedPathMesh(ob, paths.pednodes)
     
+
+
+def loadivVehicleMesh(ob, nodes):
+    bm = bmesh.new()
+    bm.from_mesh(ob.data)
+
+    # add the properties
+    AddPathMeshLayers(bm)
+    
+    # add all vertices
+    for node in nodes:
+        bmvert = bm.verts.new((node['x'], node['y'], node['z']))
+        CopyAttributesFromNodeToBMVert(node, bm, bmvert, 'node')
+
+    bm.verts.index_update()
+    bm.verts.ensure_lookup_table()
+
+    # connect all the edge data
+    k = len(nodes) # offset of carpathlink data
+    for node in nodes:
+        i = node['id']
+        for link in node['_links']:
+            linkedNode = link['targetNode']
+            linkedIndex = linkedNode['id']
+
+            try:
+                bmedge = bm.edges.new( (bm.verts[i], bm.verts[linkedIndex]))
+                #CopyAttributesFromLinkToBMEdge(carpathlink, bm, bmedge)
+            except ValueError: # already exist
+                continue
+
+    bm.to_mesh(ob.data)
+    bm.free()
+
+def loadIVPathsAsMesh(nodesDir):
+    paths = ivpaths.IVPaths()
+    paths.load_nodes_from_directory(nodesDir)    
+
+    # Create mesh 
+    me = bpy.data.meshes.new('myMesh') 
+    # Create object
+    ob = bpy.data.objects.new('PathMeshCars', me) 
+    bpy.context.scene.objects.link(ob)
+    loadivVehicleMesh(ob, paths.carnodes)
+
+    # Create object
+    ob = bpy.data.objects.new('PathMeshBoats', bpy.data.meshes.new('myMesh')) 
+    bpy.context.scene.objects.link(ob)
+    loadivVehicleMesh(ob, paths.boatnodes)
