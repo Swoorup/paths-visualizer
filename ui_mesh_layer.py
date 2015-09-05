@@ -322,11 +322,17 @@ def UpdateCollectionOnReq(self, context):
     wm.mesh_layer.currentObj = objname
     
 class display_editable_list_operator(bpy.types.Operator):
-    """Test exporter which just writes hello world"""
-    bl_idname = "paths.display_selected_for_edit"
+    bl_idname = "paths.display_selected"
     bl_label = "List/Refresh Properties"
 
+    @classmethod
+    def poll(cls, context):
+        return (context.object is not None and
+                context.object.type == 'MESH' and
+                context.object.mode == 'EDIT')
+        
     def execute(self, context):
+        print("Displaying node/edge attributes")
         UpdateCollectionOnReq(self, context)
         return {'FINISHED'}
         
@@ -375,7 +381,7 @@ class PathNodePropertiesPanel(bpy.types.Panel):
         layout.label(text="Selected " + selectedMode+"(s)")
         row = layout.row(align=True)
         row.scale_y = 1.5
-        props = row.operator("paths.display_selected_for_edit")
+        props = row.operator(display_editable_list_operator.bl_idname)
         row.prop(wm.mesh_layer, "bSelectOnListClick", text="Select " + selectedMode+"(s)" + " on Highlight")
         
         if bm.select_mode == {'VERT'}:
@@ -386,16 +392,25 @@ class PathNodePropertiesPanel(bpy.types.Panel):
         layout.template_list("MeshEdgeLayerList", "", wm.mesh_layer, "edgeList", wm.mesh_layer, "eIndex")
 
 
+addon_keymaps = []
 def setupProps():
     bpy.types.WindowManager.mesh_layer = PointerProperty(type=MeshLayer)
+    wm = bpy.context.window_manager
+    km = wm.keyconfigs.addon.keymaps.new(name="3D View", space_type="VIEW_3D")
+    kmi = km.keymap_items.new(display_editable_list_operator.bl_idname, 'Q', 'PRESS', alt=True)
+    addon_keymaps.append(km)
     
 def removeProps():
     del bpy.types.WindowManager.mesh_layer
+    wm = bpy.context.window_manager
+    for km in addon_keymaps:
+        wm.keyconfigs.addon.keymaps.remove(km)
+    addon_keymaps.clear()
 
 def register():
     bpy.utils.register_module(__name__)
     setupProps()
-
+    
 def unregister():
     bpy.utils.unregister_module(__name__)
     removeProps()
