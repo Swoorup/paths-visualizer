@@ -10,12 +10,6 @@ def draw_arrow_head(self, context, vecFrom, vecTo):
     if ob is None:
         return
     
-    arrow = [
-        [-1,-1],
-        [0,0],
-        [1,-1],
-    ]
-    
     middle = (Vector(vecTo) + Vector(vecFrom)) / 2.0
     
     v = Vector(vecTo) - Vector(vecFrom)
@@ -32,25 +26,6 @@ def draw_arrow_head(self, context, vecFrom, vecTo):
     bgl.glVertex3f(*(middle))
     bgl.glVertex3f(*(middle + v2))
     bgl.glEnd()
-    
-    """
-    direction = Vector(vecTo) - Vector(vecFrom)
-    angle = direction.angle(Vector((1,0,0 )))
-    
-    # form a 2d rotation matrix
-    mat = Matrix()
-    mat.rotate((0,0,angle))
-    
-    # middle point
-    
-    
-    bgl.glBegin(bgl.GL_LINE_STRIP)
-    for v in arrow:
-        xy = mat * Vector(v).to_3d()
-        newPos = xy + middle
-        bgl.glVertex3f(*newPos)
-    bgl.glEnd()
-    """
 
 def draw_edge_direction(self, context):
     ob = context.object
@@ -66,7 +41,7 @@ def draw_edge_direction(self, context):
     bm = bmesh.from_edit_mesh(me)
     
     for e in bm.edges:
-        draw_arrow_head(self, context, e.verts[0].co, e.verts[1].co)
+        draw_arrow_head(self, context, e.verts[0].co + ob.location, e.verts[1].co + ob.location)
     
     
 def draw_callback_px(self, context):
@@ -80,15 +55,7 @@ def draw_callback_px(self, context):
     bgl.glColor4f(1.0, 1.0, 1.0, 0.5)
     bgl.glLineWidth(2)
     
-    #draw_arrow_head(self, context, [1,1,0], [0,10,0])
     draw_edge_direction(self, context)
-    
-    """
-    bgl.glBegin(bgl.GL_LINE_STRIP)
-    bgl.glVertex3f(*ob.matrix_world.translation)
-    bgl.glVertex3f(*context.scene.cursor_location)
-    bgl.glEnd()
-    """
 
     # restore opengl defaults
     bgl.glLineWidth(1)

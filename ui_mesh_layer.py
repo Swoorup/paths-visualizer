@@ -362,19 +362,25 @@ class PathNodePropertiesPanel(bpy.types.Panel):
             layout.label("This is not a path mesh.")
             layout.operator("mesh.layer_add")
             return
+
+        selectedMode = 'Vertex'
+
+        if bm.select_mode == {'EDGE'}:
+            selectedMode = 'Edge'
         
-        if bm.select_mode != {'VERT'}:
-            layout.label("Vertex select only", icon = 'INFO')
+        if bm.select_mode != {'VERT'} and bm.select_mode != {'EDGE'}:
+            layout.label("Vertex or Edge select only", icon = 'INFO')
             return
         
-        layout.label(text="Selected Vertices")
+        layout.label(text="Selected " + selectedMode+"(s)")
         row = layout.row(align=True)
         row.scale_y = 1.5
         props = row.operator("paths.display_selected_for_edit")
-        row.prop(wm.mesh_layer, "bSelectOnListClick", text="Select Vertex on Highlight")
-
-        layout.label(text="Node Attributes")
-        layout.template_list("MeshVertLayerList", "", wm.mesh_layer, "vertList", wm.mesh_layer, "vIndex")
+        row.prop(wm.mesh_layer, "bSelectOnListClick", text="Select " + selectedMode+"(s)" + " on Highlight")
+        
+        if bm.select_mode == {'VERT'}:
+            layout.label(text="Node Attributes")
+            layout.template_list("MeshVertLayerList", "", wm.mesh_layer, "vertList", wm.mesh_layer, "vIndex")
         
         layout.label(text="Edge Attributes")
         layout.template_list("MeshEdgeLayerList", "", wm.mesh_layer, "edgeList", wm.mesh_layer, "eIndex")
