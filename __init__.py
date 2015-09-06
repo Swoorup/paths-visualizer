@@ -54,9 +54,9 @@ def register():
     ui_mesh_layer.setupProps()
     
 def unregister():
-    bpy.utils.unregister_module(__name__) 
     ui_main_panel.removeProps()
     ui_mesh_layer.removeProps()
+    bpy.utils.unregister_module(__name__) 
     
 if __name__ == "__main__":
     register()

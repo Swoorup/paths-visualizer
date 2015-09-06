@@ -3,6 +3,9 @@ import bmesh
 from . import path_mesh_helper
 from .ui_constants import *
 from bpy.props import StringProperty, BoolProperty, IntProperty, CollectionProperty, FloatProperty, PointerProperty
+from bgl import *
+from mathutils import *
+from math import *
     
 class MeshVertLayer(bpy.types.PropertyGroup):
     def updateVertWidth(self, context):
@@ -128,11 +131,182 @@ class MeshEdgeLayer(bpy.types.PropertyGroup):
     isTrainCrossing                  = BoolProperty(update=updateEdgeTrainCross)
     trafficLightDirection            = IntProperty(update=updateEdgeTRL_DIR)
     trafficLightBehaviour            = IntProperty(update=updateEdgeTRL_BEH)
-    
+
+fnHandle = 0
+displayListIndex = 0
 class MeshLayer(bpy.types.PropertyGroup):
-    currentObj = StringProperty()
+    @staticmethod
+    def draw_callback_px(context, displayListIndex):
+        wm = context.window_manager
+        if wm.mesh_layer.bDisplayEdgeDirection == False:
+            return
+        
+        ob = context.object
+        if ob is None:
+            return
     
+        # 50% alpha, 2 pixel width line
+        glEnable(GL_BLEND)
+        glColor4f(1.0, 1.0, 1.0, 0.5)
+        glLineWidth(2)
+        
+        glPushMatrix()
+        glScalef(*ob.scale)
+        glTranslatef(*ob.location)
+        glCallList(displayListIndex)
+        glPopMatrix()
+    
+        # restore opengl defaults
+        glLineWidth(1)
+        glDisable(GL_BLEND)
+        glColor4f(0.0, 0.0, 0.0, 1.0)
+        
+    @staticmethod
+    def MatrixBuffer(mat):
+        f= Buffer(GL_FLOAT, 16)
+        for i in range(4):
+            for j in range(4):
+                f[i * 4 + j] = float(mat[i][j])
+            
+        return f
+    
+    def createArrowDisplayList(self, context):
+        ob = context.object
+        if ob is None:
+            return
+        
+        if bpy.context.active_object.mode != 'EDIT':
+            return
+            
+        ob = context.edit_object
+        me = ob.data
+        
+        bm = bmesh.from_edit_mesh(me)
+        index = glGenLists(1)
+        
+        glNewList(index, GL_COMPILE)
+        for e in bm.edges:
+            vecFrom = e.verts[0].co
+            vecTo = e.verts[1].co
+
+            middle = (Vector(vecTo) + Vector(vecFrom)) / 2.0
+            
+            v = Vector(vecTo) - Vector(vecFrom)
+            v.normalize()
+            
+            # if vector is straight pointing up ignore it
+            if abs(v.x) < 0.0001 and abs(v.y) < 0.0001:
+                continue
+            
+            vPerp1 = Vector((-v.y, v.x, 0.0))
+            vPerp2 = Vector((v.y, -v.x, 0.0))
+            
+            v1 = (vPerp1 - v).normalized()
+            v2 = (vPerp2 - v).normalized()
+            
+            
+            glColor3f(0.0,0.0,1.0)
+            glPushMatrix()
+            hAngle = degrees(v.xy.angle_signed(Vector((0,1))))
+            glTranslatef(*middle)
+            glRotatef(hAngle, 0.0, 0.0, 1.0)
+            
+            scaler = 0.7
+            glScalef(scaler, scaler, scaler)
+            
+            glBegin(GL_LINE_STRIP)
+            glVertex3f( -0.5, -1.0, 0.0 )      
+            glVertex3f( 0.0, 1.0, 0.0 )
+            glVertex3f( 0.5, -1.0, 0.0 )
+            
+            glEnd()
+            glPopMatrix()
+            
+            # Lane Information
+            glPushMatrix()
+            
+            glColor3f(0.0,0.0,1.0)
+            glPushMatrix()
+            
+
+            v = Vector(vecTo) - Vector(vecFrom)
+            
+            
+            x = Vector((1.0, 0.0, 0.0))
+            y = Vector((0.0, 1.0, 0.0))
+            z = Vector((0.0, 0.0, 1.0))
+            
+            
+            x = (v.cross(v.xy.to_3d())).normalized()
+            y = v.normalized()
+            z = (-y.cross(x)).normalized()
+            
+            mat = Matrix()
+            mat.col[0] = x[0], x[1], x[2], 0.0
+            mat.col[1] = y[0], y[1], y[2], 0.0
+            mat.col[2] = z[0], z[1], z[2], 0.0
+            mat.col[3] = middle[0], middle[1], middle[2], 1.0
+            
+            mat = mat.to_3x3()
+            mat = mat.to_4x4()
+            print(mat)
+            
+            glMultMatrixf(MeshLayer.MatrixBuffer(mat))
+            glTranslatef(*middle)
+            #hAngle = degrees(v.xy.angle_signed(Vector((0,1))))
+            #vAngle = degrees(v.yz.angle_signed(Vector((1,0))))
+            
+            #glRotatef(vAngle, 1.0, 0.0, 0.0)
+            #glRotatef(hAngle, 0.0, 0.0, 1.0)
+
+            glBegin(GL_LINE_LOOP)
+            glVertex3f( -0.5, 0.5, 0.0 )      
+            glVertex3f( 0.5, 0.5, 0.0 )
+            glVertex3f( 0.5, -0.5, 0.0 )
+            glVertex3f( -0.5, -0.5, 0.0 )
+            glEnd()
+            
+            glPopMatrix()
+            """
+            glBegin(GL_LINE_STRIP)
+            glVertex3f(*(middle + v1))
+            glVertex3f(*(middle))
+            glVertex3f(*(middle + v2))
+            glEnd()
+            """
+            
+        glEndList()
+        return index
+        
+    @staticmethod
+    def deleteDisplayList():
+        global displayListIndex
+        if displayListIndex != -1:
+            glDeleteLists(displayListIndex, 1)
+        displayListIndex = -1
+    
+    @staticmethod
+    def removeFnHandle():
+        global fnHandle
+        if fnHandle != 0:
+            bpy.types.SpaceView3D.draw_handler_remove(fnHandle, 'WINDOW')
+        fnHandle = 0
+    
+    def toggleDisplayDirectionUpdate(self, context):
+        global fnHandle, displayListIndex
+        if self.bDisplayEdgeDirection:
+            displayListIndex = self.createArrowDisplayList(context)
+            args = (context, displayListIndex)
+            fnHandle = bpy.types.SpaceView3D.draw_handler_add(MeshLayer.draw_callback_px, args, 'WINDOW', 'POST_VIEW')
+        else:
+            MeshLayer.removeFnHandle()
+            MeshLayer.deleteDisplayList()
+        
+    bDisplayEdgeDirection = BoolProperty(default=False, update=toggleDisplayDirectionUpdate)
+    
+    currentObj = StringProperty()
     bSelectOnListClick = BoolProperty(default=False)
+    
 
     vIndex = IntProperty()
     eIndex = IntProperty()
@@ -390,22 +564,30 @@ class PathNodePropertiesPanel(bpy.types.Panel):
         
         layout.label(text="Edge Attributes")
         layout.template_list("MeshEdgeLayerList", "", wm.mesh_layer, "edgeList", wm.mesh_layer, "eIndex")
+        layout.prop(wm.mesh_layer, "bDisplayEdgeDirection", text="Display Link Helpers")
+        
 
 
 addon_keymaps = []
 def setupProps():
     bpy.types.WindowManager.mesh_layer = PointerProperty(type=MeshLayer)
+    
     wm = bpy.context.window_manager
     km = wm.keyconfigs.addon.keymaps.new(name="3D View", space_type="VIEW_3D")
     kmi = km.keymap_items.new(display_editable_list_operator.bl_idname, 'Q', 'PRESS', alt=True)
     addon_keymaps.append(km)
     
 def removeProps():
-    del bpy.types.WindowManager.mesh_layer
     wm = bpy.context.window_manager
     for km in addon_keymaps:
         wm.keyconfigs.addon.keymaps.remove(km)
     addon_keymaps.clear()
+    
+    if wm.mesh_layer.bDisplayEdgeDirection:
+        MeshLayer.removeFnHandle()
+        MeshLayer.deleteDisplayList()
+    
+    del bpy.types.WindowManager.mesh_layer
 
 def register():
     bpy.utils.register_module(__name__)
