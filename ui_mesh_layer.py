@@ -146,9 +146,9 @@ class MeshLayer(bpy.types.PropertyGroup):
             return
     
         # 50% alpha, 2 pixel width line
-        glEnable(GL_BLEND)
+        #glEnable(GL_BLEND)
         glColor4f(1.0, 1.0, 1.0, 0.5)
-        glLineWidth(2)
+        #glLineWidth(2)
         
         glPushMatrix()
         glScalef(*ob.scale)
@@ -185,16 +185,17 @@ class MeshLayer(bpy.types.PropertyGroup):
         index = glGenLists(1)
         
         glNewList(index, GL_COMPILE)
+        glColor3f(0.0,1.0,1.0)
         for e in bm.edges:
             vecFrom = e.verts[0].co
             vecTo = e.verts[1].co
-
-            middle = (Vector(vecTo) + Vector(vecFrom)) / 2.0
+    
+            middle = (vecTo + vecFrom) / 2.0
             
-            v = Vector(vecTo) - Vector(vecFrom)
+            v = vecTo - vecFrom
             v.normalize()
             
-            # if vector is straight pointing up ignore it
+            # if vector is straight pointing up only on z axis ignore it
             if abs(v.x) < 0.0001 and abs(v.y) < 0.0001:
                 continue
             
@@ -205,75 +206,52 @@ class MeshLayer(bpy.types.PropertyGroup):
             v2 = (vPerp2 - v).normalized()
             
             
-            glColor3f(0.0,0.0,1.0)
+            SCALER = 1.0
+            
             glPushMatrix()
             hAngle = degrees(v.xy.angle_signed(Vector((0,1))))
+            vAngle = -degrees(v.angle(v.xy.to_3d()))
             glTranslatef(*middle)
             glRotatef(hAngle, 0.0, 0.0, 1.0)
+            glRotatef(vAngle, 1.0, 0.0, 0.0)
+            glScalef(SCALER, SCALER, SCALER)
             
-            scaler = 0.7
-            glScalef(scaler, scaler, scaler)
-            
-            glBegin(GL_LINE_STRIP)
+            glBegin(GL_TRIANGLES)
             glVertex3f( -0.5, -1.0, 0.0 )      
             glVertex3f( 0.0, 1.0, 0.0 )
             glVertex3f( 0.5, -1.0, 0.0 )
-            
             glEnd()
             glPopMatrix()
             
             # Lane Information
+            """
             glPushMatrix()
-            
-            glColor3f(0.0,0.0,1.0)
-            glPushMatrix()
-            
-
-            v = Vector(vecTo) - Vector(vecFrom)
-            
-            
-            x = Vector((1.0, 0.0, 0.0))
-            y = Vector((0.0, 1.0, 0.0))
-            z = Vector((0.0, 0.0, 1.0))
-            
-            
-            x = (v.cross(v.xy.to_3d())).normalized()
-            y = v.normalized()
-            z = (-y.cross(x)).normalized()
-            
-            mat = Matrix()
-            mat.col[0] = x[0], x[1], x[2], 0.0
-            mat.col[1] = y[0], y[1], y[2], 0.0
-            mat.col[2] = z[0], z[1], z[2], 0.0
-            mat.col[3] = middle[0], middle[1], middle[2], 1.0
-            
-            mat = mat.to_3x3()
-            mat = mat.to_4x4()
-            print(mat)
-            
-            glMultMatrixf(MeshLayer.MatrixBuffer(mat))
+            hAngle = degrees(v.xy.angle_signed(Vector((0,1))))
+            vAngle = -degrees(v.angle(v.xy.to_3d())) # fix this
             glTranslatef(*middle)
-            #hAngle = degrees(v.xy.angle_signed(Vector((0,1))))
-            #vAngle = degrees(v.yz.angle_signed(Vector((1,0))))
+            glRotatef(hAngle, 0.0, 0.0, 1.0)
+            glRotatef(vAngle, 1.0, 0.0, 0.0)
+            SCALER = (Vector(vecTo) - Vector(vecFrom)).length/1.5
+            glScalef(1.0, SCALER, SCALER)
             
-            #glRotatef(vAngle, 1.0, 0.0, 0.0)
-            #glRotatef(hAngle, 0.0, 0.0, 1.0)
-
-            glBegin(GL_LINE_LOOP)
-            glVertex3f( -0.5, 0.5, 0.0 )      
-            glVertex3f( 0.5, 0.5, 0.0 )
-            glVertex3f( 0.5, -0.5, 0.0 )
-            glVertex3f( -0.5, -0.5, 0.0 )
-            glEnd()
             
+            for i in range(e[bm.edges.layers.int[EDGE_NUMLEFTLANES]]):
+                glTranslatef(-1.0,0.0,0.0)
+                glBegin(GL_LINE_LOOP)
+                glVertex3f( -0.5, 0.5, 0.0 )      
+                glVertex3f( 0.5, 0.5, 0.0 )
+                glVertex3f( 0.5, -0.5, 0.0 )
+                glVertex3f( -0.5, -0.5, 0.0 )
+                glEnd()
             glPopMatrix()
+            """
             """
             glBegin(GL_LINE_STRIP)
             glVertex3f(*(middle + v1))
             glVertex3f(*(middle))
             glVertex3f(*(middle + v2))
             glEnd()
-            """
+            """ 
             
         glEndList()
         return index
