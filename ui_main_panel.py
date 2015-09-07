@@ -1,7 +1,7 @@
 ﻿import bpy
 import bmesh
 
-from . import path_mesh_helper
+from . import path_mesh_loader
 """
 GTA SA: sa_nodes_loader_operator
 GTA VC: ipl_paths_loader_operator
@@ -30,7 +30,7 @@ class test_nodes_loader_operator(bpy.types.Operator):
     path = bpy.props.StringProperty(name="sa_nodes_path")
 
     def execute(self, context):
-        path_mesh_helper.loadSAPathsAsMesh(self.path)
+        path_mesh_loader.loadSAPathsAsMesh(self.path)
         return {'FINISHED'}
 
 class sa_nodes_loader_operator(bpy.types.Operator):
@@ -40,7 +40,7 @@ class sa_nodes_loader_operator(bpy.types.Operator):
     directory = bpy.props.StringProperty(subtype="DIR_PATH")
 
     def execute(self, context):
-        path_mesh_helper.loadSAPathsAsMesh(self.directory)
+        path_mesh_loader.loadSAPathsAsMesh(self.directory)
         return {'FINISHED'}
 
     def invoke(self, context, event):

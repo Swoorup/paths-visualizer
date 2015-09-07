@@ -31,17 +31,15 @@ bl_info = {
 if "init_data" in locals():
     import importlib
     importlib.reload(ui_main_panel)
-    importlib.reload(path_mesh_helper)
-    importlib.reload(ui_mesh_layer)
-    importlib.reload(sapaths)
-    importlib.reload(ivpaths)
+    importlib.reload(path_mesh_loader)
+    importlib.reload(mesh_layer)
+    importlib.reload(gta)
     print("Reloaded multifiles")
 else:
     from . import ui_main_panel
-    from . import path_mesh_helper
-    from . import ui_mesh_layer
-    from . import sapaths
-    from . import ivpaths
+    from . import path_mesh_loader
+    from . import mesh_layer
+    from . import gta
     print("Imported multifiles")
 
 init_data = True
@@ -51,11 +49,11 @@ import bpy
 def register():
     bpy.utils.register_module(__name__) 
     ui_main_panel.setupProps()
-    ui_mesh_layer.setupProps()
+    mesh_layer.setupProps()
     
 def unregister():
     ui_main_panel.removeProps()
-    ui_mesh_layer.removeProps()
+    mesh_layer.removeProps()
     bpy.utils.unregister_module(__name__) 
     
 if __name__ == "__main__":

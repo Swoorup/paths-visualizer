@@ -211,7 +211,7 @@ class SAPaths:
                 for k in range(node['numberOfLinks']):
                     linkArrayIndex = node['baseLink'] + k
                     linkInfo = {}
-                    #print(currentfile.mLinks[linkArrayIndex]['area'], currentfile.mLinks[linkArrayIndex]['node'])
+                    #print(area, node['nodeID'], node['numberOfLinks'], currentfile.mLinks[linkArrayIndex]['area'], currentfile.mLinks[linkArrayIndex]['node'])
                     linkInfo['targetNode'] =    areafiles[currentfile.mLinks[linkArrayIndex]['area']].mPathnodes[currentfile.mLinks[linkArrayIndex]['node']]
                     linkInfo['length'] =        currentfile.mLinklengths[node['baseLink'] + k]   # can be removed as we need to recalculate them anyway
                     linkInfo['intersection'] =  currentfile.mPathintersectionsflags[node['baseLink'] + k]

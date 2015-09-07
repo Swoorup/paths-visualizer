@@ -2,8 +2,9 @@
 import bmesh
 from mathutils import Vector
 
-from . import sapaths, ivpaths
+from .gta import sapaths, ivpaths
 from .ui_constants import *
+from .mesh_layer import AddPathMeshLayers
 
 def debugprintNode(msg, node):
     print('\n' + msg)
@@ -15,30 +16,6 @@ def debugprintNode(msg, node):
     print('z: ' + str(node['z']))
 
     print('\n')
-
-def AddPathMeshLayers(bm):
-    bm.verts.layers.float.new(NODE_WIDTH)
-    bm.verts.layers.int.new(NODE_BAHAVIOUR)
-    bm.verts.layers.int.new(NODE_ISDEADEND)
-    bm.verts.layers.int.new(NODE_ISIGNORED)
-    bm.verts.layers.int.new(NODE_ISROADBLOCK)
-    bm.verts.layers.int.new(NODE_ISEMERGENCYVEHICLEONLY)
-    bm.verts.layers.int.new(NODE_ISRESTRICTEDACCESS)
-    bm.verts.layers.int.new(NODE_ISDONTWANDER)
-    bm.verts.layers.int.new(NODE_SPEEDLIMIT)
-    bm.verts.layers.int.new(NODE_SPAWNPROBABILITY)
-    
-    bm.verts.layers.string.new(NODE_TYPE)
-    bm.verts.layers.int.new(NODE_AREAID)
-    bm.verts.layers.int.new(NODE_ID)
-    bm.verts.layers.int.new(NODE_FLOOD)
-
-    bm.edges.layers.float.new(EDGE_WIDTH)
-    bm.edges.layers.int.new(EDGE_TRAFFICLIGHTDIRECTION)
-    bm.edges.layers.int.new(EDGE_TRAFFICLIGHTBEHAVIOUR)
-    bm.edges.layers.int.new(EDGE_NUMLEFTLANES)
-    bm.edges.layers.int.new(EDGE_NUMRIGHTLANES)
-    bm.edges.layers.int.new(EDGE_ISTRAINCROSSING)
 
 def CopyAttributesFromNodeToBMVert(node, bm, bmvert, nodeType):
     bmvert[bm.verts.layers.float[NODE_WIDTH]]                = node[NODE_WIDTH]
@@ -176,7 +153,7 @@ def loadSAPathsAsMesh(nodesDir):
     # Create object
     ob = bpy.data.objects.new('PathMeshPed', bpy.data.meshes.new('myMesh')) 
     bpy.context.scene.objects.link(ob)
-    #loadPedPathMesh(ob, paths.pednodes)
+    loadPedPathMesh(ob, paths.pednodes)
     
 def exportPaths(context):
     pass
