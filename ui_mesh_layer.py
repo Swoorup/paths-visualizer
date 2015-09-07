@@ -205,25 +205,71 @@ class MeshLayer(bpy.types.PropertyGroup):
             v1 = (vPerp1 - v).normalized()
             v2 = (vPerp2 - v).normalized()
             
+            arrow_vertices = (
+                (-0.5,-1.0, 0.0 ),
+                ( 0.0, 1.0, 0.0 ),
+                ( 0.0, 0.0, 0.0 ),
+                ( 0.5,-1.0, 0.0 ),
+                ( 0.0, 1.0, 0.0 ),
+                ( 0.0, 0.0, 0.0 ),
+            )
             
-            SCALER = 1.0
+            line_vertices = (
+                (-0.5, 0.5, 0.0 ) ,     
+                (-0.5, -0.5, 0.0 ),
+                ( 0.5, -0.5, 0.0 ),
+                ( 0.5, 0.5, 0.0 ) ,
+            )
             
-            glPushMatrix()
-            hAngle = degrees(v.xy.angle_signed(Vector((0,1))))
-            vAngle = -degrees(v.angle(v.xy.to_3d()))
-            glTranslatef(*middle)
-            glRotatef(hAngle, 0.0, 0.0, 1.0)
-            glRotatef(vAngle, 1.0, 0.0, 0.0)
-            glScalef(SCALER, SCALER, SCALER)
+            
+            SCALE = 1.0
+            
+            hAngle = (v.xy.angle_signed(Vector((0,1))))
+            # rotate towards x = 0, to find out the signed angle 
+            v.rotate(Euler((0.0,0.0,-hAngle)))
+            vAngle = v.yz.angle_signed(v.yx)
+            eulerRot = Euler((vAngle, 0.0, hAngle))
             
             glBegin(GL_TRIANGLES)
-            glVertex3f( -0.5, -1.0, 0.0 )      
-            glVertex3f( 0.0, 1.0, 0.0 )
-            glVertex3f( 0.5, -1.0, 0.0 )
+            for i in arrow_vertices:
+                vert = Vector(i)
+                vert *= SCALE
+                vert.rotate(eulerRot)
+                vert += middle
+                glVertex3f(*vert)      
             glEnd()
-            glPopMatrix()
             
-            # Lane Information
+            glColor3f(1.0,0.0,1.0)
+            for j in range(e[bm.edges.layers.int[EDGE_NUMLEFTLANES]]):
+                glBegin(GL_LINES)
+                for i in line_vertices:
+                    vert = Vector(i)
+                    vert = Vector((vert.x, vert.y  * (vecTo - vecFrom).length, vert.z)) # scale
+                    vert += Vector((-1.0 * (j + 1), 0.0, 0.0)) #left
+                    vert.rotate(eulerRot)
+                    vert += middle
+                    glVertex3f(*vert)      
+                glEnd()
+            
+            glColor3f(0.0,1.0,0.0)
+            for j in range(e[bm.edges.layers.int[EDGE_NUMRIGHTLANES]]):
+                glBegin(GL_LINES)
+                for i in line_vertices:
+                    vert = Vector(i)
+                    vert = Vector((vert.x, vert.y  * (vecTo - vecFrom).length, vert.z)) # scale
+                    vert += Vector((1.0 * (j + 1), 0.0, 0.0)) #left
+                    vert.rotate(eulerRot)
+                    vert += middle
+                    glVertex3f(*vert)      
+                glEnd()
+            """
+            glBegin(GL_LINE_STRIP)
+            glVertex3f(*(middle + v1))
+            glVertex3f(*(middle))
+            glVertex3f(*(middle + v2))
+            glEnd()
+            """
+            # Lane Informat
             """
             glPushMatrix()
             hAngle = degrees(v.xy.angle_signed(Vector((0,1))))
@@ -245,13 +291,7 @@ class MeshLayer(bpy.types.PropertyGroup):
                 glEnd()
             glPopMatrix()
             """
-            """
-            glBegin(GL_LINE_STRIP)
-            glVertex3f(*(middle + v1))
-            glVertex3f(*(middle))
-            glVertex3f(*(middle + v2))
-            glEnd()
-            """ 
+            
             
         glEndList()
         return index

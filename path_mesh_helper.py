@@ -178,7 +178,8 @@ def loadSAPathsAsMesh(nodesDir):
     bpy.context.scene.objects.link(ob)
     #loadPedPathMesh(ob, paths.pednodes)
     
-
+def exportPaths(context):
+    pass
 
 def loadivVehicleMesh(ob, nodes):
     bm = bmesh.new()
