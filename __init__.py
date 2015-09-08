@@ -33,12 +33,14 @@ if "init_data" in locals():
     importlib.reload(ui_main_panel)
     importlib.reload(path_mesh_loader)
     importlib.reload(mesh_layer)
+    importlib.reload(mesh_layer_gl)
     importlib.reload(gta)
     print("Reloaded multifiles")
 else:
     from . import ui_main_panel
     from . import path_mesh_loader
     from . import mesh_layer
+    from . import mesh_layer_gl
     from . import gta
     print("Imported multifiles")
 
