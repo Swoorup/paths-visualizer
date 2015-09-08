@@ -222,7 +222,12 @@ class MeshLayerEditable(bpy.types.PropertyGroup):
         
         selectedVertices = [v.index for v in bm.verts if v.select]
         selectedEdges = [e.index for e in bm.edges if e.select]
-    
+        
+        #BAD CODE
+        bm.verts.ensure_lookup_table()
+        bm.edges.ensure_lookup_table()
+        #END BAD CODE
+        
         for i in selectedVertices:
             item = wm.mesh_layer_editable.vertList.add()
             item.name = "v #%i" %i
@@ -339,7 +344,7 @@ class MeshEdgeLayerListUI(bpy.types.UIList):
             bm.edges[edgeList[eIndex].index].select = True
         prevEdgeSelection = eIndex
     
-class DisplayOrRefreshMeshLayer(bpy.types.Operator):
+class DisplayOrRefreshMeshLayerEditable(bpy.types.Operator):
     bl_idname = "paths.display_selected"
     bl_label = "List/Refresh Properties"
 
@@ -350,7 +355,6 @@ class DisplayOrRefreshMeshLayer(bpy.types.Operator):
                 context.object.mode == 'EDIT')
         
     def execute(self, context):
-        print("Displaying node/edge attributes")
         MeshLayerEditable.UpdateCollectionToSelection(self, context)
         return {'FINISHED'}
 
@@ -362,23 +366,19 @@ class PathNodePropertiesPanel(bpy.types.Panel):
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'TOOLS'
     bl_category = 'PathUltimatum:Tools'
-
+    
     @classmethod
     def poll(cls, context):
-        return True
-
+        MeshLayerEditable.ClearCollectionIfNecessary(context)
+        ob = context.object
+        return (ob is not None and \
+                ob.type == 'MESH' and \
+                ob.mode == 'EDIT')
+        
     def draw(self, context):
         layout = self.layout
         wm = context.window_manager
-        MeshLayerEditable.ClearCollectionIfNecessary(context)
         ob = context.object
-
-        if (context.object is None or
-                context.object.type != 'MESH' or
-                context.object.mode != 'EDIT'):
-            layout.label("Available in edit Mode Only")
-            return
-
         me = ob.data
         bm = bmesh.from_edit_mesh(me)
         try:
@@ -397,10 +397,18 @@ class PathNodePropertiesPanel(bpy.types.Panel):
             layout.label("Vertex or Edge select only", icon = 'INFO')
             return
         
+        # BAD CODE
+        selectedEdges = [e.index for e in bm.edges if e.select]
+        myEdges = [e.index for e in wm.mesh_layer_editable.edgeList] 
+        if set(selectedEdges) != set(myEdges):
+            print("updating")
+            MeshLayerEditable.UpdateCollectionToSelection(self, context)
+        #END BAD CODE
+            
         layout.label(text="Selected " + selectedMode+"(s)")
         row = layout.row(align=True)
         row.scale_y = 1.5
-        props = row.operator(DisplayOrRefreshMeshLayer.bl_idname)
+        props = row.operator(DisplayOrRefreshMeshLayerEditable.bl_idname)
         row.prop(wm.mesh_layer_editable, "bSelectOnListClick", text="Select " + selectedMode+"(s)" + " on Highlight")
         
         if bm.select_mode == {'VERT'}:
@@ -424,13 +432,11 @@ class LinkInfoHelper:
             return
             
         ob = context.edit_object
-        me = ob.data
-        
-        bm = bmesh.from_edit_mesh(me)
+        bm = bmesh.from_edit_mesh(ob.data)
         index = glGenLists(1)
         
         glNewList(index, GL_COMPILE)
-        glColor3f(0.0,1.0,1.0)
+        
         for e in bm.edges:
             vecFrom = e.verts[0].co
             vecTo = e.verts[1].co
@@ -441,8 +447,8 @@ class LinkInfoHelper:
             v.normalize()
             
             # if vector is straight pointing up only on z axis ignore it
-            if abs(v.x) < 0.0001 and abs(v.y) < 0.0001:
-                continue
+            #if abs(v.x) < 0.0001 and abs(v.y) < 0.0001:
+                #continue
             
             vPerp1 = Vector((-v.y, v.x, 0.0))
             vPerp2 = Vector((v.y, -v.x, 0.0))
@@ -455,8 +461,6 @@ class LinkInfoHelper:
                 ( 0.0, 1.0, 0.0 ),
                 ( 0.0, 0.0, 0.0 ),
                 ( 0.5,-1.0, 0.0 ),
-                ( 0.0, 1.0, 0.0 ),
-                ( 0.0, 0.0, 0.0 ),
             )
             
             line_vertices = (
@@ -469,13 +473,26 @@ class LinkInfoHelper:
             
             SCALE = 1.0
             
-            hAngle = (v.xy.angle_signed(Vector((0,1))))
+            hAngle = 0
+            try:
+                hAngle = v.xy.angle_signed(Vector((0,1)))
+            except ValueError:
+                pass
             # rotate towards x = 0, to find out the signed angle 
             v.rotate(Euler((0.0,0.0,-hAngle)))
-            vAngle = v.yz.angle_signed(v.yx)
+            
+            vAngle = radians(90)
+            try:
+                vAngle = v.yz.angle_signed(v.yx)
+            except ValueError:
+                if v.yz.length == 0.00:
+                    continue
+                vAngle = v.yz.angle_signed(Vector((1,0)))
+                pass
             eulerRot = Euler((vAngle, 0.0, hAngle))
             
-            glBegin(GL_TRIANGLES)
+            glColor3f(0.0,1.0,1.0)
+            glBegin(GL_TRIANGLE_STRIP)
             for i in arrow_vertices:
                 vert = Vector(i)
                 vert *= SCALE
@@ -544,7 +561,8 @@ class LinkInfoHelper:
         if LinkInfoHelper.gllistIndex == -1:
             LinkInfoHelper.gllistIndex = LinkInfoHelper.create_display_list(context)
         
-        
+        #LinkInfoHelper.delete_display_list()
+        #LinkInfoHelper.create_display_list(context)
     
         # 50% alpha, 2 pixel width line
         #glEnable(GL_BLEND)
@@ -573,7 +591,7 @@ def setupProps():
     
     wm = bpy.context.window_manager
     km = wm.keyconfigs.addon.keymaps.new(name="3D View", space_type="VIEW_3D")
-    kmi = km.keymap_items.new(DisplayOrRefreshMeshLayer.bl_idname, 'Q', 'PRESS', alt=True)
+    kmi = km.keymap_items.new(DisplayOrRefreshMeshLayerEditable.bl_idname, 'Q', 'PRESS', alt=True)
     addon_keymaps.append(km)
     
     args = ()

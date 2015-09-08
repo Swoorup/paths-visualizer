@@ -4,7 +4,7 @@ import bmesh
 from . import path_mesh_loader
 """
 GTA SA: sa_nodes_loader_operator
-GTA VC: ipl_paths_loader_operator
+GTA VC: export_pathmesh
 GTA IV: iv_nodes_loader_operator
  
 """
@@ -47,22 +47,25 @@ class sa_nodes_loader_operator(bpy.types.Operator):
         context.window_manager.fileselect_add(self)
         return {'RUNNING_MODAL'}
 
-class ipl_paths_loader_operator(bpy.types.Operator):
+class export_pathmesh(bpy.types.Operator):
     """Test exporter which just writes hello world"""
-    bl_idname = "loader.ipl_paths_loader_operator"
-    bl_label = "Export Some Data"
+    bl_idname = "loader.export_pathmesh"
+    bl_label = "Export Selected Path Mesh"
 
-    directory = bpy.props.StringProperty(subtype="DIR_PATH")
+    #directory = bpy.props.StringProperty(subtype="DIR_PATH")
 
     def execute(self, context):
         #file = open(self.filepath, 'w')
         #file.write("Hello World " + context.object.name)
-        self.report({'ERROR'}, "fddf");
+        path_mesh_loader.exportPaths(context.selected_objects[0])
+        #self.report({'ERROR'}, "fddf");
         return {'FINISHED'}
 
+    """
     def invoke(self, context, event):
-        context.window_manager.fileselect_add(self)
+        #context.window_manager.fileselect_add(self)
         return {'RUNNING_MODAL'}
+    """
 
 class PathsUltimatumPanel(bpy.types.Panel):
     """Creates a Panel in the Object properties window"""
@@ -90,7 +93,7 @@ class PathsUltimatumPanel(bpy.types.Panel):
 
         layout.label(text="Load IPL Paths")
         row = layout.row(align=True)
-        props = row.operator("loader.ipl_paths_loader_operator")
+        props = row.operator("loader.export_pathmesh")
 
          # Big button
         layout.label(text="Fix ViewPort Settings:")
@@ -117,7 +120,7 @@ class PathsUltimatumPanel(bpy.types.Panel):
         col.label(text="Column One:")
         col.prop(scene, "frame_end")
         col.prop(scene, "frame_start")
-
+        
         # Second column, aligned
         col = split.column(align=True)
         col.label(text="Column Two:")

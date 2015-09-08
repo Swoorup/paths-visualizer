@@ -97,10 +97,14 @@ def loadPedPathMesh(ob, nodes):
     bm = bmesh.new()
     bm.from_mesh(ob.data)
 
+    # add the properties
+    AddPathMeshLayers(bm)
+    
     # add all vertices
     for node in nodes:
-        bm.verts.new((node['x'], node['y'], node['z']))
-
+        bmvert = bm.verts.new((node['x'], node['y'], node['z']))
+        CopyAttributesFromNodeToBMVert(node, bm, bmvert, 'node')
+        
     bm.verts.index_update()
     bm.verts.ensure_lookup_table()
 
@@ -113,22 +117,10 @@ def loadPedPathMesh(ob, nodes):
             
             try:
                 bm.edges.new((bm.verts[i], bm.verts[linkedIndex]))
+                #CopyAttributesFromLinkToBMEdge(PEDLINK, bm, bmedge)
             except ValueError: # already exist
                 continue
-
-    bm.edges.ensure_lookup_table()
-    bm.verts.ensure_lookup_table()
-
-    node_width_key = bm.verts.layers.float.new('node_width')
-    node_area_id = bm.verts.layers.int.new('node_areaid')
-    node_node_id = bm.verts.layers.int.new('node_id')
-    node_behaviour = bm.verts.layers.int.new('node_behaviour')
-    # add the per node properties
-    for node in nodes:
-        bm.verts[node['id']][node_width_key] = node['width']
-        bm.verts[node['id']][node_area_id] = node['areaID']
-        bm.verts[node['id']][node_node_id] = node['nodeID']
-        bm.verts[node['id']][node_behaviour] = node['behaviourType']
+                
 
     bm.to_mesh(ob.data)
     bm.free()
@@ -138,24 +130,23 @@ def loadSAPathsAsMesh(nodesDir):
     paths = sapaths.SAPaths()
     paths.load_nodes_from_directory(nodesDir)    
 
-    # Create mesh 
-    me = bpy.data.meshes.new('myMesh') 
     # Create object
-    ob = bpy.data.objects.new('PathMeshCars', me) 
+    ob = bpy.data.objects.new('PathCars', bpy.data.meshes.new('PathMesh')) 
     bpy.context.scene.objects.link(ob)
     loadVehicleMesh(ob, paths.carnodes)
 
     # Create object
-    ob = bpy.data.objects.new('PathMeshBoats', bpy.data.meshes.new('myMesh')) 
+    ob = bpy.data.objects.new('PathBoats', bpy.data.meshes.new('PathMesh')) 
     bpy.context.scene.objects.link(ob)
     loadVehicleMesh(ob, paths.boatnodes)
 
     # Create object
-    ob = bpy.data.objects.new('PathMeshPed', bpy.data.meshes.new('myMesh')) 
+    ob = bpy.data.objects.new('PathPeds', bpy.data.meshes.new('PathMesh')) 
     bpy.context.scene.objects.link(ob)
     loadPedPathMesh(ob, paths.pednodes)
     
-def exportPaths(context):
+def exportPaths(ob):
+    print(ob.name)
     pass
 
 def loadivVehicleMesh(ob, nodes):
