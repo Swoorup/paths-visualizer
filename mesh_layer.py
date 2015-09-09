@@ -396,11 +396,11 @@ class PathNodePropertiesPanel(bpy.types.Panel):
             return
         
         # BAD CODE
-        selectedEdges = [e.index for e in bm.edges if e.select]
-        myEdges = [e.index for e in wm.mesh_layer_editable.edgeList] 
-        if set(selectedEdges) != set(myEdges):
-            print("updating")
-            MeshLayerEditable.UpdateCollectionToSelection(self, context)
+        #selectedEdges = [e.index for e in bm.edges if e.select]
+        #myEdges = [e.index for e in wm.mesh_layer_editable.edgeList] 
+        #if set(selectedEdges) != set(myEdges):
+            #print("updating")
+            #MeshLayerEditable.UpdateCollectionToSelection(self, context)
         #END BAD CODE
             
         layout.label(text="Selected " + selectedMode+"(s)")
