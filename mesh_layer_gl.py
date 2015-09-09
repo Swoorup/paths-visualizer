@@ -78,7 +78,7 @@ class LinkInfoHelper:
                 pass
             eulerRot = Euler((vAngle, 0.0, hAngle))
             
-            glColor3f(0.0,1.0,1.0)
+            glColor3f(0.0,0.0,0.0)
             glBegin(GL_TRIANGLE_STRIP)
             for i in arrow_vertices:
                 vert = Vector(i)
@@ -89,12 +89,23 @@ class LinkInfoHelper:
             glEnd()
             
             # Lane Information
-            glColor3f(1.0,0.0,1.0)
+            glColor3f(0.0,0.0,1.0)
             for j in range(e[bm.edges.layers.int[EDGE_NUMLEFTLANES]]):
                 glBegin(GL_LINES)
                 for i in line_vertices:
                     vert = Vector(i)
                     vert = Vector((vert.x, vert.y  * (vecTo - vecFrom).length, vert.z)) # scale
+                    vert += Vector((-1.0 * (j + 1), 0.0, 0.0)) #left
+                    vert.rotate(eulerRot)
+                    vert += middle
+                    glVertex3f(*vert)      
+                glEnd()
+                
+                glBegin(GL_TRIANGLE_STRIP)
+                for i in arrow_vertices:
+                    vert = Vector(i)
+                    vert *= SCALE
+                    vert.rotate(Euler((0.0, 0.0, radians(180.0))))
                     vert += Vector((-1.0 * (j + 1), 0.0, 0.0)) #left
                     vert.rotate(eulerRot)
                     vert += middle
@@ -107,6 +118,16 @@ class LinkInfoHelper:
                 for i in line_vertices:
                     vert = Vector(i)
                     vert = Vector((vert.x, vert.y  * (vecTo - vecFrom).length, vert.z)) # scale
+                    vert += Vector((1.0 * (j + 1), 0.0, 0.0)) #left
+                    vert.rotate(eulerRot)
+                    vert += middle
+                    glVertex3f(*vert)      
+                glEnd()
+                
+                glBegin(GL_TRIANGLE_STRIP)
+                for i in arrow_vertices:
+                    vert = Vector(i)
+                    vert *= SCALE
                     vert += Vector((1.0 * (j + 1), 0.0, 0.0)) #left
                     vert.rotate(eulerRot)
                     vert += middle
