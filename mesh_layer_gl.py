@@ -34,8 +34,8 @@ class LinkInfoHelper:
             v.normalize()
             
             # if vector is straight pointing up only on z axis ignore it
-            #if abs(v.x) < 0.0001 and abs(v.y) < 0.0001:
-                #continue
+            if abs(v.x) < 0.0001 and abs(v.y) < 0.0001:
+                continue
             
             vPerp1 = Vector((-v.y, v.x, 0.0))
             vPerp2 = Vector((v.y, -v.x, 0.0))
@@ -57,9 +57,9 @@ class LinkInfoHelper:
                 ( 0.5, 0.5, 0.0 ) ,
             )
             
-            
             SCALE = 1.0
-            
+ 
+            #TODO: Perform by matrix instead
             hAngle = 0
             try:
                 hAngle = v.xy.angle_signed(Vector((0,1)))
@@ -76,6 +76,7 @@ class LinkInfoHelper:
                     continue
                 vAngle = v.yz.angle_signed(Vector((1,0)))
                 pass
+                
             eulerRot = Euler((vAngle, 0.0, hAngle))
             
             glColor3f(0.0,0.0,0.0)

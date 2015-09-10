@@ -32,6 +32,7 @@ if "init_data" in locals():
     import importlib
     importlib.reload(ui_main_panel)
     importlib.reload(path_mesh_loader)
+    importlib.reload(path_mesh_exporter)
     importlib.reload(mesh_layer)
     importlib.reload(mesh_layer_gl)
     importlib.reload(gta)
@@ -39,6 +40,7 @@ if "init_data" in locals():
 else:
     from . import ui_main_panel
     from . import path_mesh_loader
+    from . import path_mesh_exporter
     from . import mesh_layer
     from . import mesh_layer_gl
     from . import gta

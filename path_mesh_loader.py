@@ -79,6 +79,7 @@ def loadVehicleMesh(ob, nodes):
             carpathlink = link['carpathlink']
             
             # carpathlinks point from higher id to lower id
+            # hence order is also guarenteed
             if node['id'] > linkedNode['id']:
                 # from and to order needs to be preserved to hold lane information, make sure blender does not play around with these
                 # TODO: check if link order is preserved by blender
@@ -115,6 +116,7 @@ def loadPedPathMesh(ob, nodes):
             linkedNode = link['targetNode']
             linkedIndex = linkedNode['id']
             
+            # for ped paths there is no carpathlink to check
             try:
                 bm.edges.new((bm.verts[i], bm.verts[linkedIndex]))
                 #CopyAttributesFromLinkToBMEdge(PEDLINK, bm, bmedge)
@@ -145,10 +147,6 @@ def loadSAPathsAsMesh(nodesDir):
     bpy.context.scene.objects.link(ob)
     loadPedPathMesh(ob, paths.pednodes)
     
-def exportPaths(ob):
-    print(ob.name)
-    pass
-
 def loadivVehicleMesh(ob, nodes):
     bm = bmesh.new()
     bm.from_mesh(ob.data)

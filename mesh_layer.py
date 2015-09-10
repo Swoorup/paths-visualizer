@@ -297,7 +297,7 @@ class MeshVertLayerListUI(bpy.types.UIList):
         if prevVertSelection == vIndex or wm.mesh_layer_editable.bSelectOnListClick == False:
             return
         
-        print("Changing vert for " + ob.name + "from: " + str(prevVertSelection) + " to: " + str(vIndex))
+        #print("Changing vert for " + ob.name + "from: " + str(prevVertSelection) + " to: " + str(vIndex))
         if item.index != -1 and len(vertList) > 0:
             for i in range(len(vertList)):
                 if i != vIndex:
@@ -333,7 +333,7 @@ class MeshEdgeLayerListUI(bpy.types.UIList):
         if prevEdgeSelection == eIndex or wm.mesh_layer_editable.bSelectOnListClick == False:
             return
         
-        print("Changing edge for " + ob.name + "from: " + str(prevEdgeSelection) + " to: " + str(eIndex))
+        #print("Changing edge for " + ob.name + "from: " + str(prevEdgeSelection) + " to: " + str(eIndex))
         if item.index != -1 and len(edgeList) > 0:
             for i in range(len(edgeList)):
                 if i != eIndex:

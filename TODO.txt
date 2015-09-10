@@ -1,0 +1,3 @@
+Keep using edge. 
+Helper tool to align edge direction in just one direction
+select all an set value accordingly

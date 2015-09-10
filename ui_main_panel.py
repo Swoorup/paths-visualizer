@@ -2,6 +2,8 @@
 import bmesh
 
 from . import path_mesh_loader
+from . import path_mesh_exporter
+
 """
 GTA SA: sa_nodes_loader_operator
 GTA VC: export_pathmesh
@@ -52,20 +54,22 @@ class export_pathmesh(bpy.types.Operator):
     bl_idname = "loader.export_pathmesh"
     bl_label = "Export Selected Path Mesh"
 
-    #directory = bpy.props.StringProperty(subtype="DIR_PATH")
+    filepath = bpy.props.StringProperty(subtype="FILE_PATH")
 
+    @classmethod
+    def poll(cls, context):
+        return (context.mode == 'OBJECT')
+                
     def execute(self, context):
-        #file = open(self.filepath, 'w')
-        #file.write("Hello World " + context.object.name)
-        path_mesh_loader.exportPaths(context.selected_objects[0])
-        #self.report({'ERROR'}, "fddf");
+        #try:
+        path_mesh_exporter.exportPaths(self.filepath, context.selected_objects[0])
+        #except:
+        #self.report({'ERROR'}, "Invalid Path Mesh Selected");
         return {'FINISHED'}
 
-    """
     def invoke(self, context, event):
-        #context.window_manager.fileselect_add(self)
+        context.window_manager.fileselect_add(self)
         return {'RUNNING_MODAL'}
-    """
 
 class PathsUltimatumPanel(bpy.types.Panel):
     """Creates a Panel in the Object properties window"""
