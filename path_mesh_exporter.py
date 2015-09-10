@@ -37,34 +37,61 @@ def exportPaths(filepath, ob):
         internalNodes = []
         g = 0
         while True:
-            tagVerts[currentIndex]['group'] = NumGroup
-            tagVerts[currentIndex]['read'] = True
-            
-            internalNodes.append(currentIndex)
-            g += 1
-            
-            if g == 11:
-                break
-            
             assert len(bm.verts[currentIndex].link_edges) > 0
             
+            nextInternal = -1
+            nLinked = 0
             for link in bm.verts[currentIndex].link_edges:
                 
                 linkVert = link.verts[0].index
                 if linkVert == currentIndex:
                     linkVert = link.verts[1].index
                   
-                if (tagVerts[linkVert]['read'] != True and 
-                    tagEdges[link.index]['type'] == "none"):
-                    currentIndex = linkVert
+                if tagVerts[linkVert]['group'] == -1:
+                    nextInternal = linkVert
+                    nLinked += 1
+                else:
+                    print("Loop Detected at: " + str(linkVert))
+            
+            
+            print ("nLinked: " + str(nLinked))
+            print ("nextInternal: " + str(nextInternal))
+            if (g + nLinked + 1 <= 12):
+                tagVerts[currentIndex]['group'] = NumGroup
+                tagVerts[currentIndex]['read'] = True
+            
+                internalNodes.append(currentIndex)
+                g += 1
+                g = g + nLinked - 1
+                print (g)
+                if nextInternal == -1:
+                    print("Failed LOL by " + str(currentIndex))
                     break
+                else:
+                    currentIndex = nextInternal
+            else:
+                break
+                
         
-        NumGroup += 1
         #TEST CODE
+        print("""
+import bpy
+import bmesh
+#get attribute
+obj = bpy.context.edit_object
+me = obj.data
+bm = bmesh.from_edit_mesh(me)
+
+selectedEdge = [e for e in bm.edges if e.select]
+selectedVert = [v for v in bm.verts if v.select]
+        """
+        )
         for x in internalNodes:
             print("bm.verts[" + str(x) + "].select = True")
         break
+        print("")
         #END TEST CODE
+        NumGroup += 1
                     
     bm.to_mesh(me)
     bm.free()
