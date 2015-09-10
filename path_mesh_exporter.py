@@ -24,7 +24,7 @@ def exportPaths(filepath, ob):
         tagVerts[i]['read'] = False
         tagVerts[i]['group'] = -1
         
-    g = 0
+    NumGroup = 0
     for i in range(len(bm.edges)):
         tagEdges.append({})
         tagEdges[i]['type'] = "none" # interna/external
@@ -34,17 +34,22 @@ def exportPaths(filepath, ob):
             continue
             
         currentIndex = v.index
-        groupNodes = []
+        internalNodes = []
+        g = 0
         while True:
-            tagVerts[currentIndex]['group'] = g
+            tagVerts[currentIndex]['group'] = NumGroup
             tagVerts[currentIndex]['read'] = True
             
-            groupNodes.append(currentIndex)
-            if len(groupNodes) == 12:
+            internalNodes.append(currentIndex)
+            g += 1
+            
+            if g == 11:
                 break
             
             assert len(bm.verts[currentIndex].link_edges) > 0
+            
             for link in bm.verts[currentIndex].link_edges:
+                
                 linkVert = link.verts[0].index
                 if linkVert == currentIndex:
                     linkVert = link.verts[1].index
@@ -52,12 +57,11 @@ def exportPaths(filepath, ob):
                 if (tagVerts[linkVert]['read'] != True and 
                     tagEdges[link.index]['type'] == "none"):
                     currentIndex = linkVert
-                    tagEdges[link.index] == "internal"
                     break
         
-        g += 1
+        NumGroup += 1
         #TEST CODE
-        for x in groupNodes:
+        for x in internalNodes:
             print("bm.verts[" + str(x) + "].select = True")
         break
         #END TEST CODE
