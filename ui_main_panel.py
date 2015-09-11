@@ -6,7 +6,7 @@ from . import path_mesh_exporter
 
 """
 GTA SA: sa_nodes_loader_operator
-GTA VC: export_pathmesh
+GTA VC: export_pedpathmesh
 GTA IV: iv_nodes_loader_operator
  
 """
@@ -49,10 +49,67 @@ class sa_nodes_loader_operator(bpy.types.Operator):
         context.window_manager.fileselect_add(self)
         return {'RUNNING_MODAL'}
 
-class export_pathmesh(bpy.types.Operator):
+class export_boatpathmesh(bpy.types.Operator):
     """Test exporter which just writes hello world"""
-    bl_idname = "loader.export_pathmesh"
-    bl_label = "Export Selected Path Mesh"
+    bl_idname = "loader.export_boatpathmesh"
+    bl_label = "Export Selected Path as Ped Mesh"
+
+    filepath = bpy.props.StringProperty(subtype="FILE_PATH")
+
+    @classmethod
+    def poll(cls, context):
+        return (context.mode == 'OBJECT')
+                
+    def execute(self, context):
+        path_mesh_exporter.exportVehiclePaths(self.filepath, context.selected_objects[0], "car")
+        return {'FINISHED'}
+
+    def invoke(self, context, event):
+        context.window_manager.fileselect_add(self)
+        return {'RUNNING_MODAL'}
+        
+class export_carpathmesh(bpy.types.Operator):
+    """Test exporter which just writes hello world"""
+    bl_idname = "loader.export_boatpathmesh"
+    bl_label = "Export Selected Path as Car IPL"
+
+    filepath = bpy.props.StringProperty(subtype="FILE_PATH")
+
+    @classmethod
+    def poll(cls, context):
+        return (context.mode == 'OBJECT')
+                
+    def execute(self, context):
+        path_mesh_exporter.exportVehiclePaths(self.filepath, context.selected_objects[0], "boat")
+        return {'FINISHED'}
+
+    def invoke(self, context, event):
+        context.window_manager.fileselect_add(self)
+        return {'RUNNING_MODAL'}
+        
+class export_boatpathmesh(bpy.types.Operator):
+    """Test exporter which just writes hello world"""
+    bl_idname = "loader.export_boatpathmesh"
+    bl_label = "Export Selected Path as Boat IPL"
+
+    filepath = bpy.props.StringProperty(subtype="FILE_PATH")
+
+    @classmethod
+    def poll(cls, context):
+        return (context.mode == 'OBJECT')
+                
+    def execute(self, context):
+        path_mesh_exporter.exportPaths(self.filepath, context.selected_objects[0])
+        return {'FINISHED'}
+
+    def invoke(self, context, event):
+        context.window_manager.fileselect_add(self)
+        return {'RUNNING_MODAL'}
+        
+class export_pedpathmesh(bpy.types.Operator):
+    """Test exporter which just writes hello world"""
+    bl_idname = "loader.export_pedpathmesh"
+    bl_label = "Export Selected Path as Ped IPL"
 
     filepath = bpy.props.StringProperty(subtype="FILE_PATH")
 
@@ -62,7 +119,7 @@ class export_pathmesh(bpy.types.Operator):
                 
     def execute(self, context):
         #try:
-        path_mesh_exporter.exportPaths(self.filepath, context.selected_objects[0])
+        path_mesh_exporter.exportPedPaths(self.filepath, context.selected_objects[0])
         #except:
         #self.report({'ERROR'}, "Invalid Path Mesh Selected");
         return {'FINISHED'}
@@ -95,9 +152,11 @@ class PathsUltimatumPanel(bpy.types.Panel):
         row = layout.row(align=True)
         props = row.operator("loader.sa_nodes_loader_operator")
 
-        layout.label(text="Load IPL Paths")
-        row = layout.row(align=True)
-        props = row.operator("loader.export_pathmesh")
+        layout.label(text="Export IPL Paths")
+        col = layout.column(align=True)
+        col.operator(export_pedpathmesh.bl_idname)
+        col.operator(export_boatpathmesh.bl_idname)
+        col.operator(export_carpathmesh.bl_idname)
 
          # Big button
         layout.label(text="Fix ViewPort Settings:")
