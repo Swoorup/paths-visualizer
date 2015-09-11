@@ -25,8 +25,8 @@ class LinkInfoHelper:
         glNewList(index, GL_COMPILE)
         
         for e in bm.edges:
-            vecFrom = e.verts[0].co
-            vecTo = e.verts[1].co
+            vecTo = e.verts[0].co # 0 is the target 
+            vecFrom = e.verts[1].co   # 1 is the source
     
             middle = (vecTo + vecFrom) / 2.0
             
@@ -89,6 +89,7 @@ class LinkInfoHelper:
                 glVertex3f(*vert)      
             glEnd()
             
+            SCALE = 0.5
             # Lane Information
             glColor3f(0.0,0.0,1.0)
             for j in range(e[bm.edges.layers.int[EDGE_NUMLEFTLANES]]):
@@ -96,7 +97,8 @@ class LinkInfoHelper:
                 for i in line_vertices:
                     vert = Vector(i)
                     vert = Vector((vert.x, vert.y  * (vecTo - vecFrom).length, vert.z)) # scale
-                    vert += Vector((-1.0 * (j + 1), 0.0, 0.0)) #left
+                    vert.x -= 0.5
+                    vert += Vector((-1 * (j + 1) - e[bm.edges.layers.float[EDGE_WIDTH]]/2, 0.0, 0.0)) #left
                     vert.rotate(eulerRot)
                     vert += middle
                     glVertex3f(*vert)      
@@ -106,8 +108,9 @@ class LinkInfoHelper:
                 for i in arrow_vertices:
                     vert = Vector(i)
                     vert *= SCALE
+                    vert.x += 0.5
                     vert.rotate(Euler((0.0, 0.0, radians(180.0))))
-                    vert += Vector((-1.0 * (j + 1), 0.0, 0.0)) #left
+                    vert += Vector((-1 * (j + 1) - e[bm.edges.layers.float[EDGE_WIDTH]]/2, 0.0, 0.0)) #left
                     vert.rotate(eulerRot)
                     vert += middle
                     glVertex3f(*vert)      
@@ -119,7 +122,8 @@ class LinkInfoHelper:
                 for i in line_vertices:
                     vert = Vector(i)
                     vert = Vector((vert.x, vert.y  * (vecTo - vecFrom).length, vert.z)) # scale
-                    vert += Vector((1.0 * (j + 1), 0.0, 0.0)) #left
+                    vert.x += 0.5
+                    vert += Vector((1 * (j + 1) + e[bm.edges.layers.float[EDGE_WIDTH]]/2, 0.0, 0.0)) #left
                     vert.rotate(eulerRot)
                     vert += middle
                     glVertex3f(*vert)      
@@ -129,7 +133,8 @@ class LinkInfoHelper:
                 for i in arrow_vertices:
                     vert = Vector(i)
                     vert *= SCALE
-                    vert += Vector((1.0 * (j + 1), 0.0, 0.0)) #left
+                    vert.x += 0.5
+                    vert += Vector((1 * (j + 1) + e[bm.edges.layers.float[EDGE_WIDTH]]/2, 0.0, 0.0)) #left
                     vert.rotate(eulerRot)
                     vert += middle
                     glVertex3f(*vert)      
