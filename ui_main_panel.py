@@ -70,7 +70,7 @@ class export_boatpathmesh(bpy.types.Operator):
         
 class export_carpathmesh(bpy.types.Operator):
     """Test exporter which just writes hello world"""
-    bl_idname = "loader.export_boatpathmesh"
+    bl_idname = "loader.export_carpathmesh"
     bl_label = "Export Selected Path as Car IPL"
 
     filepath = bpy.props.StringProperty(subtype="FILE_PATH")
@@ -80,7 +80,7 @@ class export_carpathmesh(bpy.types.Operator):
         return (context.mode == 'OBJECT')
                 
     def execute(self, context):
-        path_mesh_exporter.exportVehiclePaths(self.filepath, context.selected_objects[0], "boat")
+        path_mesh_exporter.exportVehiclePaths(self.filepath, context.selected_objects[0], False)
         return {'FINISHED'}
 
     def invoke(self, context, event):
@@ -99,7 +99,7 @@ class export_boatpathmesh(bpy.types.Operator):
         return (context.mode == 'OBJECT')
                 
     def execute(self, context):
-        path_mesh_exporter.exportPaths(self.filepath, context.selected_objects[0])
+        path_mesh_exporter.exportVehiclePaths(self.filepath, context.selected_objects[0], True)
         return {'FINISHED'}
 
     def invoke(self, context, event):
