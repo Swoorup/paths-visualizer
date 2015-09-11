@@ -93,7 +93,7 @@ def loadVehicleMesh(ob, nodes):
                 y_axis = Vector((0, 1))
                 a_angle = degrees(y_axis.angle_signed(a))
                 b_angle = degrees(y_axis.angle_signed(b))
-                
+                a_angle = 999.0
                 if abs(a_angle - b_angle) < 1.0:
                     # link to carpathpath 
                     bmedge = bm.edges.new( (bm.verts[i], bm.verts[linkedIndex])) 

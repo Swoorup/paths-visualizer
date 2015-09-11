@@ -99,7 +99,7 @@ class SAPathSingleNode:
                 self.mCarpathlinks[i]['dirX'] = float(unpack('b', self.path.read(1))[0]) / 100
                 self.mCarpathlinks[i]['dirY'] = float(unpack('b', self.path.read(1))[0]) / 100
 
-                self.mCarpathlinks[i]['width'] = unpack('b', self.path.read(1))[0] / 8
+                self.mCarpathlinks[i]['width'] = unpack('b', self.path.read(1))[0] / 8.0
 
                 flags = unpack('B', self.path.read(1))[0]
                 self.mCarpathlinks[i]['numLeftLanes'] = flags & 7

@@ -10,6 +10,9 @@ def find(lst, key, value):
             return i
     return -1
     
+    
+# TODO: complete some fields
+
 # export VC PED PATH FOR NOW
 def exportPedPaths(filepath, ob):
     print("Exporting to: " + filepath)
@@ -146,20 +149,24 @@ def exportPedPaths(filepath, ob):
     file.write("end\n")
     file.close()
     
-def PrepareJunctionOrSingleConnectionGroup(bm, groupNodes) : 
-    groupNodes[0]['next'] = -1 # first node as internal
-    groupNodes[0]['type'] = 2 # first node as internal
-    groupNodes[0]['speedlimit'] = bm.verts[groupNodes[0]['realIndex']][bm.verts.layers.int[NODE_SPEEDLIMIT]]
-    groupNodes[0]['flags'] = 0
-    groupNodes[0]['spawnrate'] = bm.verts[groupNodes[0]['realIndex']][bm.verts.layers.int[NODE_SPAWNPROBABILITY]] / 15.0
     
-    groupNodes[0]['median'] = 0 #these are ignored anyway
-    groupNodes[0]['rightLanes'] = 0 #these are ignored anyway
-    groupNodes[0]['leftLanes'] = 0 #these are ignored anyway
+
+    
+def PrepareJunctionOrSingleConnectionGroup(bm, groupNodes) : 
+    internalNode = groupNodes[0]
+    internalNode['next'] = -1 # first node as internal
+    internalNode['type'] = 2 # first node as internal
+    internalNode['speedlimit'] = bm.verts[internalNode['realIndex']][bm.verts.layers.int[NODE_SPEEDLIMIT]]
+    internalNode['flags'] = 0
+    internalNode['spawnrate'] = bm.verts[internalNode['realIndex']][bm.verts.layers.int[NODE_SPAWNPROBABILITY]] / 15.0
+    
+    internalNode['median'] = 0 #these are ignored anyway
+    internalNode['rightLanes'] = 0 #these are ignored anyway
+    internalNode['leftLanes'] = 0 #these are ignored anyway
     
     # loop through all external nodes
     for i in range(1, len(groupNodes)):
-        bm_edge = bm.edges.get(( bm.verts[ groupNodes[0]['realIndex'] ], bm.verts[ groupNodes[i]['realIndex'] ] ))
+        bm_edge = bm.edges.get(( bm.verts[ internalNode['realIndex'] ], bm.verts[ groupNodes[i]['realIndex'] ] ))
         toVert = bm_edge.verts[0]
         fromVert = bm_edge.verts[1]
         
@@ -175,7 +182,7 @@ def PrepareJunctionOrSingleConnectionGroup(bm, groupNodes) :
         
         node['next'] = 0
         node['type'] = 1
-        node['median'] = bm.verts[node['realIndex']][bm.verts.layers.float[NODE_WIDTH]]
+        node['median'] = bm_edge[bm.edges.layers.float[EDGE_WIDTH]]
         node['speedlimit'] = bm.verts[node['realIndex']][bm.verts.layers.int[NODE_SPEEDLIMIT]]
         node['flags'] = 0
         node['spawnrate'] = bm.verts[node['realIndex']][bm.verts.layers.int[NODE_SPAWNPROBABILITY]] / 15.0
@@ -195,14 +202,84 @@ def PrepareJunctionOrSingleConnectionGroup(bm, groupNodes) :
         ignoredNode['leftLanes'] = 0 #these are ignored anyway
         ignoredNode['realIndex'] = -1 #these are ignored anyway
         groupNodes.append(ignoredNode)
-        
+
+# tempGroupNodes: line with first and last nodes as external nodes
 def PrepareVehicleLineSegmentsGroup(bm, tempGroupNodes):
-    
+    assert len(tempGroupNodes) > 2
     groupNodes = []
     
-    for lineVert in tempGroupNodes:
-        pass
+    # add all the internal nodes
+    for i in range(len(tempGroupNodes)):
+        node = {}
+        node['realIndex'] = tempGroupNodes[i]
+        if i == 0 or i == len(tempGroupNodes) - 1:
+            node['type'] = 1
+        else:
+            node['type'] = 2
+            
+        node['speedlimit'] = bm.verts[node['realIndex']][bm.verts.layers.int[NODE_SPEEDLIMIT]]
+        node['flags'] = 0
+        node['spawnrate'] = bm.verts[node['realIndex']][bm.verts.layers.int[NODE_SPAWNPROBABILITY]] / 15.0
+        node['speedlimit'] = bm.verts[node['realIndex']][bm.verts.layers.int[NODE_SPEEDLIMIT]]
+        node['xyz'] = bm.verts[node['realIndex']].co
         
+        
+        if i + 1 == len(tempGroupNodes): # last
+            node['next'] = -1
+            node['type'] = 1
+            bm_edge = bm.edges.get(( bm.verts[ tempGroupNodes[i] ], bm.verts[ tempGroupNodes[i-1] ] ))
+            toVert = bm_edge.verts[0]
+            fromVert = bm_edge.verts[1]
+            
+            node['median'] = bm_edge[bm.edges.layers.float[EDGE_WIDTH]]
+            
+            if fromVert.index == tempGroupNodes[i]:
+                node['leftLanes'] = bm_edge[bm.edges.layers.int[EDGE_NUMLEFTLANES]]
+                node['rightLanes'] = bm_edge[bm.edges.layers.int[EDGE_NUMRIGHTLANES]]
+            else: 
+                node['rightLanes'] = bm_edge[bm.edges.layers.int[EDGE_NUMLEFTLANES]]
+                node['leftLanes'] = bm_edge[bm.edges.layers.int[EDGE_NUMRIGHTLANES]]
+        else:
+            node['next'] = i + 1
+            bm_edge = bm.edges.get(( bm.verts[ tempGroupNodes[i] ], bm.verts[ tempGroupNodes[i+1] ] ))
+            toVert = bm_edge.verts[0]
+            fromVert = bm_edge.verts[1]
+            
+            node['median'] = bm_edge[bm.edges.layers.float[EDGE_WIDTH]]
+            
+            if fromVert.index == tempGroupNodes[i]:
+                node['leftLanes'] = bm_edge[bm.edges.layers.int[EDGE_NUMLEFTLANES]]
+                node['rightLanes'] = bm_edge[bm.edges.layers.int[EDGE_NUMRIGHTLANES]]
+            else: 
+                node['rightLanes'] = bm_edge[bm.edges.layers.int[EDGE_NUMLEFTLANES]]
+                node['leftLanes'] = bm_edge[bm.edges.layers.int[EDGE_NUMRIGHTLANES]]
+        
+        groupNodes.append(node)
+        
+    # sort groupNodes, external Nodes at last  
+    firstExternalNode = groupNodes[0]
+    groupNodes.remove(firstExternalNode)
+    
+    for i in range(len(groupNodes) - 1 ):
+        groupNodes[i]['next'] = i + 1
+        
+    firstExternalNode['next'] = 0
+    groupNodes.append(firstExternalNode)
+        
+    while len(groupNodes) != 12:
+        ignoredNode = {}
+        ignoredNode['type'] = 0
+        ignoredNode['next'] = -1
+        ignoredNode['xyz'] = Vector((0,0,0))
+        ignoredNode['median'] = 0
+        ignoredNode['speedlimit'] = 0
+        ignoredNode['flags'] = 0
+        ignoredNode['spawnrate'] = 0
+        ignoredNode['median'] = 0 #these are ignored anyway
+        ignoredNode['rightLanes'] = 0 #these are ignored anyway
+        ignoredNode['leftLanes'] = 0 #these are ignored anyway
+        ignoredNode['realIndex'] = -1 #these are ignored anyway
+        groupNodes.append(ignoredNode)
     
     return groupNodes
     
@@ -282,8 +359,8 @@ def exportVehiclePaths(filepath, ob, bIsWater):
                 node['next'], 
                 0,
                 node['xyz'].x * 16,
-                node['xyz'].x * 16,
-                node['xyz'].x * 16,
+                node['xyz'].y * 16,
+                node['xyz'].z * 16,
                 node['median'],
                 node['leftLanes'],
                 node['rightLanes'],
@@ -297,7 +374,13 @@ def exportVehiclePaths(filepath, ob, bIsWater):
         while len(lineSegments) > 0:
             lineStart = lineSegments.pop()
             
-            assert tagVerts[lineStart]['type'] == "external"
+            nextVert = bm.verts[lineStart].link_edges[0].other_vert(bm.verts[lineStart]).index
+            if nextVert == v.index:
+                nextVert = bm.verts[lineStart].link_edges[1].other_vert(bm.verts[lineStart]).index
+                
+            # check if line was already traversed
+            if tagVerts[nextVert]['type'] == "internal":
+                continue
             
             # keep on adding until a junction or singly connection has been reached
             lineNodes = []
@@ -321,12 +404,18 @@ def exportVehiclePaths(filepath, ob, bIsWater):
                 prevNode = currentNode
                 currentNode = nextVert
             
+            # discard only one vertex line (in between 2 junctions or singlely linked)
+            if len(lineNodes) == 1:
+                continue
+                
+            print ("line:", lineNodes)
             assert len(lineNodes) >= 2
             
             # mark first and last as external
             tagVerts[lineNodes[0]]['type'] = "external"
             tagVerts[lineNodes[ len(lineNodes) -1 ]]['type'] = "external"
             
+            # TODO: Insert an external node
             if len(lineNodes) == 2:
                 continue
             
@@ -336,50 +425,61 @@ def exportVehiclePaths(filepath, ob, bIsWater):
             
             # start break down into group segments and write to the file
             tempGroupNodes = []
-            nthGroup = 1
-            maxNodes = 12
             for i in range(len(lineNodes)):         
-                
-                if len(lineNodes) - (nthGroup * maxNodes) == 1:
-                    maxNodes -= 1
-                    print("fuck", maxNodes)
+                node = lineNodes[i]
                 
                 tempGroupNodes.append(node) 
-                if len(tempGroupNodes) == maxNodes:
-                    lineGroups.append(PrepareVehicleLineSegmentsGroup(bm, tempGroupNodes))
-                    nthGroup += 1
-                    tempGroupNodes = []
+                if len(tempGroupNodes) == 12:
+                    lineGroups.append(tempGroupNodes.copy())
+                    tempGroupNodes.clear()
                     tempGroupNodes.append(node)
-                        
-                    
-            assert len(tempGroupNodes) != 2
+            
+            if len(tempGroupNodes) > 1:
+                lineGroups.append(tempGroupNodes)
+                
+            lastGroup = lineGroups[len(lineGroups) -1]
+            
+            # fix the node count on last group
+            if len(lastGroup) == 2:
+                assert len(lineGroups) >= 2
+                secondlastGroup = lineGroups[len(lineGroups) - 2]
+                secondlastGroup.pop() # discard the external node
+                
+                newExternal = secondlastGroup[len(secondlastGroup) - 1]
+                lastGroup.insert(0, newExternal)
+            
+            # remove the one linered
+            for lineG in lineGroups:
+                assert len(lineG) != 1
+                
+                groupNodes = PrepareVehicleLineSegmentsGroup(bm, lineG)
+                
+                file.write(str(2 if bIsWater else 1) + ", -1\n")
+                for node in groupNodes:
+                    file.write( "\t{}, {}, {}, {:.2f}, {:.2f}, {:.2f}, {}, {}, {}, {}, {}, {}\n".format(
+                        node['type'], 
+                        node['next'], 
+                        0,
+                        node['xyz'].x * 16,
+                        node['xyz'].y * 16,
+                        node['xyz'].z * 16,
+                        node['median'],
+                        node['leftLanes'],
+                        node['rightLanes'],
+                        node['speedlimit'],
+                        node['flags'],
+                        node['spawnrate']
+                        )
+                    )
+                
+                
+            
             
             #TESTCODE
-            print (lineNodes)
             #END TEST CODE
             
         
         #TEST CODE
-        for l in groupNodes:
-            print(l)
-        print(
-"""
-import bpy
-import bmesh
-#get attribute
-obj = bpy.context.edit_object
-me = obj.data
-bm = bmesh.from_edit_mesh(me)
-
-for v in bm.verts:
-    v.select = False
-
-"""
-        )
-        for i in groupNodes:
-            if i['realIndex'] != - 1:
-                print ("bm.verts[", i['realIndex'], "].select = True")
-        
         #END TEST 
                     
     bm.to_mesh(me)
