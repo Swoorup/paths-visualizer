@@ -1,6 +1,7 @@
 ﻿import bpy
 import bmesh
-from mathutils import Vector
+from mathutils import *
+from math import *
 
 from .gta import sapaths, ivpaths
 from .ui_constants import *
@@ -71,6 +72,7 @@ def loadVehicleMesh(ob, nodes):
 
     # connect all the edge data
     k = len(nodes) # offset of carpathlink data
+    markedVertexForDeletion = []
     for node in nodes:
         i = node['id']
         for link in node['_links']:
@@ -83,14 +85,40 @@ def loadVehicleMesh(ob, nodes):
             if node['id'] > linkedNode['id']:
                 # from and to order needs to be preserved to hold lane information, make sure blender does not play around with these
                 # TODO: check if link order is preserved by blender
-                # link to carpathpath 
-                bmedge = bm.edges.new( (bm.verts[i], bm.verts[k]))
-                CopyAttributesFromLinkToBMEdge(carpathlink, bm, bmedge)
-                # then to targetnode
-                bmedge = bm.edges.new( (bm.verts[k], bm.verts[linkedIndex])) 
-                CopyAttributesFromLinkToBMEdge(carpathlink, bm, bmedge)
-                # copy the carpathlink information
+                
+                #ignore the carpathlink vertex if direction is the same
+                a = (bm.verts[k].co - bm.verts[i].co).xy
+                b = (bm.verts[linkedIndex].co - bm.verts[k].co).xy
+                
+                y_axis = Vector((0, 1))
+                a_angle = degrees(y_axis.angle_signed(a))
+                b_angle = degrees(y_axis.angle_signed(b))
+                
+                if abs(a_angle - b_angle) < 1.0:
+                    # link to carpathpath 
+                    bmedge = bm.edges.new( (bm.verts[i], bm.verts[linkedIndex])) 
+                    CopyAttributesFromLinkToBMEdge(carpathlink, bm, bmedge)
+                    
+                    markedVertexForDeletion.append(bm.verts[k])
+                else:
+                    # link to carpathpath 
+                    bmedge = bm.edges.new( (bm.verts[i], bm.verts[k]))
+                    CopyAttributesFromLinkToBMEdge(carpathlink, bm, bmedge)
+                    # then to targetnode
+                    bmedge = bm.edges.new( (bm.verts[k], bm.verts[linkedIndex])) 
+                    CopyAttributesFromLinkToBMEdge(carpathlink, bm, bmedge)
+                    # copy the carpathlink information
+                
+                
                 k = k+1
+    
+    
+    
+    # delete the unrequired vertex
+    print("Deleted", len(markedVertexForDeletion), " unrequired carpathlink vertices")
+    for v in markedVertexForDeletion:
+        bm.verts.remove(v)
+    
     bm.to_mesh(ob.data)
     bm.free()
     
@@ -145,7 +173,7 @@ def loadSAPathsAsMesh(nodesDir):
     # Create object
     ob = bpy.data.objects.new('PathPeds', bpy.data.meshes.new('PathMesh')) 
     bpy.context.scene.objects.link(ob)
-    loadPedPathMesh(ob, paths.pednodes)
+    #loadPedPathMesh(ob, paths.pednodes)
     
 def loadivVehicleMesh(ob, nodes):
     bm = bmesh.new()
