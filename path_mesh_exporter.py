@@ -152,7 +152,7 @@ def exportPedPaths(filepath, ob):
     
 
     
-def PrepareJunctionOrSingleConnectionGroup(bm, groupNodes) : 
+def PrepareCentreJunctionOrSingleConnectionGroup(bm, groupNodes) : 
     internalNode = groupNodes[0]
     internalNode['next'] = -1 # first node as internal
     internalNode['type'] = 2 # first node as internal
@@ -304,6 +304,10 @@ def exportVehiclePaths(filepath, ob, bIsWater):
         tagVerts[i]['read'] = False
         tagVerts[i]['type'] = "none"
         
+    for i in range(len(bm.edges)):
+        tagEdges.append({})
+        tagEdges[i]['split'] = False
+        
     NumGroup = 0
         
     # find all junctions and single linked connections first
@@ -332,14 +336,15 @@ def exportVehiclePaths(filepath, ob, bIsWater):
         for link in v.link_edges:
             linkVert = link.other_vert(v).index
                 
-            # if link is part of a line, mark it as external node
-            if len(bm.verts[linkVert].link_edges) == 2:                 
+            # if link is part of a line, mark it as external node and not part of 2 lines nodes saga (extra added external nodes)
+            if len(bm.verts[linkVert].link_edges) == 2 and tagEdges[link.index]['split'] == False:                 
                 tagVerts[linkVert]['type'] = "external"
                 lineSegments.append(linkVert)
                 
                 extNode = {}
                 extNode['xyz'] = bm.verts[linkVert].co
                 extNode['realIndex'] = linkVert
+
                 groupNodes.append(extNode)
             else:
                 # this could be another junction or single linked node
@@ -351,7 +356,7 @@ def exportVehiclePaths(filepath, ob, bIsWater):
                 groupNodes.append(extNode)
          
         # Now write the junction or singly linked connection
-        PrepareJunctionOrSingleConnectionGroup(bm, groupNodes)
+        PrepareCentreJunctionOrSingleConnectionGroup(bm, groupNodes)
         file.write(str(2 if bIsWater else 1) + ", -1\n")
         for node in groupNodes:
             file.write( "\t{}, {}, {}, {:.2f}, {:.2f}, {:.2f}, {}, {}, {}, {}, {}, {}\n".format(
@@ -408,15 +413,59 @@ def exportVehiclePaths(filepath, ob, bIsWater):
             if len(lineNodes) == 1:
                 continue
                 
-            print ("line:", lineNodes)
+            #print ("line:", lineNodes)
             assert len(lineNodes) >= 2
             
             # mark first and last as external
             tagVerts[lineNodes[0]]['type'] = "external"
             tagVerts[lineNodes[ len(lineNodes) -1 ]]['type'] = "external"
             
-            # TODO: Insert an external node
+            # Insert an external node if only 2 nodes in a line because one has to be internal
             if len(lineNodes) == 2:
+                print ("line:", lineNodes)
+                groupNodes = []
+                
+                internalNode = {}
+                internalNode['realIndex'] = lineNodes[1]
+                internalNode['xyz'] = bm.verts[lineNodes[1]].co
+                groupNodes.append(internalNode)
+                
+                externalNode = {}
+                externalNode['realIndex'] = lineNodes[0]
+                externalNode['xyz'] = bm.verts[lineNodes[0]].co
+                groupNodes.append(externalNode)
+                
+                nextVert = bm.verts[lineNodes[1]].link_edges[0].other_vert(bm.verts[lineNodes[1]]).index
+                if nextVert == lineNodes[0]:
+                    nextVert = bm.verts[lineNodes[1]].link_edges[1].other_vert(bm.verts[lineNodes[1]]).index
+                
+                externalNode2 = {}
+                externalNode2['realIndex'] = nextVert
+                externalNode2['xyz'] = (bm.verts[lineNodes[1]].co + bm.verts[nextVert].co)/2.0
+                groupNodes.append(externalNode2)
+                
+                bm_edge = bm.edges.get(( bm.verts[ lineNodes[1] ], bm.verts[ nextVert ] ))
+                tagEdges[bm_edge.index]['split'] = True
+                
+                # Now write the junction or singly linked connection
+                PrepareCentreJunctionOrSingleConnectionGroup(bm, groupNodes)
+                file.write(str(2 if bIsWater else 1) + ", -1\n")
+                for node in groupNodes:
+                    file.write( "\t{}, {}, {}, {:.2f}, {:.2f}, {:.2f}, {}, {}, {}, {}, {}, {}\n".format(
+                        node['type'], 
+                        node['next'], 
+                        0,
+                        node['xyz'].x * 16,
+                        node['xyz'].y * 16,
+                        node['xyz'].z * 16,
+                        node['median'],
+                        node['leftLanes'],
+                        node['rightLanes'],
+                        node['speedlimit'],
+                        node['flags'],
+                        node['spawnrate']
+                        )
+                    )
                 continue
             
             assert len(lineNodes) == len(set(lineNodes))
