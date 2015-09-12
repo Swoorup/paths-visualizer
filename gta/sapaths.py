@@ -58,7 +58,7 @@ class SAPathSingleNode:
                 self.mPathnodes[i]['baseLink'] = unpack('h', self.path.read(2))[0]
                 self.mPathnodes[i]['areaID'] = unpack('h', self.path.read(2))[0]
                 self.mPathnodes[i]['nodeID'] = unpack('h', self.path.read(2))[0]
-                self.mPathnodes[i]['width'] = float(unpack('b', self.path.read(1))[0]) / 8.64
+                self.mPathnodes[i]['width'] = float(unpack('b', self.path.read(1))[0]) / 8
                 self.mPathnodes[i]['floodcolor'] = unpack('b', self.path.read(1))[0]
 
                 flags = unpack('B', self.path.read(1))[0]
@@ -99,7 +99,7 @@ class SAPathSingleNode:
                 self.mCarpathlinks[i]['dirX'] = float(unpack('b', self.path.read(1))[0]) / 100
                 self.mCarpathlinks[i]['dirY'] = float(unpack('b', self.path.read(1))[0]) / 100
 
-                self.mCarpathlinks[i]['width'] = unpack('b', self.path.read(1))[0] / 8.64
+                self.mCarpathlinks[i]['width'] = unpack('b', self.path.read(1))[0] / 8
 
                 flags = unpack('B', self.path.read(1))[0]
                 self.mCarpathlinks[i]['numLeftLanes'] = flags & 7

@@ -236,11 +236,15 @@ def PrepareVehicleLineSegmentsGroup(bm, tempGroupNodes):
         if i == len(tempGroupNodes) - 1: # last
             node['next'] = -1
             node['type'] = 1
-            bm_edge = bm.edges.get(( bm.verts[ tempGroupNodes[i-1] ], bm.verts[ tempGroupNodes[i] ] ))
+            
+            # End external node's lane must point to other connected line segment
+            nextVert = bm.verts[tempGroupNodes[i]].link_edges[0].other_vert(bm.verts[tempGroupNodes[i]]).index
+            if nextVert == tempGroupNodes[i-1]:
+                nextVert = bm.verts[tempGroupNodes[i]].link_edges[1].other_vert(bm.verts[tempGroupNodes[i]]).index
+                    
+            bm_edge = bm.edges.get(( bm.verts[ nextVert], bm.verts[ tempGroupNodes[i] ] ))
             toVert = bm_edge.verts[0]
             fromVert = bm_edge.verts[1]
-            
-            node['median'] = bm_edge[bm.edges.layers.float[EDGE_WIDTH]]
             
             if fromVert.index == tempGroupNodes[i]:
                 node['leftLanes'] = bm_edge[bm.edges.layers.int[EDGE_NUMLEFTLANES]]
@@ -249,8 +253,8 @@ def PrepareVehicleLineSegmentsGroup(bm, tempGroupNodes):
                 node['rightLanes'] = bm_edge[bm.edges.layers.int[EDGE_NUMLEFTLANES]]
                 node['leftLanes'] = bm_edge[bm.edges.layers.int[EDGE_NUMRIGHTLANES]]
                 
-            # End external node's lane must be swapped to point back to the line
-            node['rightLanes'], node['leftLanes'] = node['leftLanes'], node['rightLanes']
+            
+            node['median'] = bm_edge[bm.edges.layers.float[EDGE_WIDTH]]
         else:
             node['next'] = i + 1
             bm_edge = bm.edges.get(( bm.verts[ tempGroupNodes[i] ], bm.verts[ tempGroupNodes[i+1] ] ))
