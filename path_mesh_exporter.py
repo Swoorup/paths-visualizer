@@ -3,13 +3,7 @@ import bmesh
 from mathutils import Vector
 
 from .ui_constants import *
-
-def find(lst, key, value):
-    for i, dic in enumerate(lst):
-        if dic[key] == value:
-            return i
-    return -1
-    
+   
     
 # TODO: complete some fields
 
