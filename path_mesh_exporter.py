@@ -1,9 +1,7 @@
-﻿import bpy
-import bmesh
+﻿import bmesh
 from mathutils import Vector
 
 from .ui_constants import *
-   
     
 # TODO: complete some fields
 
@@ -143,8 +141,20 @@ def exportPedPaths(filepath, ob):
     file.write("end\n")
     file.close()
     
-    
-
+def getIgnoredNode():
+    ignoredNode = {}
+    ignoredNode['type'] = 0
+    ignoredNode['next'] = -1
+    ignoredNode['xyz'] = Vector((0,0,0))
+    ignoredNode['median'] = 0
+    ignoredNode['speedlimit'] = 0
+    ignoredNode['flags'] = 0
+    ignoredNode['spawnrate'] = 0
+    ignoredNode['median'] = 0
+    ignoredNode['rightLanes'] = 0
+    ignoredNode['leftLanes'] = 0
+    ignoredNode['realIndex'] = -1
+    return ignoredNode
     
 def PrepareCentreJunctionOrSingleConnectionGroup(bm, groupNodes, tagVerts) : 
     internalNode = groupNodes[0]
@@ -167,21 +177,17 @@ def PrepareCentreJunctionOrSingleConnectionGroup(bm, groupNodes, tagVerts) :
         # external Nodes has to reflect line segment
         externalNode = groupNodes[i]
         if externalNode['realIndex'] == fromVert.index:
-            # already pointing
             externalNode['leftLanes'] = bm_edge[bm.edges.layers.int[EDGE_NUMLEFTLANES]]
             externalNode['rightLanes'] = bm_edge[bm.edges.layers.int[EDGE_NUMRIGHTLANES]]
         else: 
-            externalNode['rightLanes'] = bm_edge[bm.edges.layers.int[EDGE_NUMLEFTLANES]]
             externalNode['leftLanes'] = bm_edge[bm.edges.layers.int[EDGE_NUMRIGHTLANES]]
+            externalNode['rightLanes'] = bm_edge[bm.edges.layers.int[EDGE_NUMLEFTLANES]]
         
-        # point to line
-        if tagVerts[groupNodes[i]['realIndex']]['type'] != "connectedsegmentEnd":
+        # reflect the lanes to point to beginning of the line segment
+        if tagVerts[externalNode['realIndex']]['type'] != "connectedsegmentEnd":
             if externalNode['rightLanes'] != externalNode['leftLanes'] :
                 print("Check for bugs at: ", groupNodes[i])
             externalNode['rightLanes'], externalNode['leftLanes'] = externalNode['leftLanes'], externalNode['rightLanes']
-        
-        #externalNode['rightLanes'] = 0
-        #externalNode['leftLanes'] = 0
         
         externalNode['next'] = 0
         externalNode['type'] = 1
@@ -192,19 +198,7 @@ def PrepareCentreJunctionOrSingleConnectionGroup(bm, groupNodes, tagVerts) :
         
         
     while len(groupNodes) != 12:
-        ignoredNode = {}
-        ignoredNode['type'] = 0
-        ignoredNode['next'] = -1
-        ignoredNode['xyz'] = Vector((0,0,0))
-        ignoredNode['median'] = 0
-        ignoredNode['speedlimit'] = 0
-        ignoredNode['flags'] = 0
-        ignoredNode['spawnrate'] = 0
-        ignoredNode['median'] = 0 #these are ignored anyway
-        ignoredNode['rightLanes'] = 0 #these are ignored anyway
-        ignoredNode['leftLanes'] = 0 #these are ignored anyway
-        ignoredNode['realIndex'] = -1 #these are ignored anyway
-        groupNodes.append(ignoredNode)
+        groupNodes.append(getIgnoredNode())
 
 # tempGroupNodes: line with first and last nodes as external nodes
 def PrepareVehicleLineSegmentsGroup(bm, tempGroupNodes):
@@ -246,7 +240,6 @@ def PrepareVehicleLineSegmentsGroup(bm, tempGroupNodes):
             else: 
                 node['rightLanes'] = bm_edge[bm.edges.layers.int[EDGE_NUMLEFTLANES]]
                 node['leftLanes'] = bm_edge[bm.edges.layers.int[EDGE_NUMRIGHTLANES]]
-                
             
             node['median'] = bm_edge[bm.edges.layers.float[EDGE_WIDTH]]
         else:
@@ -277,19 +270,7 @@ def PrepareVehicleLineSegmentsGroup(bm, tempGroupNodes):
     groupNodes.append(firstExternalNode)
         
     while len(groupNodes) != 12:
-        ignoredNode = {}
-        ignoredNode['type'] = 0
-        ignoredNode['next'] = -1
-        ignoredNode['xyz'] = Vector((0,0,0))
-        ignoredNode['median'] = 0
-        ignoredNode['speedlimit'] = 0
-        ignoredNode['flags'] = 0
-        ignoredNode['spawnrate'] = 0
-        ignoredNode['median'] = 0 #these are ignored anyway
-        ignoredNode['rightLanes'] = 0 #these are ignored anyway
-        ignoredNode['leftLanes'] = 0 #these are ignored anyway
-        ignoredNode['realIndex'] = -1 #these are ignored anyway
-        groupNodes.append(ignoredNode)
+        groupNodes.append(getIgnoredNode())
     
     return groupNodes
     
@@ -529,9 +510,6 @@ def exportVehiclePaths(filepath, ob, bIsWater):
                         )
                     )
                 
-                
-            
-            
             #TESTCODE
             #END TEST CODE
             

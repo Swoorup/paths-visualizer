@@ -269,8 +269,6 @@ class MeshVertLayerListUI(bpy.types.UIList):
             row.scale_x = 0.5
             row.scale_y = 1
             row.label(item.name)
-            row.label("A:" + str(item.area) + " N: " + str(item.nodeid))
-            row.label("F:" + str(item.flood) + " T: " + str(item.type))
             row.prop(item, "width", text="width", emboss=False)
             row.prop(item, "behaviour", text="behaviour", emboss=False)
             row.prop(item, "isdeadEnd", text="DeadEnd", emboss=False)

@@ -86,7 +86,7 @@ def loadVehicleMesh(ob, nodes):
                 # from and to order needs to be preserved to hold lane information, make sure blender does not play around with these
                 # TODO: check if link order is preserved by blender
                 
-                #ignore the carpathlink vertex if direction is the same
+                #ignore the carpathlink vertex if it lies between a straight line formed by end nodes
                 a = (bm.verts[k].co - bm.verts[i].co).xy
                 b = (bm.verts[linkedIndex].co - bm.verts[k].co).xy
                 
@@ -96,6 +96,11 @@ def loadVehicleMesh(ob, nodes):
                 
                 # these are only carpathlinks anyway
                 # TODO: Try and fix these
+                
+                # don't delete carpathlink vertex at junctions
+                if len(node['_links']) != 2 or len(linkedNode['_links']) != 2:
+                    a_angle = 999.9
+                
                 if abs(a_angle - b_angle) < 4.0:
                     # link to carpathpath 
                     bmedge = bm.edges.new( (bm.verts[i], bm.verts[linkedIndex])) 
