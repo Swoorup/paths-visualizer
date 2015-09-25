@@ -425,9 +425,8 @@ def setupProps():
     kmi = km.keymap_items.new(DisplayOrRefreshMeshLayerEditable.bl_idname, 'Q', 'PRESS', alt=True)
     addon_keymaps.append(km)
     
-    args = ()
     global drawFnHandle
-    drawFnHandle = bpy.types.SpaceView3D.draw_handler_add(LinkInfoHelper.draw_callback_px,args,'WINDOW', 'POST_VIEW')
+    drawFnHandle = bpy.types.SpaceView3D.draw_handler_add(LinkInfoHelper.draw_callback_px,(),'WINDOW', 'POST_VIEW')
     
 def removeProps():
     wm = bpy.context.window_manager

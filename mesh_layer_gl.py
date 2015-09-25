@@ -6,29 +6,44 @@ from mathutils import *
 from math import *
 from .ui_constants import *
 
+# create a new display mode, where user can edit edges
+
 class LinkInfoHelper:
-    gllistIndex = -1
+    displayList = -1
     
     @staticmethod
-    def create_display_list(context):
+    def draw_lane_info():
+        context = bpy.context
         ob = context.object
         if ob is None:
             return
         
-        if bpy.context.active_object.mode != 'EDIT':
-            return
-            
         ob = context.edit_object
         bm = bmesh.from_edit_mesh(ob.data)
-        index = glGenLists(1)
-        
-        glNewList(index, GL_COMPILE)
+        view_mat = context.space_data.region_3d.perspective_matrix
+        ob_mat = context.active_object.matrix_world
+        total_mat = view_mat * ob_mat
         
         for e in bm.edges:
             vecTo = e.verts[0].co # 0 is the target 
             vecFrom = e.verts[1].co   # 1 is the source
-    
-            middle = (vecTo + vecFrom) / 2.0
+            
+            viewportVert1 = total_mat * vecTo
+            viewportVert2 = total_mat * vecFrom
+            
+            if viewportVert1.x < -1.0 or viewportVert1.y < -1.0 or viewportVert1.z < -1.0:
+                continue
+                
+            if viewportVert1.x > 1.0 or viewportVert1.y > 1.0 or viewportVert1.z > 1.0:
+                continue
+                
+            if viewportVert2.x < -1.0 or viewportVert2.y < -1.0 or viewportVert2.z < -1.0:
+                continue
+                
+            if viewportVert2.x > 1.0 or viewportVert2.y > 1.0 or viewportVert2.z > 1.0:
+                continue
+
+            center = (vecTo + vecFrom) / 2.0
             
             v = vecTo - vecFrom
             v.normalize()
@@ -78,17 +93,19 @@ class LinkInfoHelper:
                 pass
                 
             eulerRot = Euler((vAngle, 0.0, hAngle))
+            mat = eulerRot.to_matrix().to_4x4()
+            mat.translation = center
             
             glColor3f(0.0,0.0,0.0)
             glBegin(GL_TRIANGLE_STRIP)
             for i in arrow_vertices:
                 vert = Vector(i)
                 vert *= SCALE
-                vert.rotate(eulerRot)
-                vert += middle
+                vert = mat * vert
                 glVertex3f(*vert)      
             glEnd()
-            
+
+            lane_width = e[bm.edges.layers.float[EDGE_WIDTH]]
             SCALE = 0.5
             # Lane Information
             glColor3f(0.0,0.0,1.0)
@@ -98,9 +115,8 @@ class LinkInfoHelper:
                     vert = Vector(i)
                     vert = Vector((vert.x, vert.y  * (vecTo - vecFrom).length, vert.z)) # scale
                     vert.x -= 0.5
-                    vert += Vector((-1 * (j + 1) - e[bm.edges.layers.float[EDGE_WIDTH]]/2, 0.0, 0.0)) #left
-                    vert.rotate(eulerRot)
-                    vert += middle
+                    vert.x += -1 * (j + 1) - lane_width/2 #left
+                    vert = mat * vert
                     glVertex3f(*vert)      
                 glEnd()
                 
@@ -110,9 +126,8 @@ class LinkInfoHelper:
                     vert *= SCALE
                     vert.x += 0.5
                     vert.rotate(Euler((0.0, 0.0, radians(180.0))))
-                    vert += Vector((-1 * (j + 1) - e[bm.edges.layers.float[EDGE_WIDTH]]/2, 0.0, 0.0)) #left
-                    vert.rotate(eulerRot)
-                    vert += middle
+                    vert.x += -1 * (j + 1) - lane_width/2 #left
+                    vert = mat * vert
                     glVertex3f(*vert)      
                 glEnd()
             
@@ -123,9 +138,8 @@ class LinkInfoHelper:
                     vert = Vector(i)
                     vert = Vector((vert.x, vert.y  * (vecTo - vecFrom).length, vert.z)) # scale
                     vert.x += 0.5
-                    vert += Vector((1 * (j + 1) + e[bm.edges.layers.float[EDGE_WIDTH]]/2, 0.0, 0.0)) #left
-                    vert.rotate(eulerRot)
-                    vert += middle
+                    vert.x += 1 * (j + 1) + lane_width/2 #left
+                    vert = mat * vert
                     glVertex3f(*vert)      
                 glEnd()
                 
@@ -134,27 +148,23 @@ class LinkInfoHelper:
                     vert = Vector(i)
                     vert *= SCALE
                     vert.x += 0.5
-                    vert += Vector((1 * (j + 1) + e[bm.edges.layers.float[EDGE_WIDTH]]/2, 0.0, 0.0)) #left
-                    vert.rotate(eulerRot)
-                    vert += middle
+                    vert.x += 1 * (j + 1) + lane_width/2 #left
+                    vert = mat * vert
                     glVertex3f(*vert)      
                 glEnd()
-            """
-            glBegin(GL_LINE_STRIP)
-            glVertex3f(*(middle + v1))
-            glVertex3f(*(middle))
-            glVertex3f(*(middle + v2))
-            glEnd()
-            """
+
+    @staticmethod
+    def create_display_list():
+        LinkInfoHelper.displayList = glGenLists(1)
+        glNewList(LinkInfoHelper.displayList, GL_COMPILE)
+        LinkInfoHelper.draw_lane_info()
         glEndList()
-        LinkInfoHelper.gllistIndex = index
-        return index
     
     @staticmethod
     def delete_display_list():
-        if LinkInfoHelper.gllistIndex != -1:
-            glDeleteLists(LinkInfoHelper.gllistIndex, 1)
-            LinkInfoHelper.gllistIndex = -1
+        if LinkInfoHelper.displayList != -1:
+            glDeleteLists(LinkInfoHelper.displayList, 1)
+            LinkInfoHelper.displayList = -1
     
     @staticmethod
     def draw_callback_px():
@@ -171,13 +181,13 @@ class LinkInfoHelper:
                 wm.mesh_layer_editable.currentObj != ob.name:
             LinkInfoHelper.delete_display_list()
             return
-            
-        if LinkInfoHelper.gllistIndex == -1:
-            LinkInfoHelper.gllistIndex = LinkInfoHelper.create_display_list(context)
-        
+          
         #LinkInfoHelper.delete_display_list()
-        #LinkInfoHelper.create_display_list(context)
-    
+        #LinkInfoHelper.draw_lane_info()
+        
+        if LinkInfoHelper.displayList == -1:
+            LinkInfoHelper.create_display_list()
+        
         # 50% alpha, 2 pixel width line
         #glEnable(GL_BLEND)
         glColor4f(1.0, 1.0, 1.0, 0.5)
@@ -186,9 +196,9 @@ class LinkInfoHelper:
         glPushMatrix()
         glScalef(*ob.scale)
         glTranslatef(*ob.location)
-        glCallList(LinkInfoHelper.gllistIndex)
+        glCallList(LinkInfoHelper.displayList)
         glPopMatrix()
-    
+
         # restore opengl defaults
         glLineWidth(1)
         glDisable(GL_BLEND)
