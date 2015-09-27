@@ -2,7 +2,7 @@
 import bmesh
 from .ui_constants import *
 from bpy.props import StringProperty, BoolProperty, IntProperty, CollectionProperty, FloatProperty, PointerProperty
-from .mesh_layer_gl import *
+from . import mesh_layer_gl 
 
 def AddPathMeshLayers(bm):
     bm.verts.layers.float.new(NODE_WIDTH)
@@ -415,18 +415,19 @@ class PathNodePropertiesPanel(bpy.types.Panel):
         layout.template_list("MeshEdgeLayerListUI", "", wm.mesh_layer_editable, "edgeList", wm.mesh_layer_editable, "eIndex")
         layout.prop(wm.mesh_layer_editable, "bDisplayEdgeDirection", text="Display Link Helpers")
 
-drawFnHandle = -1
+        layout.prop(bpy.context.scene, "boolDisplayLane", text="Display Lane Helper") # check mesh_layer_gl
+
+
+
 addon_keymaps = []
 def setupProps():
     bpy.types.WindowManager.mesh_layer_editable = PointerProperty(type=MeshLayerEditable)
-    
     wm = bpy.context.window_manager
     km = wm.keyconfigs.addon.keymaps.new(name="3D View", space_type="VIEW_3D")
     kmi = km.keymap_items.new(DisplayOrRefreshMeshLayerEditable.bl_idname, 'Q', 'PRESS', alt=True)
     addon_keymaps.append(km)
     
-    global drawFnHandle
-    drawFnHandle = bpy.types.SpaceView3D.draw_handler_add(LinkInfoHelper.draw_callback_px,(),'WINDOW', 'POST_VIEW')
+    mesh_layer_gl.setup() 
     
 def removeProps():
     wm = bpy.context.window_manager
@@ -434,11 +435,8 @@ def removeProps():
         wm.keyconfigs.addon.keymaps.remove(km)
     addon_keymaps.clear()
     
-    LinkInfoHelper.cleanup()
-    global drawFnHandle
-    bpy.types.SpaceView3D.draw_handler_remove(drawFnHandle, 'WINDOW')
-    
     del bpy.types.WindowManager.mesh_layer_editable
+    mesh_layer_gl.cleanup()
 
 def register():
     bpy.utils.register_module(__name__)
