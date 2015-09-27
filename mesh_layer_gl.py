@@ -5,31 +5,30 @@ from math import *
 from .ui_constants import *
 from bgl import *
 from bpy.props import BoolProperty
-from .octrees import *
 
 class LinkHelper():
     def __init__(self):
-        self.octree = None
+        self.kd = None
         self.options = {}
         self.options['nFrames'] = 0 
         self.options['displaylist'] = -1
 
     def __del__(self):
         print("Deleted Link Hlper", self)
-        del self.octree
+        del self.kd
         if self.options['displaylist'] != -1:
             glDeleteLists(self.options['displaylist'], 1)
 
     # create kd tree based scene acceleration structure
     def create_accl_struct(self, obj): #blender object
         bm = bmesh.from_edit_mesh(obj.data)
-        self.octree = kdtree.KDTree( len(bm.edges) )
+        self.kd = kdtree.KDTree( len(bm.edges) )
 
         for i, e in enumerate (bm.edges):
             center = ( e.verts[0].co + e.verts[1].co ) / 2
-            self.octree.insert(center, i)
+            self.kd.insert(center, i)
 
-        self.octree.balance()
+        self.kd.balance()
 
     """
     obj: blender object to draw around the link helper
@@ -43,7 +42,7 @@ class LinkHelper():
         glTranslatef(*obj.location)
 
 
-        """ try to speed up by caching the draw into displaylist
+#        """ try to speed up by caching the draw into displaylist
 
         if self.options['nFrames'] & 1 == 0:
             if self.options['displaylist'] != -1:
@@ -53,9 +52,10 @@ class LinkHelper():
             glNewList(self.options['displaylist'], GL_COMPILE)
             self.draw_local_immediate(obj, region_3d)
             glEndList()
+            glCallList(self.options['displaylist'])
         else:
             glCallList(self.options['displaylist'])
-        """
+#        """
         
         self.draw_local_immediate(obj, region_3d)
         glPopMatrix()
@@ -64,7 +64,7 @@ class LinkHelper():
 
     def draw_local_immediate(self, obj, region_3d): 
 
-        if self.octree is None:
+        if self.kd is None:
             self.create_accl_struct(obj) 
 
         view_mat = region_3d.view_matrix
@@ -73,7 +73,7 @@ class LinkHelper():
         # transform cam pos in object space for spatial acceleration structure search 
         cam_pos = obj.matrix_world.inverted() * cam_pos
 #        print("viewing from: ", cam_pos) 
-        for (co, index, dist) in self.octree.find_range(cam_pos, 600):
+        for (co, index, dist) in self.kd.find_range(cam_pos, 600):
             bm = bmesh.from_edit_mesh(obj.data)
             e = bm.edges[index]
             vecTo = e.verts[0].co # 0 is the target 
@@ -145,7 +145,7 @@ class LinkHelper():
             lane_width = e[bm.edges.layers.float[EDGE_WIDTH]]
             SCALE = 0.5
             # Lane Information
-            glColor3f(0.0,0.0,1.0)
+            glColor3f(0.6,0.6,0.6)
             for j in range(e[bm.edges.layers.int[EDGE_NUMLEFTLANES]]):
                 glBegin(GL_LINES)
                 for i in line_vertices:
@@ -171,7 +171,6 @@ class LinkHelper():
                     glVertex3f(*vert)      
                 glEnd()
             
-            glColor3f(0.0,1.0,0.0)
             for j in range(e[bm.edges.layers.int[EDGE_NUMRIGHTLANES]]):
                 glBegin(GL_LINES)
                 for i in line_vertices:
