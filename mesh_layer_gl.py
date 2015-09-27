@@ -23,14 +23,13 @@ class LinkHelper():
     # create kd tree based scene acceleration structure
     def create_accl_struct(self, obj): #blender object
         bm = bmesh.from_edit_mesh(obj.data)
-        bounds = ((obj.bound_box[0][0] - 1, obj.bound_box[4][0] + 1),
-                ( obj.bound_box[0][1] - 1, obj.bound_box[2][1] + 1),
-                ( obj.bound_box[0][2] - 1, obj.bound_box[1][2] + 1))
-        self.octree = Octree(bounds)
+        self.octree = kdtree.KDTree( len(bm.edges) )
 
         for i, e in enumerate (bm.edges):
             center = ( e.verts[0].co + e.verts[1].co ) / 2
             self.octree.insert(center, i)
+
+        self.octree.balance()
 
     """
     obj: blender object to draw around the link helper
@@ -74,7 +73,7 @@ class LinkHelper():
         # transform cam pos in object space for spatial acceleration structure search 
         cam_pos = obj.matrix_world.inverted() * cam_pos
 #        print("viewing from: ", cam_pos) 
-        for (dist, co, index) in self.octree.by_distance_from_point(cam_pos, 600):
+        for (co, index, dist) in self.octree.find_range(cam_pos, 600):
             bm = bmesh.from_edit_mesh(obj.data)
             e = bm.edges[index]
             vecTo = e.verts[0].co # 0 is the target 
