@@ -41,9 +41,7 @@ class LinkHelper():
         glScalef(*obj.scale)
         glTranslatef(*obj.location)
 
-
 #        """ try to speed up by caching the draw into displaylist
-
         if self.options['nFrames'] & 1 == 0:
             if self.options['displaylist'] != -1:
                 glDeleteLists(self.options['displaylist'], 1)
@@ -57,13 +55,11 @@ class LinkHelper():
             glCallList(self.options['displaylist'])
 #        """
         
-        self.draw_local_immediate(obj, region_3d)
         glPopMatrix()
 
         self.options['nFrames'] += 1
 
     def draw_local_immediate(self, obj, region_3d): 
-
         if self.kd is None:
             self.create_accl_struct(obj) 
 
