@@ -24,7 +24,7 @@ bl_info = {
     "location": "Search > BOOM & Add > LALALA",
     "description": "Fractured Object, Bomb, Projectile, Recorder",
     "warning": "",
-    "wiki_url": "http://wiki.blender.org/index.php/Extensions:2.6/Py/Scripts/Object/Fracture",
+    "url": "http://swoorupjoshi.xyz/blog/blender-addon-for-creating-waypoints/",
     "category": "Object",
 }
 
